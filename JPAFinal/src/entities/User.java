@@ -62,8 +62,24 @@ public class User {
 		return rating;
 	}
 
+	public List<Recipe> getRecipes() {
+		return recipes;
+	}
+
+	public void setRecipes(List<Recipe> recipes) {
+		this.recipes = recipes;
+	}
+
 	public void setRating(List<Rating> rating) {
 		this.rating = rating;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", profile=" + profile + ", rating="
+				+ rating + ", recipes=" + recipes + "]";
+	}
+	
+	
 
 }

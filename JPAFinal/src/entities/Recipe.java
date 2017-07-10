@@ -45,6 +45,8 @@ private List<User> user;
 @Column(name="publisher_url")
 private String publisherUrl;
 
+@ManyToMany(mappedBy="recipe")
+private List<Ingredient> ingredient;
 
 @Column(name="social_rank")
 private String socialRank;
@@ -143,12 +145,58 @@ public void setSocialRank(String socialRank) {
 }
 
 
+
+
+public List<User> getUser() {
+	return user;
+}
+
+
+public void setUser(List<User> user) {
+	this.user = user;
+}
+
+
+public List<Ingredient> getIngredient() {
+	return ingredient;
+}
+
+
+public void setIngredient(List<Ingredient> ingredient) {
+	this.ingredient = ingredient;
+}
+
+
+public List<Tag> getTags() {
+	return tags;
+}
+
+
+public void setTags(List<Tag> tags) {
+	this.tags = tags;
+}
+
+
+public List<Rating> getRating() {
+	return rating;
+}
+
+
+public void setRating(List<Rating> rating) {
+	this.rating = rating;
+}
+
+
 @Override
 public String toString() {
 	return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", f2fUrl=" + f2fUrl + ", recipeId="
-			+ recipeId + ", title=" + title + ", publisher=" + publisher + ", publisherUrl=" + publisherUrl
-			+ ", socialRank=" + socialRank + "]";
+			+ recipeId + ", title=" + title + ", publisher=" + publisher + ", user=" + user + ", publisherUrl="
+			+ publisherUrl + ", ingredient=" + ingredient + ", socialRank=" + socialRank + ", tags=" + tags
+			+ ", rating=" + rating + "]";
 }
+
+
+
 
 
 

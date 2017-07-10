@@ -51,17 +51,15 @@ public class RecipeIngredient {
 	public int getId() {
 		return id;
 	}
-	
-	// toString
+
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("RecipeIngredient [id=");
-		builder.append(id);
-		builder.append(", quantity=");
-		builder.append(quantity);
-		builder.append("]");
-		return builder.toString();
+		return "RecipeIngredient [id=" + id + ", recipe=" + recipe + ", ingredient=" + ingredient + ", quantity="
+				+ quantity + "]";
 	}
+	
+	
+	
+
 	
 }

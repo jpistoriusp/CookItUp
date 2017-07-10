@@ -38,10 +38,22 @@ public class Tag {
 	public void setRecipe(List<Recipe> recipe) {
 		this.recipe = recipe;
 	}
+	
+	
+
+	public List<Ingredient> getIngredient() {
+		return ingredient;
+	}
+
+	public void setIngredient(List<Ingredient> ingredient) {
+		this.ingredient = ingredient;
+	}
 
 	@Override
 	public String toString() {
-		return "Tag [name=" + name + ", recipe=" + recipe + "]";
+		return "Tag [id=" + id + ", name=" + name + ", recipe=" + recipe + ", ingredient=" + ingredient + "]";
 	}
+
+
 
 }
