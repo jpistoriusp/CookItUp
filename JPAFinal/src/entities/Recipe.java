@@ -1,14 +1,20 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
-public class Recipes {
+public class Recipe {
 	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +36,12 @@ private String title;
 
 private String publisher;
 
+@ManyToMany
+@JoinTable(name="rating",
+joinColumns=@JoinColumn(name="recipe_id"),
+inverseJoinColumns=@JoinColumn(name="user_id"))
+private List<User> user;
+
 @Column(name="publisher_url")
 private String publisherUrl;
 
@@ -37,11 +49,14 @@ private String publisherUrl;
 @Column(name="social_rank")
 private String socialRank;
 
-private String ingredients;
+@ManyToMany
+@JoinTable(name="recipe_tag",
+joinColumns=@JoinColumn(name="recipe_id"),
+inverseJoinColumns=@JoinColumn(name="tag_id"))
+private List<Tag> tags;
 
-
-
-
+@OneToMany(mappedBy="recipe")
+private List<Rating> rating;
 
 public String getImgUrl() {
 	return imgUrl;
@@ -128,22 +143,21 @@ public void setSocialRank(String socialRank) {
 }
 
 
-public String getIngredients() {
-	return ingredients;
-}
-
-
-public void setIngredients(String ingredients) {
-	this.ingredients = ingredients;
-}
-
-
 @Override
 public String toString() {
-	return "Recipes [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", f2fUrl=" + f2fUrl
-			+ ", recipeId=" + recipeId + ", title=" + title + ", publisher=" + publisher + ", publisherUrl="
-			+ publisherUrl + ", socialRank=" + socialRank + ", ingredients=" + ingredients + "]";
+	return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", f2fUrl=" + f2fUrl + ", recipeId="
+			+ recipeId + ", title=" + title + ", publisher=" + publisher + ", publisherUrl=" + publisherUrl
+			+ ", socialRank=" + socialRank + "]";
 }
+
+
+
+
+
+
+
+
+
 
 
 
