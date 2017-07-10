@@ -9,6 +9,8 @@
 
 		<!-- List Entities Here -->
 		<class>entities.User</class>
+		<class>entities.Profile</class>
+		<class>entities.Recipes</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cookitupdb" />

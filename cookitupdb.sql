@@ -34,7 +34,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `recipe` ;
 
 CREATE TABLE IF NOT EXISTS `recipe` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `image_url` VARCHAR(400) NULL,
   `source_url` VARCHAR(400) NULL,
   `f2f_url` VARCHAR(400) NULL,
