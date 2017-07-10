@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Rating {
@@ -16,7 +15,7 @@ public class Rating {
 	
 	private int value;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="recipe_id")
 	private Recipe recipe;
 	

@@ -13,141 +13,91 @@ public class Profile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-@Column(name="first_name")
-private String firstName;
 
-@Column(name="last_name")
-private String lastName;
+	@Column(name = "first_name")
+	private String firstName;
 
-private int age;
+	@Column(name = "last_name")
+	private String lastName;
 
-@Column(name="profile_pic")
-private String profilePic;
+	private int age;
 
-private String location;
+	@Column(name = "profile_pic")
+	private String profilePic;
 
-private double weight;
+	private String location;
 
-@OneToOne
-@JoinColumn(name="address_id")
-private User user;
+	private double weight;
 
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private User user;
 
+	public String getFirstName() {
+		return firstName;
+	}
 
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-public String getFirstName() {
-	return firstName;
-}
+	public String getLastName() {
+		return lastName;
+	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
+	public int getAge() {
+		return age;
+	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
 
-public void setFirstName(String firstName) {
-	this.firstName = firstName;
-}
+	public String getProfilePic() {
+		return profilePic;
+	}
 
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
 
+	public String getLocation() {
+		return location;
+	}
 
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
-public String getLastName() {
-	return lastName;
-}
+	public double getWeight() {
+		return weight;
+	}
 
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
 
+	public User getUser() {
+		return user;
+	}
 
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-public void setLastName(String lastName) {
-	this.lastName = lastName;
-}
+	public int getId() {
+		return id;
+	}
 
-
-
-
-public int getAge() {
-	return age;
-}
-
-
-
-
-public void setAge(int age) {
-	this.age = age;
-}
-
-
-
-
-public String getProfilePic() {
-	return profilePic;
-}
-
-
-
-
-public void setProfilePic(String profilePic) {
-	this.profilePic = profilePic;
-}
-
-
-
-
-public String getLocation() {
-	return location;
-}
-
-
-
-
-public void setLocation(String location) {
-	this.location = location;
-}
-
-
-
-
-public double getWeight() {
-	return weight;
-}
-
-
-
-
-public void setWeight(double weight) {
-	this.weight = weight;
-}
-
-
-
-
-public User getUser() {
-	return user;
-}
-
-
-
-
-public void setUser(User user) {
-	this.user = user;
-}
-
-
-
-
-public int getId() {
-	return id;
-}
-
-
-
-
-@Override
-public String toString() {
-	return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
-			+ ", profilePic=" + profilePic + ", location=" + location + ", weight=" + weight + ", user=" + user + "]";
-}
-
-
-
+	@Override
+	public String toString() {
+		return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", profilePic=" + profilePic + ", location=" + location + ", weight=" + weight + ", user=" + user
+				+ "]";
+	}
 
 }

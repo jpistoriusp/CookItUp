@@ -1,10 +1,16 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -30,6 +36,12 @@ private String title;
 
 private String publisher;
 
+@ManyToMany
+@JoinTable(name="rating",
+joinColumns=@JoinColumn(name="recipe_id"),
+inverseJoinColumns=@JoinColumn(name="user_id"))
+private List<User> user;
+
 @Column(name="publisher_url")
 private String publisherUrl;
 
@@ -37,10 +49,14 @@ private String publisherUrl;
 @Column(name="social_rank")
 private String socialRank;
 
+@ManyToMany
+@JoinTable(name="recipe_tag",
+joinColumns=@JoinColumn(name="recipe_id"),
+inverseJoinColumns=@JoinColumn(name="tag_id"))
+private List<Tag> tags;
 
-
-
-
+@OneToMany(mappedBy="recipe")
+private List<Rating> rating;
 
 public String getImgUrl() {
 	return imgUrl;
