@@ -54,13 +54,21 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `profile` ;
 
 CREATE TABLE IF NOT EXISTS `profile` (
-  `first_name` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `age` INT NULL,
   `profile_pic` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
-  `weight` VARCHAR(45) NULL,
-  PRIMARY KEY (`first_name`))
+  `weight` DECIMAL(5,2) NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_profile_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_profile_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -70,7 +78,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `tag` ;
 
 CREATE TABLE IF NOT EXISTS `tag` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

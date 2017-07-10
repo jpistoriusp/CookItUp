@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Recipes {
+public class Recipe {
 	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,6 @@ private String publisherUrl;
 @Column(name="social_rank")
 private String socialRank;
 
-private String ingredients;
 
 
 
@@ -128,22 +127,21 @@ public void setSocialRank(String socialRank) {
 }
 
 
-public String getIngredients() {
-	return ingredients;
-}
-
-
-public void setIngredients(String ingredients) {
-	this.ingredients = ingredients;
-}
-
-
 @Override
 public String toString() {
-	return "Recipes [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", f2fUrl=" + f2fUrl
-			+ ", recipeId=" + recipeId + ", title=" + title + ", publisher=" + publisher + ", publisherUrl="
-			+ publisherUrl + ", socialRank=" + socialRank + ", ingredients=" + ingredients + "]";
+	return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", f2fUrl=" + f2fUrl + ", recipeId="
+			+ recipeId + ", title=" + title + ", publisher=" + publisher + ", publisherUrl=" + publisherUrl
+			+ ", socialRank=" + socialRank + "]";
 }
+
+
+
+
+
+
+
+
+
 
 
 
