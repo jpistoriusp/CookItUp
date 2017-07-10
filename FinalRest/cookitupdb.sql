@@ -54,14 +54,15 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `profile` ;
 
 CREATE TABLE IF NOT EXISTS `profile` (
-  `first_name` INT NOT NULL,
+  `id` INT NOT NULL,
+  `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `age` INT NULL,
   `profile_pic` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
-  `weight` VARCHAR(45) NULL,
+  `weight` DECIMAL(5,2) NULL,
   `user_id` INT NOT NULL,
-  PRIMARY KEY (`first_name`, `user_id`),
+  PRIMARY KEY (`id`),
   INDEX `fk_profile_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_profile_user1`
     FOREIGN KEY (`user_id`)
