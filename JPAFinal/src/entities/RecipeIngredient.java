@@ -60,7 +60,7 @@ public class RecipeIngredient {
 
 	@Override
 	public String toString() {
-		return "RecipeIngredient [id=" + id + ", recipe=" + recipe + ", ingredient=" + ingredient + ", quantity="
+		return "RecipeIngredient [id=" + id + ", quantity="
 				+ quantity + "]";
 	}
 	

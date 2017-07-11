@@ -57,7 +57,7 @@ public class Instruction {
 
 	@Override
 	public String toString() {
-		return "Instruction [id=" + id + ", recipe=" + recipe + ", stepNumber=" + stepNumber + ", text=" + text + "]";
+		return "Instruction [id=" + id + ", stepNumber=" + stepNumber + ", text=" + text + "]";
 	}
 	
 	

@@ -55,7 +55,7 @@ public class Tag {
 
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", name=" + name + ", recipe=" + recipe + ", ingredient=" + ingredient + "]";
+		return "Tag [id=" + id + ", name=" + name + "]";
 	}
 
 
