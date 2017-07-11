@@ -1,11 +1,36 @@
 <h1>Profile</h1>
 
-<form>
+<form ng-show="vm.showForm">
 	<input type=text placeholder="First Name" ng-model="profile.firstName" />
 	<input type="text" placeholder="Last Name" ng-model="profile.lastName" />
 	<input type="number" placeholder="Age" ng-model="profile.age" />
 	<input type="number" placeholder="Weight" ng-model="profile.weight" />
 	<input type="text" placeholder="City and State" ng-model="profile.location" />
 	<input type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
-	<input type="submit" value="Submit" ng-click="vm.createProfile(profile)"/>
+	<input type="submit" value="Create" ng-show="vm.showCreateButton" ng-click="vm.createProfile(profile); vm.showCreateButton=false"/>
+	<input type="submit" value="Edit" ng-hide="vm.showCreateButton" ng-click="vm.editProfile(profile)"/>
 </form>
+
+<table ng-hide="vm.showForm">
+	<thead>
+		<tr>
+			<th>Picture</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Age</th>
+			<th>Weight</th>
+			<th>Location</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{profile.picture}}</td>
+			<td>{{profile.firstName}}</td>
+			<td>{{profile.lastName}}</td>
+			<td>{{profile.age}}</td>
+			<td>{{profile.weight}}</td>
+			<td>{{profile.location}}</td>
+			<td><button type="button" ng-click="vm.showForm=true">Edit Profile</button></td>
+		</tr>
+	</tbody>
+</table>
