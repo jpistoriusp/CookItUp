@@ -34,6 +34,7 @@ public class RecipeDAOImpl implements RecipeDAO{
 			
 			String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
 			String recipeQuery = "SELECT r FROM Recipe r WHERE";
+//		
 			
 			List<Ingredient> managedIngs = new ArrayList<Ingredient>();
 			for (Ingredient ingd : ingredients) {
@@ -53,9 +54,7 @@ public class RecipeDAOImpl implements RecipeDAO{
 			for(int i = 0; i < managedIngs.size(); i++){
 				recipes.setParameter("ing" + i, managedIngs.get(i));
 			}
-			
-			HashSet<Recipe> allResults = new HashSet<Recipe>(recipes.getResultList());
-			
+			System.out.println(recipes);
 			return new HashSet<Recipe>(recipes.getResultList());
 	}
 
