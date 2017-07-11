@@ -31,9 +31,6 @@ public class Recipe {
 	@JoinTable(name = "rating", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> user;
 
-	@Column(name = "social_rank")
-	private String socialRank;
-
 	@ManyToMany
 	@JoinTable(name = "recipe_tag", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private List<Tag> tags;
@@ -69,18 +66,11 @@ public class Recipe {
 		this.title = title;
 	}
 
-	public String getSocialRank() {
-		return socialRank;
-	}
-
-	public void setSocialRank(String socialRank) {
-		this.socialRank = socialRank;
-	}
 
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", title=" + title + ", user="
-				+ user + ", socialRank=" + socialRank + ", tags=" + tags + ", rating=" + rating + "]";
+				+ user + ", tags=" + tags + ", rating=" + rating + "]";
 	}
 
 }
