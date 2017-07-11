@@ -22,8 +22,9 @@
 		<property name="entityManagerFactory" ref="myEntityManagerFactory" />
 	</bean>
 
-	<!-- <bean id="Tododao" class="data.TodoDAOImpl" /> <bean id="Authdao" class="data.AuthDAOImpl" 
-		/> -->
+	<bean id="Recipedao" class="data.RecipeDAOImpl" /> 
+	<bean id="Authdao" class="data.AuthDAOImpl" />
+	<bean id="Profiledao" class="data.ProfileDAOImpl" />
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
 
 	<!-- bcrypt bean -->
