@@ -1,6 +1,6 @@
 angular.module('staticModule')
 	.component('profile', {
-	templateUrl : "app/staticModule/profile/profile.component.html"
+	templateUrl : "app/staticModule/profile/profile.component.html",
 		controller: function(){
 			var vm = this;
 			
