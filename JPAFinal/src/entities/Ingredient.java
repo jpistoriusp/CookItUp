@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Ingredient {
@@ -24,8 +25,13 @@ public class Ingredient {
 	private List<Tag> tags;
 
 	@ManyToMany
-	@JoinTable(name = "recipe_ingredient", joinColumns = @JoinColumn(name = "ingredient_id"), inverseJoinColumns = @JoinColumn(name = "recipe_id"))
+	@JoinTable(name = "recipe_ingredient", 
+	joinColumns = @JoinColumn(name = "ingredient_id"), 
+	inverseJoinColumns = @JoinColumn(name = "recipe_id"))
 	private List<Recipe> recipe;
+	
+	@OneToMany(mappedBy="ingredient")
+	private List<RecipeIngredient> recipeIngredient;
 
 	public String getName() {
 		return name;
@@ -51,10 +57,24 @@ public class Ingredient {
 		this.recipe = recipe;
 	}
 
+	public List<RecipeIngredient> getRecipeIngredient() {
+		return recipeIngredient;
+	}
+
+	public void setRecipeIngredient(List<RecipeIngredient> recipeIngredient) {
+		this.recipeIngredient = recipeIngredient;
+	}
+
 	@Override
 	public String toString() {
-		return "Ingredient [id=" + id + ", name=" + name + ", tags=" + tags + ", recipe=" + recipe + "]";
+		return "Ingredient [id=" + id + ", name=" + name + ", tags=" + tags + ", recipe=" + recipe
+				+ ", recipeIngredient=" + recipeIngredient + "]";
 	}
+	
+	
+
+
+
 
 
 }
