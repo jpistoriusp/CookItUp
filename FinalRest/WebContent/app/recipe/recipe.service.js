@@ -16,9 +16,9 @@ angular.module('recipe')
 			var userId = authService.getToken().id;
 			return $http({
 				method : 'POST',
-				url : 'api/user/'+userId+'/recipe',
-				data : ingredients,
-				headers : { 'Content-type' : "application/json"}
+				url : 'api/user/'+/*userId*/1+'/recipe',
+				headers : { 'Content-type' : "application/json"},
+				data : ingredients
 			})
 		}
 		
