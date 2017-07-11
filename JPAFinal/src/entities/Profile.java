@@ -99,8 +99,7 @@ public class Profile {
 	@Override
 	public String toString() {
 		return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
-				+ ", profilePic=" + profilePic + ", location=" + location + ", weight=" + weight + ", user=" + user
-				+ "]";
+				+ ", profilePic=" + profilePic + ", location=" + location + ", weight=" + weight+"]";
 	}
 
 

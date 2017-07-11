@@ -130,7 +130,7 @@ public class Recipe {
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", title=" + title + ", user="
-				+ user + ", tags=" + tags + ", rating=" + rating + ", recipeIngredients=" + recipeIngredients + "]";
+				+ user + ", tags=" + tags + ", rating=" + rating + "]";
 	}
 
 }
