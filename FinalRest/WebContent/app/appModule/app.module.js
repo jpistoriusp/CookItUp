@@ -1,11 +1,20 @@
-angular.module('appModule',['staticModule', 'ngRoute', 'recipe'])
+angular.module('appModule',['staticModule', 'ngRoute', 'recipe','authModule'])
 	.config(function($routeProvider){
 		$routeProvider
 			.when('/profile', {
 				template : '<profile></profile>'
+			}).when('/login', {
+			
+				template : "<login></login>"
+				
+			}).when('/register', {
+			
+				template : "<register></register>"
+				
 			})
 			.otherwise({
 				template : '<not-found></not-found>'
 			})
 			
 	})
+
