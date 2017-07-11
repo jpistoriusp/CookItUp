@@ -12,155 +12,75 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Recipe {
-	
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private int id;
 
-@Column(name="image_url")
-private String imgUrl;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-@Column(name="source_url")
-private String sourceUrl;
+	@Column(name = "image_url")
+	private String imgUrl;
 
-@Column(name="f2f_url")
-private String f2fUrl;
+	@Column(name = "source_url")
+	private String sourceUrl;
 
-@Column(name="recipe_id")
-private int recipeId;
+	private String title;
 
-private String title;
+	@ManyToMany
+	@JoinTable(name = "rating", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> user;
 
-private String publisher;
+	@Column(name = "social_rank")
+	private String socialRank;
 
-@ManyToMany
-@JoinTable(name="rating",
-joinColumns=@JoinColumn(name="recipe_id"),
-inverseJoinColumns=@JoinColumn(name="user_id"))
-private List<User> user;
+	@ManyToMany
+	@JoinTable(name = "recipe_tag", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+	private List<Tag> tags;
 
-@Column(name="publisher_url")
-private String publisherUrl;
+	@OneToMany(mappedBy = "recipe")
+	private List<Rating> rating;
 
+	public String getImgUrl() {
+		return imgUrl;
+	}
 
-@Column(name="social_rank")
-private String socialRank;
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 
-@ManyToMany
-@JoinTable(name="recipe_tag",
-joinColumns=@JoinColumn(name="recipe_id"),
-inverseJoinColumns=@JoinColumn(name="tag_id"))
-private List<Tag> tags;
+	public int getId() {
+		return id;
+	}
 
-@OneToMany(mappedBy="recipe")
-private List<Rating> rating;
+	public String getSourceUrl() {
+		return sourceUrl;
+	}
 
-public String getImgUrl() {
-	return imgUrl;
-}
+	public void setSourceUrl(String sourceUrl) {
+		this.sourceUrl = sourceUrl;
+	}
 
+	public String getTitle() {
+		return title;
+	}
 
-public void setImgUrl(String imgUrl) {
-	this.imgUrl = imgUrl;
-}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
+	public String getSocialRank() {
+		return socialRank;
+	}
 
-public int getRecipeId() {
-	return recipeId;
-}
+	public void setSocialRank(String socialRank) {
+		this.socialRank = socialRank;
+	}
 
-
-public void setRecipeId(int recipeId) {
-	this.recipeId = recipeId;
-}
-
-
-public int getId() {
-	return id;
-}
-
-
-public String getSourceUrl() {
-	return sourceUrl;
-}
-
-
-public void setSourceUrl(String sourceUrl) {
-	this.sourceUrl = sourceUrl;
-}
-
-
-public String getF2fUrl() {
-	return f2fUrl;
-}
-
-
-public void setF2fUrl(String f2fUrl) {
-	this.f2fUrl = f2fUrl;
-}
-
-
-public String getTitle() {
-	return title;
-}
-
-
-public void setTitle(String title) {
-	this.title = title;
-}
-
-
-public String getPublisher() {
-	return publisher;
-}
-
-
-public void setPublisher(String publisher) {
-	this.publisher = publisher;
-}
-
-
-public String getPublisherUrl() {
-	return publisherUrl;
-}
-
-
-public void setPublisherUrl(String publisherUrl) {
-	this.publisherUrl = publisherUrl;
-}
-
-
-public String getSocialRank() {
-	return socialRank;
-}
-
-
-public void setSocialRank(String socialRank) {
-	this.socialRank = socialRank;
-}
-
-
-@Override
-public String toString() {
-	return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", f2fUrl=" + f2fUrl + ", recipeId="
-			+ recipeId + ", title=" + title + ", publisher=" + publisher + ", publisherUrl=" + publisherUrl
-			+ ", socialRank=" + socialRank + "]";
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+	@Override
+	public String toString() {
+		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", title=" + title + ", user="
+				+ user + ", socialRank=" + socialRank + ", tags=" + tags + ", rating=" + rating + "]";
+	}
 
 }
