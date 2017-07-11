@@ -1,5 +1,7 @@
 package controllers;
 
+import java.nio.file.Path;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,10 +22,17 @@ public class AuthController {
 	private AuthDAO authDAO;
 
 	@RequestMapping(path = "/register/", method = RequestMethod.POST)
-	public User register(HttpSession session, @RequestBody User user) {
+	public User register(HttpSession session, @RequestBody User user, HttpServletResponse response) {
 		User u = authDAO.register(user);
 		System.out.println(u);
-		session.setAttribute("user", u);
+		if(u!=null){
+			
+			session.setAttribute("user", u);
+		}
+		else {
+			response.setStatus(409);
+			return null;
+		}
 		return u;
 	}
 

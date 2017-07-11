@@ -1,7 +1,7 @@
 angular.module('staticModule')
 	.component('profile', {
 	templateUrl : "app/staticModule/profile/profile.component.html",
-		controller: function(staticService){
+		controller: function(staticService, $location){
 			var vm = this;
 			vm.showCreateButton = true;
 			
