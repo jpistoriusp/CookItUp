@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Profile {
 	@Id
@@ -31,6 +33,7 @@ public class Profile {
 
 	@OneToOne
 	@JoinColumn(name = "user_id")
+	@JsonIgnore
 	private User user;
 
 	public String getFirstName() {
@@ -96,8 +99,7 @@ public class Profile {
 	@Override
 	public String toString() {
 		return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
-				+ ", profilePic=" + profilePic + ", location=" + location + ", weight=" + weight + ", user=" + user
-				+ "]";
+				+ ", profilePic=" + profilePic + ", location=" + location + ", weight=" + weight+"]";
 	}
 
 

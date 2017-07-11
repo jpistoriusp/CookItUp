@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Instruction {
 
@@ -17,6 +19,7 @@ public class Instruction {
 	
 	@ManyToOne
 	@JoinColumn(name = "recipe_id")
+	@JsonIgnore
 	private Recipe recipe;
 	
 	@Column(name = "step_number")
@@ -54,7 +57,7 @@ public class Instruction {
 
 	@Override
 	public String toString() {
-		return "Instruction [id=" + id + ", recipe=" + recipe + ", stepNumber=" + stepNumber + ", text=" + text + "]";
+		return "Instruction [id=" + id + ", stepNumber=" + stepNumber + ", text=" + text + "]";
 	}
 	
 	

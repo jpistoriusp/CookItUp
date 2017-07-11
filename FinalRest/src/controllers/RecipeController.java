@@ -23,7 +23,13 @@ public class RecipeController {
 	
 	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)
 	public Collection<Recipe> index(HttpServletRequest req, HttpServletResponse res, @RequestBody String json) {
-		return recipedao.index(json);
+		
+		try {
+			return recipedao.index(json);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
   
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.GET)

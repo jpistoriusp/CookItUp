@@ -10,6 +10,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class User {
 
@@ -22,16 +25,31 @@ public class User {
 	private String password;
 
 	@OneToOne(mappedBy = "user")
+	@JsonIgnore
 	private Profile profile;
 
 	@OneToMany(mappedBy = "user")
+	@JsonIgnore
 	private List<Rating> rating;
 
 	@ManyToMany(mappedBy = "user")
+	@JsonIgnore
 	private List<Recipe> recipes;
+	
+	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	private List<Favorite> favorites;
 
 	public String getEmail() {
 		return email;
+	}
+
+	public List<Favorite> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(List<Favorite> favorites) {
+		this.favorites = favorites;
 	}
 
 	public void setEmail(String email) {
@@ -76,8 +94,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", profile=" + profile + ", rating="
-				+ rating + ", recipes=" + recipes + "]";
+		return "User [id=" + id + ", email=" + email + ", password=" + password +"]";
 	}
 	
 	

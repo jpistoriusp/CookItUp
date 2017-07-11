@@ -22,8 +22,8 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+  `email` VARCHAR(400) NULL,
+  `password` VARCHAR(400) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -211,6 +211,31 @@ CREATE TABLE IF NOT EXISTS `instruction` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `favorite`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `favorite` ;
+
+CREATE TABLE IF NOT EXISTS `favorite` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NULL,
+  `recipe_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `user_id_idx` (`user_id` ASC),
+  INDEX `recipe_id_idx` (`recipe_id` ASC),
+  CONSTRAINT `fk_user_has_favorite`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_recipe`
+    FOREIGN KEY (`recipe_id`)
+    REFERENCES `recipe` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 GRANT USAGE ON *.* TO cooker;
  DROP USER cooker;
@@ -337,6 +362,17 @@ INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (5, 
 INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (6, 1, 6, 'Add 2 tbsp of light soy sauce and chopped egg to rice mixture and fold in; stir-fry for 1 minute more; serve.');
 INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (7, 2, 7, 'Place avocado, cilantro, yogurt, scallions, garlic, lime juice, sugar and salt in a blender; blend until smooth.');
 INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (8, 2, 8, 'Place greens in an individual salad bowl; toss with 2 tablespoons of the dressing. (Refrigerate the remaining dressing.) Top the greens with black beans, corn and tomatoes.');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cookitupdb`;
+INSERT INTO `favorite` (`id`, `user_id`, `recipe_id`) VALUES (1, 1, 1);
+INSERT INTO `favorite` (`id`, `user_id`, `recipe_id`) VALUES (2, 1, 2);
 
 COMMIT;
 

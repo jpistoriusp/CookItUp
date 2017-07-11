@@ -13,6 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Recipe {
 
@@ -30,20 +34,29 @@ public class Recipe {
 
 	@ManyToMany
 	@JoinTable(name = "rating", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	@JsonIgnore
 	private List<User> user;
 
 	@ManyToMany
 	@JoinTable(name = "recipe_tag", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+	@JsonIgnore
 	private List<Tag> tags;
 
 	@OneToMany(mappedBy = "recipe")
+	@JsonIgnore
 	private List<Rating> rating;
 	
-	@OneToMany(mappedBy = "recipe", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "recipe")
+	@JsonIgnore
 	private List<RecipeIngredient> recipeIngredients;
 	
-	@OneToMany(mappedBy = "recipe", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "recipe")
+	@JsonIgnore
 	private List<Instruction> instructions;
+	
+	@OneToMany(mappedBy = "recipe")
+	@JsonIgnore
+	private List<Favorite> favorites;
 
 	public String getImgUrl() {
 		return imgUrl;
@@ -116,8 +129,7 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", title=" + title + ", user="
-				+ user + ", tags=" + tags + ", rating=" + rating + ", recipeIngredients=" + recipeIngredients + "]";
+		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + "]";
 	}
 
 }
