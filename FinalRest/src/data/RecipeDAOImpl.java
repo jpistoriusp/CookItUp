@@ -7,7 +7,7 @@ import entities.Recipe;
 public class RecipeDAOImpl implements RecipeDAO{
 
 	@Override
-	public Set<Recipe> index(int uid) {
+	public Set<Recipe> index(String json) {
 		String query = "SELECT r FROM Recipe r WHERE r.ingredients = :uid";
 		return new HashSet<Recipe>(em.createQuery(query, Recipe.class).setParameter("uid",uid).getResultList());
 	}
