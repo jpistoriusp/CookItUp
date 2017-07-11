@@ -1,4 +1,6 @@
-<input type="email" placeholder="E-mail"/>
-<input type="password" placeholder="Password"/>
-<input type="password" placeholder="Confirm Password"/>
-<input type="submit" value="Login" ng-click="vm.login(user)/>
+<div class="errors" ng-repeat="error in vm.errors">{{error}}</div>
+
+<input type="email" ng-model="user.email" placeholder="E-mail"/>
+<input type="password" ng-model="user.password" placeholder="Password"/>
+<input type="password" ng-model="user.password2" placeholder="Confirm Password(retype)"/>
+<input type="submit" value="create account" ng-click="vm.login(user)/>
