@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Rating {
 	@Id
@@ -17,10 +20,12 @@ public class Rating {
 	
 	@ManyToOne
 	@JoinColumn(name="recipe_id")
+	@JsonIgnore
 	private Recipe recipe;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@JsonIgnore
 	private User user;
 
 	public int getValue() {

@@ -38,7 +38,9 @@ public class AuthDAOImpl implements AuthDAO {
 		                        .setParameter("email", u.getEmail())
 		                        .getSingleResult();
 		  if (encoder.matches(u.getPassword(), managedUser.getPassword())) {
+			  System.out.println("login!!");
 		    return managedUser;
+		    
 		  }
 		  return null;
 		}

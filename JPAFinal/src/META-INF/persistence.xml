@@ -16,9 +16,8 @@
 		<class>entities.Profile</class>
 		<class>entities.Ingredient</class>
 		<class>entities.Instruction</class>
+		<class>entities.Favorite</class>
 	
-
-
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cookitupdb" />
 			<property name="javax.persistence.jdbc.user" value="root" />

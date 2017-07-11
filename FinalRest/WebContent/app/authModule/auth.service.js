@@ -23,7 +23,7 @@ angular.module('authModule')
 	service.login = function(user) {
 		return $http({
 			method : 'POST',
-			url : 'rest/auth/login/',
+			url : 'api/auth/login/',
 			headers : {
 				'Content-Type' : 'application/json'
 			},

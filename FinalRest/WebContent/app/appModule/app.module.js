@@ -1,6 +1,9 @@
 angular.module('appModule',['staticModule', 'ngRoute', 'recipe','authModule','nav'])
 	.config(function($routeProvider){
 		$routeProvider
+			.when('/', {
+			template : '<home></home>'
+			})
 			.when('/profile', {
 				template : '<profile></profile>'
 			}).when('/login', {
