@@ -37,6 +37,9 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe")
 	private List<Rating> rating;
+	
+	@ManyToMany(mappedBy="recipe")
+	private List<Ingredient> ingredients;
 
 	public String getImgUrl() {
 		return imgUrl;
