@@ -22,8 +22,8 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+  `email` VARCHAR(400) NULL,
+  `password` VARCHAR(400) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
