@@ -9,7 +9,7 @@
 
 		<!-- List Entities Here -->
 		<class>entities.User</class>
-
+		
 		<class>entities.Tag</class>
 		<class>entities.Recipe</class>
 		<class>entities.Rating</class>
