@@ -25,7 +25,7 @@ public class User {
 	private String password;
 
 	@OneToOne(mappedBy = "user")
-	@JsonManagedReference
+	@JsonIgnore
 	private Profile profile;
 
 	@OneToMany(mappedBy = "user")
@@ -37,7 +37,7 @@ public class User {
 	private List<Recipe> recipes;
 	
 	@OneToMany(mappedBy = "user")
-	@JsonManagedReference
+	@JsonIgnore
 	private List<Favorite> favorites;
 
 	public String getEmail() {
