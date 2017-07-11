@@ -5,7 +5,7 @@
 </form>
 <form id="findRecipesForm">
 	<ul>
-		<li ng-repeat="i in vm.ingredients">{{i.name}}</li>
+		<li ng-repeat="i in vm.ingredients">{{i.name}} <span><button ng-click="vm.deleteIngredient(i)">x</button></span></li>
 	</ul>
 	<button ng-click="vm.findRecipes(vm.ingredients)">Find Recipes</button>
 </form>

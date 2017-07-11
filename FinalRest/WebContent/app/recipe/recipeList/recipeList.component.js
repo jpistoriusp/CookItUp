@@ -7,8 +7,20 @@ angular.module('recipe')
 			
 			vm.ingredients = [];
 			
-			vm.addIngredient = function(ingredient){
-				vm.ingredients.push(ingredient);
+			vm.addIngredient = function(i){
+				vm.ingredients.push(i);
+			}
+			
+			vm.deleteIngredient = function(i){
+				vm.ingredients.forEach(function(val,idx,arr){
+					if (i === val){
+						arr.splice(idx,1);
+					}
+				})
+			}
+			
+			vm.findRecipes = function(ingredients){
+				
 			}
 		},
 		controllerAs : 'vm'
