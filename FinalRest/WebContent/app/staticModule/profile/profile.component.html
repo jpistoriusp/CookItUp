@@ -8,7 +8,7 @@
 	<input type="text" placeholder="City and State" ng-model="profile.location" />
 	<input type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
 	<input type="submit" value="Create" ng-show="vm.showCreateButton" ng-click="vm.createProfile(profile); vm.showCreateButton=false"/>
-	<input type="submit" value="Edit" ng-hide="vm.showCreateButton" ng-click="vm.editProfile(profile); vm.showForm = false"/>
+	<input type="submit" value="Edit" ng-hide="vm.showCreateButton" ng-click="vm.updateProfile(profile); vm.showForm = false"/>
 </form>
 
 <table ng-hide="vm.showForm">
