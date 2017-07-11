@@ -7,7 +7,7 @@ angular.module('authModule').component('login',{
 			authService.login(user)
 			.then(function(res){
 				// must create path
-				$location.path('');
+				$location.path('/');
 			});
 			
 		}
