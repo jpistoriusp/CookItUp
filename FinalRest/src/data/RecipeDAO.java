@@ -5,7 +5,7 @@ import java.util.Set;
 import entities.Recipe;
 
 public interface RecipeDAO {
-	public Set<Recipe> index(String json);
+	public Set<Recipe> index(String json) throws Exception;
 	public Recipe show(int uid, int rid);
 	public Recipe create(int uid, String recipeJson);
 	public Recipe update(int uid, int rid, String recipeJson);
