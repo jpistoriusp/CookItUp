@@ -5,7 +5,9 @@ angular.module('staticModule')
 			var vm = this;
 			
 			vm.createProfile = function(profile){
-				
+				staticService.create(profile).then(function(res){
+					
+				})
 			}
 		},
 		controllerAs : 'vm'
