@@ -1,1 +1,1 @@
-angular.module('appModule',['recipe']);
+angular.module('appModule',['recipe','authModule']);
