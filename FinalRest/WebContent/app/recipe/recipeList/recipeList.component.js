@@ -20,8 +20,7 @@ angular.module('recipe')
 			}
 			
 			vm.findRecipes = function(ingredients){
-				console.log(ingredients);
-				recipeService.index(ingredients)
+				recipeService.index(ingredients);
 			}
 		},
 		controllerAs : 'vm'
