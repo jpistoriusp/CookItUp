@@ -53,6 +53,9 @@ public class RecipeDAOImpl implements RecipeDAO{
 			for(int i = 0; i < managedIngs.size(); i++){
 				recipes.setParameter("ing" + i, managedIngs.get(i));
 			}
+			
+			HashSet<Recipe> allResults = new HashSet<Recipe>(recipes.getResultList());
+			
 			return new HashSet<Recipe>(recipes.getResultList());
 	}
 
