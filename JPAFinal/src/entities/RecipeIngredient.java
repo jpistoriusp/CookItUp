@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="recipe_ingredient")
 public class RecipeIngredient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,9 +59,5 @@ public class RecipeIngredient {
 		return "RecipeIngredient [id=" + id + ", recipe=" + recipe + ", ingredient=" + ingredient + ", quantity="
 				+ quantity + "]";
 	}
-	
-	
-	
-
 	
 }
