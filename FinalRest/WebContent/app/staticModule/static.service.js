@@ -1,4 +1,4 @@
-angular.module('profile').factory('staticService', function($http, authService, $location){
+angular.module('staticModule').factory('staticService', function($http, authService, $location){
 	
 	var service = {}
 	
