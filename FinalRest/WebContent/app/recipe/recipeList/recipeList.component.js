@@ -2,7 +2,7 @@ angular.module('recipe')
 	.component('recipeList', {
 		templateUrl : 'app/recipe/recipeList/recipeList.component.html',
 		
-		controller : function() {
+		controller : function(recipeService) {
 			var vm = this;
 			
 			vm.ingredients = [];
@@ -20,7 +20,8 @@ angular.module('recipe')
 			}
 			
 			vm.findRecipes = function(ingredients){
-				
+				console.log(ingredients);
+				recipeService.index(ingredients)
 			}
 		},
 		controllerAs : 'vm'

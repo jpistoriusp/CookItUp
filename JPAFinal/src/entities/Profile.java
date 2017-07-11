@@ -30,7 +30,7 @@ public class Profile {
 	private double weight;
 
 	@OneToOne
-	@JoinColumn(name = "address_id")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	public String getFirstName() {
