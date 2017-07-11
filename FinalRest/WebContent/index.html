@@ -3,18 +3,28 @@
 <html ng-app="appModule">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cook It Up</title>
+
+<!-- angular -->
 <script src="js/angular.min.js"></script>
 <script src="js/angular-route.min.js"></script>
 <script src="js/angular-cookies.min.js"></script>
 
-
+<!-- auth -->
 <script src="app/authModule/auth.module.js"></script>
 <script src="app/authModule/auth.service.js"></script>
 <script src="app/authModule/login/login.component.js"></script>
 <script src="app/authModule/register/register.component.js"></script>
 <script src="app/authModule/logout/logout.component.js"></script>
 
+<!-- static -->
+<script src="app/staticModule/static.module.js"></script>
+<script src="app/staticModule/profile/profile.component.js"></script>
+<script src="app/staticModule/static.service.js"></script>
+
+<!-- appModule -->
+<script src="app/appModule/app.module.js"></script>
+<script src="app/appModule/appComponent/app.component.js"></script>
 
 <!-- Recipe module & components -->
 <script src="app/recipe/recipe.module.js"></script>
@@ -29,6 +39,8 @@
 <body>
 <app-mod></app-mod>
 
+<app-component>...loading</app-component>
+
+<button><a href="#/profile">Profile</button>
 </body>
 </html>
-
