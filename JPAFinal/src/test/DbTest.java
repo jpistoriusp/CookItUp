@@ -32,4 +32,9 @@ public class DbTest {
 			em.close();
 		}
 	}
+	
+	@Test
+	public void test_get_user() {
+		
+	}
 }

@@ -1,4 +1,4 @@
-angular.module('appModule',['staticModule', 'ngRoute'])
+angular.module('appModule',['staticModule', 'ngRoute', 'recipe'])
 	.config(function($routeProvider){
 		$routeProvider
 			.when('/profile', {
