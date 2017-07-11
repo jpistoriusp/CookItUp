@@ -7,15 +7,15 @@ angular.module('authModule').component('register', {
 			console.log(user);
 			vm.errors = [];
 
-			if (user.password != user.password2){
+			if ((!user.password || !user.password2) || user.password != user.password2){
 				
 				vm.errors.push('The password does not match. Please make sure you typed in the same password.');
 			}
-			if (!user.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+			if (!user.email || !user.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
 				
 				vm.errors.push('Please Type a valid email');
 			}
-			if (user.password == user.password2) {
+			if (user.password == user.password2 && vm.errors.size()==0) {
 				authService.register(user).then(function(res) {
 					// must add path
 					$location.path('');
