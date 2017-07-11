@@ -1,6 +1,7 @@
 <div class="errors" ng-repeat="error in vm.errors">{{error}}</div>
-
+<form ng-init="user={}">
 <input type="email" ng-model="user.email" placeholder="E-mail"/>
 <input type="password" ng-model="user.password" placeholder="Password"/>
 <input type="password" ng-model="user.password2" placeholder="Confirm Password(retype)"/>
 <input type="submit" value="create account" ng-click="vm.register(user)"/>
+</form>
