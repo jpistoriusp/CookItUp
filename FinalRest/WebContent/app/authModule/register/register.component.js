@@ -4,13 +4,15 @@ angular.module('authModule').component('register', {
 		var vm = this;
 		vm.errors = [];
 		vm.register = function(user) {
+			vm.errors = [];
 			if (user.password == user.password2) {
 				authService.register(user).then(function(res) {
 					//must add path
-					$location.path('')
+					$location.path('');
 				});
 			} else {
-				errors.push('The password does not match. Please make sure you typed in the same password.');
+				
+				vm.errors.push('The password does not match. Please make sure you typed in the same password.');
 			}
 		}
 	},

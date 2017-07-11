@@ -19,21 +19,22 @@ public class AuthController {
 	@Autowired
 	private AuthDAO authDAO;
 
-	@RequestMapping(path = "/register", method = RequestMethod.POST)
+	@RequestMapping(path = "api/auth/register/", method = RequestMethod.POST)
 	public User register(HttpSession session, @RequestBody User user) {
 		User u = authDAO.register(user);
+		System.out.println(u);
 		session.setAttribute("user", u);
 		return u;
 	}
 
-	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	@RequestMapping(path = "api/auth/login/", method = RequestMethod.POST)
 	public User login(HttpSession session, @RequestBody User user) {
 		User u = authDAO.register(user);
 		session.setAttribute("user", u);
 		return u;
 	}
 
-	@RequestMapping(path = "/logout", method = RequestMethod.POST)
+	@RequestMapping(path = "api/auth/logout/", method = RequestMethod.POST)
 	public Boolean logout(HttpSession session, HttpServletResponse response) {
 		session.removeAttribute("user");
 		return true;
