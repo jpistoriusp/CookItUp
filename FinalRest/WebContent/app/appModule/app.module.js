@@ -7,9 +7,9 @@ angular.module('appModule',['staticModule', 'ngRoute', 'recipe','authModule'])
 			
 				template : "<login></login>"
 				
-			}).when('/create', {
+			}).when('/register', {
 			
-				template : "<create></create>"
+				template : "<register></register>"
 				
 			})
 			.otherwise({
