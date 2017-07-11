@@ -72,4 +72,10 @@ public class DbTest {
 		Instruction i = em.find(Instruction.class, 1);
 		assertEquals(i.getText(),"Heat 1 tbsp oil in wok; add chopped onions and stir-fry until onions turn a nice brown color, about 8-10 minutes; remove from wok.");
 	}
+	
+	@Test
+	public void test_get_user_favorites(){
+		User u = em.find(User.class, 1);
+		assertEquals(u.getFavorites().size(),2);
+	}
 }
