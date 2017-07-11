@@ -14,7 +14,7 @@ public class DataSecurityInterceptor implements HandlerInterceptor {
 		if (request.getSession().getAttribute("user") != null) {
 			return true;
 		}
-		response.sendRedirect("/RestTodo/rest/auth/unauthorized");
+		response.sendRedirect("/FinalRest/api/auth/unauthorized");
 		return false;
 	}
 
