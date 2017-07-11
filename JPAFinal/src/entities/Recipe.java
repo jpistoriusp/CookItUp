@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,6 +38,12 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe")
 	private List<Rating> rating;
+	
+	@OneToMany(mappedBy = "recipe", fetch=FetchType.EAGER)
+	private List<RecipeIngredient> recipeIngredients;
+	
+	@OneToMany(mappedBy = "recipe", fetch=FetchType.LAZY)
+	private List<Instruction> instructions;
 
 	public String getImgUrl() {
 		return imgUrl;
@@ -67,10 +74,50 @@ public class Recipe {
 	}
 
 
+	public List<User> getUser() {
+		return user;
+	}
+
+	public void setUser(List<User> user) {
+		this.user = user;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public List<Rating> getRating() {
+		return rating;
+	}
+
+	public void setRating(List<Rating> rating) {
+		this.rating = rating;
+	}
+
+	public List<RecipeIngredient> getRecipeIngredients() {
+		return recipeIngredients;
+	}
+
+	public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+		this.recipeIngredients = recipeIngredients;
+	}
+
+	public List<Instruction> getInstructions() {
+		return instructions;
+	}
+
+	public void setInstructions(List<Instruction> instructions) {
+		this.instructions = instructions;
+	}
+
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", title=" + title + ", user="
-				+ user + ", tags=" + tags + ", rating=" + rating + "]";
+				+ user + ", tags=" + tags + ", rating=" + rating + ", recipeIngredients=" + recipeIngredients + "]";
 	}
 
 }
