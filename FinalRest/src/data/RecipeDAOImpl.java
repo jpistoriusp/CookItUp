@@ -8,12 +8,11 @@ import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Ingredient;
@@ -34,24 +33,27 @@ public class RecipeDAOImpl implements RecipeDAO{
 					mapper.readValue(json, new TypeReference<List<Ingredient>>(){});
 			
 			String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
-			String recipeQuery = "SELECT r FROM Recipe r WHERE ";
+			String recipeQuery = "SELECT r FROM Recipe r WHERE";
 			
+			List<Ingredient> managedIngs = new ArrayList<Ingredient>();
 			for (Ingredient ingd : ingredients) {
 				Ingredient managed = em.createQuery(ingredientQuery, Ingredient.class)
 						.setParameter("name", ingd.getName()).getSingleResult();
 				if (managed == null) continue;
-				if (ingredients.indexOf(ingd) == ingredients.size()-1) {
-					recipeQuery += managed + " MEMBER OF r.recipeIngredients";
+				managedIngs.add(managed);
+			}
+			for(int i = 0; i < managedIngs.size(); i++){
+				if (i == managedIngs.size()-1) {
+					recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients";
 					break;
 				}
-				recipeQuery += managed+" OR";
+				recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients OR";
 			}
-			return new HashSet<Recipe>(em.createQuery(recipeQuery, Recipe.class).getResultList());
-////		}
-//   	catch (Exception e){
-//   		e.printStackTrace();
-//   	}
-//		return null;
+			TypedQuery<Recipe> recipes = em.createQuery(recipeQuery, Recipe.class);
+			for(int i = 0; i < managedIngs.size(); i++){
+				recipes.setParameter("ing" + i, managedIngs.get(i));
+			}
+			return new HashSet<Recipe>(recipes.getResultList());
 	}
 
 	@Override
