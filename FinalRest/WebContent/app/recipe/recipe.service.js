@@ -15,8 +15,10 @@ angular.module('recipe')
 			checkLogin();
 			var userId = authService.getToken().id;
 			return $http({
-				method : 'GET',
-				url : 'api/user/'+userId+'/recipe'
+				method : 'POST',
+				url : 'api/user/'+userId+'/recipe',
+				data : ingredients,
+				headers : { 'Content-type' : "application/json"}
 			})
 		}
 		

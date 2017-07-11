@@ -21,9 +21,9 @@ public class RecipeController {
 	@Autowired
 	private RecipeDAO recipedao;
 	
-	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.GET)
-	public Collection<Recipe> index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
-		return recipedao.index(uid);
+	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)
+	public Collection<Recipe> index(HttpServletRequest req, HttpServletResponse res, @RequestBody String json) {
+		return recipedao.index(json);
 	}
   
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.GET)
