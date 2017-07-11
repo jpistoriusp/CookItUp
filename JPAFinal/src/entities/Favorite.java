@@ -22,6 +22,7 @@ public class Favorite {
 	@JsonBackReference
 	private User user;
 	
-	@Column(name = "recipe_id")
+	@ManyToOne
+	@JoinColumn(name = "recipe_id")
 	private Recipe recipe;
 }

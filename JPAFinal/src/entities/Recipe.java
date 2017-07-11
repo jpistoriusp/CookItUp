@@ -53,6 +53,10 @@ public class Recipe {
 	@OneToMany(mappedBy = "recipe")
 	@JsonIgnore
 	private List<Instruction> instructions;
+	
+	@OneToMany(mappedBy = "recipe")
+	@JsonIgnore
+	private List<Favorite> favorites;
 
 	public String getImgUrl() {
 		return imgUrl;
