@@ -1,4 +1,4 @@
 angular.module('appModule')
-	.component('appMod',{
+	.component('appComponent',{
 	templateUrl:'app/appModule/appComponent/app.component.html'
 });
