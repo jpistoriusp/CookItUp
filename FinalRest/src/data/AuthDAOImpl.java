@@ -23,8 +23,13 @@ public class AuthDAOImpl implements AuthDAO {
 
 	@Override
 	public User register(User u) {
-		String qry = "Select u from User u where u.email = :email";
-		User user = em.createQuery(qry, User.class).setParameter("email", u.getEmail()).getSingleResult();
+		User user = null;
+		try {
+			String qry = "Select u from User u where u.email = :email";
+			user = em.createQuery(qry, User.class).setParameter("email", u.getEmail()).getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		if(user == null) {
 		
 			String passwordSha = encoder.encode(u.getPassword());
@@ -34,7 +39,7 @@ public class AuthDAOImpl implements AuthDAO {
 			return u;
 		}
 		else {
-			return null;
+			return user;
 		}
 	}
 
