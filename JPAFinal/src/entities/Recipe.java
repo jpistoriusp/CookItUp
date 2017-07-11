@@ -25,31 +25,11 @@ public class Recipe {
 	@Column(name = "source_url")
 	private String sourceUrl;
 
-	@Column(name = "f2f_url")
-	private String f2fUrl;
-
-	@Column(name = "recipe_id")
-	private int recipeId;
-
 	private String title;
-
-	private String publisher;
 
 	@ManyToMany
 	@JoinTable(name = "rating", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> user;
-
-	@Column(name = "publisher_url")
-	private String publisherUrl;
-
-	@ManyToMany(mappedBy = "recipe")
-	private List<Ingredient> ingredient;
-
-	@Column(name = "social_rank")
-	private String socialRank;
-
-	@OneToMany(mappedBy = "recipe")
-	private List<RecipeIngredient> recipeIngredient;
 
 	@ManyToMany
 	@JoinTable(name = "recipe_tag", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
@@ -66,14 +46,6 @@ public class Recipe {
 		this.imgUrl = imgUrl;
 	}
 
-	public int getRecipeId() {
-		return recipeId;
-	}
-
-	public void setRecipeId(int recipeId) {
-		this.recipeId = recipeId;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -86,14 +58,6 @@ public class Recipe {
 		this.sourceUrl = sourceUrl;
 	}
 
-	public String getF2fUrl() {
-		return f2fUrl;
-	}
-
-	public void setF2fUrl(String f2fUrl) {
-		this.f2fUrl = f2fUrl;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -102,76 +66,11 @@ public class Recipe {
 		this.title = title;
 	}
 
-	public String getPublisher() {
-		return publisher;
-	}
-
-	public void setPublisher(String publisher) {
-		this.publisher = publisher;
-	}
-
-	public String getPublisherUrl() {
-		return publisherUrl;
-	}
-
-	public void setPublisherUrl(String publisherUrl) {
-		this.publisherUrl = publisherUrl;
-	}
-
-	public String getSocialRank() {
-		return socialRank;
-	}
-
-	public void setSocialRank(String socialRank) {
-		this.socialRank = socialRank;
-	}
-
-	public List<User> getUser() {
-		return user;
-	}
-
-	public void setUser(List<User> user) {
-		this.user = user;
-	}
-
-	public List<Ingredient> getIngredient() {
-		return ingredient;
-	}
-
-	public void setIngredient(List<Ingredient> ingredient) {
-		this.ingredient = ingredient;
-	}
-
-	public List<Tag> getTags() {
-		return tags;
-	}
-
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
-	}
-
-	public List<Rating> getRating() {
-		return rating;
-	}
-
-	public void setRating(List<Rating> rating) {
-		this.rating = rating;
-	}
-
-	public List<RecipeIngredient> getRecipeIngredient() {
-		return recipeIngredient;
-	}
-
-	public void setRecipeIngredient(List<RecipeIngredient> recipeIngredient) {
-		this.recipeIngredient = recipeIngredient;
-	}
 
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", f2fUrl=" + f2fUrl
-				+ ", recipeId=" + recipeId + ", title=" + title + ", publisher=" + publisher + ", user=" + user
-				+ ", publisherUrl=" + publisherUrl + ", ingredient=" + ingredient + ", socialRank=" + socialRank
-				+ ", recipeIngredient=" + recipeIngredient + ", tags=" + tags + ", rating=" + rating + "]";
+		return "Recipe [id=" + id + ", imgUrl=" + imgUrl + ", sourceUrl=" + sourceUrl + ", title=" + title + ", user="
+				+ user + ", tags=" + tags + ", rating=" + rating + "]";
 	}
 
 }
