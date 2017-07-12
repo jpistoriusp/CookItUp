@@ -23,12 +23,12 @@ angular.module('recipe')
 							console.log(response.data);
 						})
 				}
-//				if (!vm.favorite){
-//					recipeService.deleteFromFavorites(recipe)
-//					.then(function(response){
-//						console.log(response.data);
-//					})
-//				}
+				if (!vm.favorite){
+					recipeService.deleteFromFavorites(recipe)
+					.then(function(response){
+						console.log(response.data);
+					})
+				}
 			}
 		},
 		
