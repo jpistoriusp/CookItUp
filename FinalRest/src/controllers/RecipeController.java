@@ -21,7 +21,7 @@ public class RecipeController {
 	@Autowired
 	private RecipeDAO recipedao;
 	
-	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)
+	@RequestMapping(path = "search/recipe", method = RequestMethod.POST)
 	public Collection<Recipe> index(HttpServletRequest req, HttpServletResponse res, @RequestBody String json) {
 		
 		try {

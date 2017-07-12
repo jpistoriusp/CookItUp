@@ -12,11 +12,9 @@ angular.module('recipe')
 		}
 		
 		service.index = function(ingredients){
-			checkLogin();
-			var userId = authService.getToken().id;
 			return $http({
 				method : 'POST',
-				url : 'api/user/'+/*userId*/1+'/recipe',
+				url : 'api/search/recipe',
 				headers : { 'Content-type' : "application/json"},
 				data : ingredients
 			})
