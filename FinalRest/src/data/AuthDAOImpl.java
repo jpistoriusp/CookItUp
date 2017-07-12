@@ -39,7 +39,7 @@ public class AuthDAOImpl implements AuthDAO {
 			return u;
 		}
 		else {
-			return user;
+			return null;
 		}
 	}
 

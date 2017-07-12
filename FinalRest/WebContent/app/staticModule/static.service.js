@@ -8,6 +8,15 @@ angular.module('staticModule').factory('staticService', function($http, authServ
 			$location.path('/login')
 		}
 	}
+	
+	service.index = function() {
+		console.log(authService.getToken().id)
+		service.checkLogin();
+		return $http({
+			method : 'GET',
+			url : "api/user/"+authService.getToken().id+"/profile"
+		})
+	}
 
 	service.show = function(id) {
 		service.checkLogin();
@@ -34,11 +43,13 @@ angular.module('staticModule').factory('staticService', function($http, authServ
 //            });
     };
     
-    service.update = function(profile) {   
+    service.update = function(profile) {
+    	console.log(profile)
+    	  console.log("profile first Name: "+profile)
         service.checkLogin();
         return $http({
               method : 'PUT',
-              url : "api/user/"+ authService.getToken().id + "/profile/" + profile.id,
+              url : "api/user/"+ authService.getToken().id + "/profile",
               headers : {
                   'Content-Type' : 'application/json'
               },

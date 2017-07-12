@@ -17,6 +17,12 @@ public class ProfileDAOImpl implements ProfileDAO {
 	private EntityManager em;
 	
 	@Override
+	public Profile index(int uid) {
+		String query = "Select p FROM Profile p WHERE p.user.id = :id";
+		return em.createQuery(query, Profile.class).setParameter("id", uid).getSingleResult();
+	}
+	
+	@Override
 	public Profile show(int uid, int pid) {
 		return em.find(Profile.class, pid);
 	}
@@ -38,21 +44,21 @@ public class ProfileDAOImpl implements ProfileDAO {
 	}
 
 	@Override
-	public Profile update(int uid, int pid, String profileJson) {
+	public Profile update(int uid, String profileJson) {
 		ObjectMapper mapper = new ObjectMapper();
-		Profile managedProfile = em.find(Profile.class, pid);
+		User managedUser = em.find(User.class, uid);
 		try {
 			Profile mappedProfile = mapper.readValue(profileJson, Profile.class);
-			managedProfile.setFirstName(mappedProfile.getFirstName());
-			managedProfile.setLastName(mappedProfile.getLastName());
-			managedProfile.setAge(mappedProfile.getAge());
-			managedProfile.setLocation(mappedProfile.getLocation());
-			managedProfile.setWeight(mappedProfile.getWeight());
-			managedProfile.setProfilePic(mappedProfile.getProfilePic());
+			managedUser.getProfile().setFirstName(mappedProfile.getFirstName());
+			managedUser.getProfile().setLastName(mappedProfile.getLastName());
+			managedUser.getProfile().setAge(mappedProfile.getAge());
+			managedUser.getProfile().setLocation(mappedProfile.getLocation());
+			managedUser.getProfile().setWeight(mappedProfile.getWeight());
+			managedUser.getProfile().setProfilePic(mappedProfile.getProfilePic());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return managedProfile;
+		return managedUser.getProfile();
 	}
 
 }
