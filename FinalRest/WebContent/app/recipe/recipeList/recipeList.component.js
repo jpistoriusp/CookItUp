@@ -45,7 +45,11 @@ angular.module('recipe')
 				recipeService.showIngredients(recipe)
 					.then(function(response){
 						vm.selected.recipeIngredients = response.data;
-						console.log(vm.selected.recipeIngredients);
+						recipeService.showInstructions(recipe)
+							.then(function(response){
+								vm.selected.instructions = response.data;
+								console.log(vm.selected.instructions);
+							})
 					})
 			}
 		},
