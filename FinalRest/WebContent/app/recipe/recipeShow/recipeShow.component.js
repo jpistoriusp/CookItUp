@@ -7,6 +7,18 @@ angular.module('recipe')
 			
 			var vm = this;
 			
+			vm.favorite = false;
+			recipeService.showUserFavorites()
+				.then(function(response){
+					var favorites = response.data;
+					favorites.forEach(function(fav,idx,arr){
+						if (fav.recipe.id === vm.recipe.id) {
+							vm.favorite = true;
+							break;
+						}
+					})
+				})
+			
 			var checkLogin = function(){
 				if(authService.getToken()) return;
 				$location.path('/login')

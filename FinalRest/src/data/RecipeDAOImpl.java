@@ -35,8 +35,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {
-		});
+		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {});
 
 		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
 		String recipeQuery = "SELECT r FROM Recipe r WHERE";
