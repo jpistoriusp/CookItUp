@@ -44,7 +44,6 @@ public class RecipeDAOImpl implements RecipeDAO{
 				managed = em.createQuery(ingredientQuery, Ingredient.class)
 						.setParameter("name", ingd.getName()).getSingleResult();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				continue;
 			}
