@@ -37,6 +37,12 @@ public class Ingredient {
 	@OneToMany(mappedBy="ingredient")
 	@JsonIgnore
 	private List<RecipeIngredient> recipeIngredient;
+	
+	
+
+	public int getId() {
+		return id;
+	}
 
 	public String getName() {
 		return name;
