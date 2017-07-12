@@ -18,6 +18,8 @@ public class Rating {
 	
 	private int value;
 	
+	private String review;
+	
 	@ManyToOne
 	@JoinColumn(name="recipe_id")
 	@JsonIgnore
@@ -54,6 +56,14 @@ public class Rating {
 
 	public int getId() {
 		return id;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
 	}
 
 	@Override
