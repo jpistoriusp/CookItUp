@@ -153,9 +153,9 @@ DROP TABLE IF EXISTS `recipe_ingredient` ;
 
 CREATE TABLE IF NOT EXISTS `recipe_ingredient` (
   `id` VARCHAR(45) NOT NULL,
-  `recipe_id` INT NOT NULL,
-  `ingredient_id` INT NOT NULL,
-  `quanitiy` VARCHAR(45) NULL,
+  `recipe_id` INT NULL,
+  `ingredient_id` INT NULL,
+  `quantity` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_recipe_has_ingredient_ingredient1_idx` (`ingredient_id` ASC),
   INDEX `fk_recipe_has_ingredient_recipe1_idx` (`recipe_id` ASC),

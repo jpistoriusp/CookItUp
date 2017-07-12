@@ -20,6 +20,7 @@ import entities.Ingredient;
 import entities.Instruction;
 import entities.Rating;
 import entities.Recipe;
+import entities.RecipeDTO;
 import entities.RecipeIngredient;
 import entities.User;
 
@@ -75,6 +76,75 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
+	public Recipe createRecipe(int uid, String recipeJson) {
+		System.out.println("In createRecipe DAO");
+		System.out.println(recipeJson);
+		ObjectMapper mapper = new ObjectMapper();
+	    try {
+			RecipeDTO recipeDTO = mapper.readValue(recipeJson, RecipeDTO.class);
+			System.out.println("RecipeDTO: " + recipeDTO);
+			Recipe r = new Recipe();
+			r.setTitle(recipeDTO.getTitle());
+			r.setImgUrl(recipeDTO.getImgUrl());
+			//maybe create set User method when personalizing accounts
+//			recipe.setUser(em.find(User.class, uid));
+			em.persist(r);
+			em.flush();
+			
+			Ingredient ing = new Ingredient();
+			ing.setName(recipeDTO.getIng());
+			em.persist(ing);
+			em.flush();
+			
+			RecipeIngredient ri = new RecipeIngredient();
+			ri.setIngredient(ing);
+			ri.setRecipe(r);
+			ri.setQuantity(recipeDTO.getQuantity());
+			em.persist(ri);
+			em.flush();
+			
+			return r;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
+
+	@Override
+	public Ingredient createIngredient(String ingredientJson) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RecipeIngredient createRecipeIngredient(int rid, String recipeIngJson) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			RecipeIngredient recipeIng = mapper.readValue(recipeIngJson, RecipeIngredient.class);
+			em.persist(recipeIng);
+			em.flush();
+			return recipeIng;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public Recipe update(int uid, int rid, String recipeJson) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public Boolean destroy(int uid, int rid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public Recipe addToFavorite(int uid, int rid) {
 		// TODO Auto-generated method stub
 		Favorite fave = new Favorite();
@@ -96,34 +166,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 			r.add(favorite.getRecipe());
 		}
 		return new HashSet<Recipe>(r);
-	}
-
-	@Override
-	public Recipe create(int uid, String recipeJson) {
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			Recipe recipe = mapper.readValue(recipeJson, Recipe.class);
-			// maybe create set User method when personalizing accounts
-			// recipe.setUser(em.find(User.class, uid));
-			em.persist(recipe);
-			em.flush();
-			return recipe;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
-	public Recipe update(int uid, int rid, String recipeJson) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Boolean destroy(int uid, int rid) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public Boolean destroyFave(int uid, int rid) {

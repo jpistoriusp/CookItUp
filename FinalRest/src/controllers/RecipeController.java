@@ -41,8 +41,8 @@ public class RecipeController {
 	}
   
 	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)
-	public Recipe create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String recipeJson){
-		return recipedao.create(uid, recipeJson);
+	public Recipe create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String recipeDtoJson){
+		return recipedao.createRecipe(uid, recipeDtoJson);
 	}
   
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.PUT)
@@ -65,6 +65,10 @@ public class RecipeController {
 		return recipedao.destroy(uid, rid);
 	}
 	
+	@RequestMapping(path = "recipe/{rid}/ingredient", method = RequestMethod.POST)
+	public RecipeIngredient createRecipeIngredient(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid, @RequestBody String recipeIngJson){
+		return recipedao.createRecipeIngredient(rid,recipeIngJson);
+	}
 	@RequestMapping(path = "user/{uid}/recipe/{rid}/unfave", method = RequestMethod.DELETE)
 	public Boolean destroyFave(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
 		return recipedao.destroyFave(uid, rid);
