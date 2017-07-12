@@ -12,5 +12,7 @@ public interface RecipeDAO {
 	public Recipe update(int uid, int rid, String recipeJson);
 	public Set<RecipeIngredient> showIngredients(int rid);
 	public Boolean destroy(int uid, int rid);
+	public Recipe addToFavorite(int uid, int rid);
+	public Set<Recipe> showFavorite(int uid);
 	
 }

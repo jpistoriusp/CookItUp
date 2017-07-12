@@ -24,4 +24,33 @@ public class Favorite {
 	@ManyToOne
 	@JoinColumn(name = "recipe_id")
 	private Recipe recipe;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Recipe getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Favorite [id=" + id + ", user=" + user + ", recipe=" + recipe + "]";
+	}
+	
+	
+	
+	
 }
