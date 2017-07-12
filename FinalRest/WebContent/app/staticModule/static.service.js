@@ -14,7 +14,7 @@ angular.module('staticModule').factory('staticService', function($http, authServ
 		service.checkLogin();
 		return $http({
 			method : 'GET',
-			url : "api/user/"+authService.getToken().id+"/profile/"
+			url : "api/user/"+authService.getToken().id+"/profile"
 		})
 	}
 
@@ -47,7 +47,7 @@ angular.module('staticModule').factory('staticService', function($http, authServ
         service.checkLogin();
         return $http({
               method : 'PUT',
-              url : "api/user/"+ authService.getToken().id + "/profile/",
+              url : "api/user/"+ authService.getToken().id + "/profile",
               headers : {
                   'Content-Type' : 'application/json'
               },
