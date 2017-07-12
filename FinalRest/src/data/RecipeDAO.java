@@ -3,6 +3,7 @@ package data;
 import java.util.Set;
 
 import entities.Instruction;
+import entities.Rating;
 import entities.Recipe;
 import entities.RecipeIngredient;
 
@@ -16,5 +17,6 @@ public interface RecipeDAO {
 	public Boolean destroy(int uid, int rid);
 	public Recipe addToFavorite(int uid, int rid);
 	public Set<Recipe> showFavorite(int uid);
+	public Rating addRating(int uid, int rid,String jsonRating);
 	
 }

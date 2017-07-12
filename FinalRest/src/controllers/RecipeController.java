@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.RecipeDAO;
 import entities.Instruction;
+import entities.Rating;
 import entities.Recipe;
 import entities.RecipeIngredient;
 
@@ -73,4 +74,11 @@ public class RecipeController {
 	public Collection<Recipe> setOfFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid){
 		return recipedao.showFavorite(uid);
 	}
+	
+	@RequestMapping(path = "user/{uid}/recipe/rate/{rid}", method = RequestMethod.POST)
+	public Rating rateRecipe(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int rid,@RequestBody String jsonRating){
+		return recipedao.addRating(uid, rid, jsonRating);
+	}
+	
+	
 }

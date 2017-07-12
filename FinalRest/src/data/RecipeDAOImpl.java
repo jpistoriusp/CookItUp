@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Favorite;
 import entities.Ingredient;
 import entities.Instruction;
+import entities.Rating;
 import entities.Recipe;
 import entities.RecipeIngredient;
 import entities.User;
@@ -136,6 +137,22 @@ public class RecipeDAOImpl implements RecipeDAO {
 	public Set<Instruction> showInstructions(int rid) {
 		String query = "SELECT i FROM Instruction i WHERE i.recipe.id = :rid";
 		return new HashSet<Instruction>(em.createQuery(query,Instruction.class).setParameter("rid", rid).getResultList());
+	}
+	
+	@Override
+	public Rating addRating(int uid, int rid,String jsonRating) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			Rating rating = mapper.readValue(jsonRating, Rating.class);
+			rating.setUser(em.find(User.class, uid));
+			rating.setRecipe(em.find(Recipe.class, rid));
+			em.persist(rating);
+			em.flush();
+			return rating;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
