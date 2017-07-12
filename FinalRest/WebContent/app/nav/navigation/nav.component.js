@@ -4,8 +4,11 @@ angular.module('nav').component('navigation',{
 			var vm = this;
 			vm.loginChecker = function(){
 				if(authService.getToken().id){
+					console.log('in true')
 					return true;
 				}
+				console.log('in false')
+
 				return false;
 			}
 		},

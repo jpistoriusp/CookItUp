@@ -3,14 +3,13 @@
 	<input type="text" ng-model="ingredient.name"/>
 	<input type="submit" value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}"/>
 </form>
-<form id="findRecipesForm" ng-hide="vm.recipe.length">
+<form id="findRecipesForm">
 	<ul>
 		<li ng-repeat="i in vm.ingredients">{{i.name}} <span><button ng-click="vm.deleteIngredient(i)">x</button></span></li>
 	</ul>
 	<button ng-click="vm.findRecipes(vm.ingredients)">Find Recipes</button>
 </form>
-
-<table>
+<table ng-show="vm.showList">
 	<thead>
 		<tr>
 			<th></th>
@@ -19,10 +18,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="r in vm.recipes">
-			<td>{{r.title}}</td>
-			<td><img alt="" src="{{r.imgUrl}}"/></td>
-			<td><a href="{{r.sourceUrl}}">Source</a></td>
+		<tr ng-repeat="recipe in vm.recipes" ng-click="vm.selected = recipe; vm.showList = false">
+			<td>{{recipe.title}}</td>
+			<td><img alt="" src="{{recipe.imgUrl}}"/></td>
+			<td><a href="{{recipe.sourceUrl}}">Source</a></td>
 		</tr>
 	</tbody>
 </table>
+<recipe-show ng-hide="vm.showList" recipe="vm.selected" 
+	go-back="vm.changeListVisibility()"></recipe-show>

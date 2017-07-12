@@ -1,23 +1,11 @@
 angular.module('recipe').component("recipeForm", {
 	templateUrl : 'app/recipe/recipeForm/recipeForm.component.html',
-	controller : function(todoService,$filter,$scope) {
+	controller : function(recipeService,$filter,$scope) {
 		var vm = this;
 
-		vm.todoList = [];
-		
-
-		vm.reload = function() {
-			todoService.index().then(function(response) {
-				console.log(response);
-				vm.todoList = response.data;
-			});
-		}
-		vm.reload();
-
-		vm.addToList = function(newTodo) {
-			console.log("Clicked create method. add to List")
-			todoService.create(angular.copy(newTodo)).then(function(response) {
-				vm.reload();
+		vm.createRecipe = function(recipe) {
+			recipeService.create(angular.copy(recipe)).then(function(response) {
+				console.log("recipe created: " + recipe);
 			});
 		}
 

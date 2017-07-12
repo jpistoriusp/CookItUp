@@ -1,4 +1,12 @@
-<div><a href="#/">Home</a><a href="#/about">About</a><a href="#/login">Login</a><a href="#/register">Create User</a></div>
-<div ng-show='vm.loginChecker()'>
+<div>
+<a href="#/">Home</a>
+<a href="#/about">About</a>
+<div ng-hide='vm.loginChecker()'>
+<a href="#/login">Login</a>
+<a href="#/register">Create User</a>
+</div>
+</div>
+
+<div ng-show="vm.loginChecker()">
 <logout></logout>
 </div>

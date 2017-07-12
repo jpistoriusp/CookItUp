@@ -1,0 +1,14 @@
+
+<div><img alt="" src="{{vm.recipe.imgUrl}}"></div>
+<div><h2>{{vm.recipe.title}}</h2></div>
+<div>
+	<ul>
+		<li ng-repeat="ing in vm.recipe.recipeIngredients">{{ing}}</li>
+	</ul>
+</div>
+<div>
+	<ol>
+		<li ng-repeat="inst in vm.recipe.instructions | orderBy : '-stepNumber'">{{inst}}</li>
+	</ol>
+</div>
+<div><button ng-click="vm.backButton()">Back To List</button></div>

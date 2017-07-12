@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Ingredient;
 import entities.Recipe;
+import entities.User;
 
 @Transactional
 public class RecipeDAOImpl implements RecipeDAO{
@@ -71,8 +72,18 @@ public class RecipeDAOImpl implements RecipeDAO{
 
 	@Override
 	public Recipe create(int uid, String recipeJson) {
-		
-		return null;
+		ObjectMapper mapper = new ObjectMapper();
+	    try {
+			Recipe recipe = mapper.readValue(recipeJson, Recipe.class);
+			//maybe create set User method when personalizing accounts
+//			recipe.setUser(em.find(User.class, uid));
+			em.persist(recipe);
+			em.flush();
+			return recipe;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override

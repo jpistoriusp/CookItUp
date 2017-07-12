@@ -18,7 +18,7 @@ angular.module('authModule').component('register', {
 			if (user.password == user.password2 && vm.errors.length==0) {
 				authService.register(user).then(function(res) {
 					// must add path
-//					$location.path('');
+					$location.path('/');
 				}).catch(function(error){
 					console.log("in catch error");
 					vm.errors.push('This email is already in use. Please enter a different email or login.');
