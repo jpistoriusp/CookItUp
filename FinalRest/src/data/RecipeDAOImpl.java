@@ -15,25 +15,27 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import entities.Favorite;
 import entities.Ingredient;
 import entities.Instruction;
 import entities.Recipe;
 import entities.RecipeIngredient;
+import entities.User;
 
 @Transactional
-public class RecipeDAOImpl implements RecipeDAO{
-	
+public class RecipeDAOImpl implements RecipeDAO {
+
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
 	public Set<Recipe> index(String json) throws IOException {
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 
-		List<Ingredient> ingredients = 
-				mapper.readValue(json, new TypeReference<List<Ingredient>>(){});
-		
+		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {
+		});
+
 		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
 		String recipeQuery = "SELECT r FROM Recipe r WHERE";
 
@@ -41,24 +43,25 @@ public class RecipeDAOImpl implements RecipeDAO{
 		for (Ingredient ingd : ingredients) {
 			Ingredient managed;
 			try {
-				managed = em.createQuery(ingredientQuery, Ingredient.class)
-						.setParameter("name", ingd.getName()).getSingleResult();
+				managed = em.createQuery(ingredientQuery, Ingredient.class).setParameter("name", ingd.getName())
+						.getSingleResult();
 			} catch (Exception e) {
 				e.printStackTrace();
 				continue;
 			}
 			managedIngs.add(managed);
 		}
-		for(int i = 0; i < managedIngs.size(); i++){
-			if (i == managedIngs.size()-1) {
-				recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients";
+		for (int i = 0; i < managedIngs.size(); i++) {
+			if (i == managedIngs.size() - 1) {
+				recipeQuery += " :ing" + i + " MEMBER OF r.recipeIngredients";
 				break;
 			}
-			recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients OR";
+			recipeQuery += " :ing" + i + " MEMBER OF r.recipeIngredients OR";
 		}
-		if (managedIngs.size() == 0) return null;
+		if (managedIngs.size() == 0)
+			return null;
 		TypedQuery<Recipe> recipes = em.createQuery(recipeQuery, Recipe.class);
-		for(int i = 0; i < managedIngs.size(); i++){
+		for (int i = 0; i < managedIngs.size(); i++) {
 			recipes.setParameter("ing" + i, managedIngs.get(i));
 		}
 		return new HashSet<Recipe>(recipes.getResultList());
@@ -71,12 +74,35 @@ public class RecipeDAOImpl implements RecipeDAO{
 	}
 
 	@Override
+	public Recipe addToFavorite(int uid, int rid) {
+		// TODO Auto-generated method stub
+		Favorite fave = new Favorite();
+		fave.setRecipe(em.find(Recipe.class, rid));
+		fave.setUser(em.find(User.class, uid));
+		em.persist(fave);
+		return fave.getRecipe();
+	}
+
+	@Override
+	public Set<Recipe> showFavorite(int uid) {
+		String favoriteQ = "SELECT f FROM Favorite f WHERE f.user.id = :uid";
+
+		List<Favorite> f = new ArrayList<Favorite>(
+				em.createQuery(favoriteQ, Favorite.class).setParameter("uid", uid).getResultList());
+		List<Recipe> r = new ArrayList<Recipe>();
+		for (Favorite favorite : f) {
+			r.add(favorite.getRecipe());
+		}
+		return new HashSet<Recipe>(r);
+	}
+
+	@Override
 	public Recipe create(int uid, String recipeJson) {
 		ObjectMapper mapper = new ObjectMapper();
-	    try {
+		try {
 			Recipe recipe = mapper.readValue(recipeJson, Recipe.class);
-			//maybe create set User method when personalizing accounts
-//			recipe.setUser(em.find(User.class, uid));
+			// maybe create set User method when personalizing accounts
+			// recipe.setUser(em.find(User.class, uid));
 			em.persist(recipe);
 			em.flush();
 			return recipe;
@@ -101,7 +127,8 @@ public class RecipeDAOImpl implements RecipeDAO{
 	@Override
 	public Set<RecipeIngredient> showIngredients(int rid) {
 		String query = "SELECT ring FROM RecipeIngredient ring WHERE ring.recipe.id = :rid";
-		return new HashSet<RecipeIngredient>(em.createQuery(query,RecipeIngredient.class).setParameter("rid", rid).getResultList());
+		return new HashSet<RecipeIngredient>(
+				em.createQuery(query, RecipeIngredient.class).setParameter("rid", rid).getResultList());
 	}
 
 	@Override

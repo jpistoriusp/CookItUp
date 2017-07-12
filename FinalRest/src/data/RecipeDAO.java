@@ -14,5 +14,7 @@ public interface RecipeDAO {
 	public Set<RecipeIngredient> showIngredients(int rid);
 	public Set<Instruction> showInstructions(int rid);
 	public Boolean destroy(int uid, int rid);
+	public Recipe addToFavorite(int uid, int rid);
+	public Set<Recipe> showFavorite(int uid);
 	
 }
