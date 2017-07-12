@@ -65,6 +65,11 @@ public class RecipeController {
 		return recipedao.destroy(uid, rid);
 	}
 	
+	@RequestMapping(path = "user/{uid}/recipe/{rid}/unfave", method = RequestMethod.DELETE)
+	public Boolean destroyFave(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
+		return recipedao.destroyFave(uid, rid);
+	}
+	
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.POST)
 	public Recipe addToFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid){
 		return recipedao.addToFavorite(uid, rid);

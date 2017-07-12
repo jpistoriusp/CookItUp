@@ -126,6 +126,22 @@ public class RecipeDAOImpl implements RecipeDAO {
 		return null;
 	}
 
+	public Boolean destroyFave(int uid, int rid) {
+
+		try {
+			String query = "SELECT f FROM Favorite f WHERE f.user.id = :uid AND f.recipe.id = :rid";
+			Favorite f = em.createQuery(query, Favorite.class).setParameter("uid", uid).setParameter("rid", rid)
+					.getSingleResult();
+			em.remove(f);
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
 	@Override
 	public Set<RecipeIngredient> showIngredients(int rid) {
 		String query = "SELECT ring FROM RecipeIngredient ring WHERE ring.recipe.id = :rid";
@@ -136,11 +152,12 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public Set<Instruction> showInstructions(int rid) {
 		String query = "SELECT i FROM Instruction i WHERE i.recipe.id = :rid";
-		return new HashSet<Instruction>(em.createQuery(query,Instruction.class).setParameter("rid", rid).getResultList());
+		return new HashSet<Instruction>(
+				em.createQuery(query, Instruction.class).setParameter("rid", rid).getResultList());
 	}
-	
+
 	@Override
-	public Rating addRating(int uid, int rid,String jsonRating) {
+	public Rating addRating(int uid, int rid, String jsonRating) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Rating rating = mapper.readValue(jsonRating, Rating.class);

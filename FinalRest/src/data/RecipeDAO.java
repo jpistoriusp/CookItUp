@@ -18,5 +18,6 @@ public interface RecipeDAO {
 	public Recipe addToFavorite(int uid, int rid);
 	public Set<Recipe> showFavorite(int uid);
 	public Rating addRating(int uid, int rid,String jsonRating);
+	public Boolean destroyFave(int uid, int rid);
 	
 }
