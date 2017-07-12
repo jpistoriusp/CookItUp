@@ -5,6 +5,14 @@ angular.module('recipe')
 		controller : function(recipeService) {
 			var vm = this;
 			
+			vm.selected = null;
+			
+			vm.showList = true;
+			
+			vm.changeListVisibility = function() {
+				vm.showList = vm.showList ? false : true;
+			}
+			
 			vm.ingredients = [];
 			
 			vm.addIngredient = function(i){
@@ -24,10 +32,10 @@ angular.module('recipe')
 			vm.findRecipes = function(ingredients){
 				recipeService.index(ingredients)
 					.then(function(response){
+						vm.recipes = response.data;
 						if (!response.data) {
 							
 						}
-						vm.recipes = response.data;
 						console.log(response.data);
 					})
 			}

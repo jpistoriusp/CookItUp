@@ -20,5 +20,22 @@ angular.module('recipe')
 			})
 		}
 		
+		service.create = function(recipe){
+			checkLogin();
+			return $http({
+				method : 'POST',
+				url : 'api/user/' + userId + '/recipe',
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				data : recipe
+			})
+//				.then(function(response){
+//					$rootScope.$broadcast('createdRecipe', {
+//			            recipe : response.data
+//			          });
+//				})
+		}
+		
 		return service;
 	})
