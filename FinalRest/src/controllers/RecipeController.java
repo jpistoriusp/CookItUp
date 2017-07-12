@@ -28,8 +28,8 @@ public class RecipeController {
 			return recipedao.index(json);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
   
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.GET)

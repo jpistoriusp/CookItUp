@@ -24,7 +24,11 @@ angular.module('recipe')
 			vm.findRecipes = function(ingredients){
 				recipeService.index(ingredients)
 					.then(function(response){
-						console.log(response.data)
+						if (!response.data) {
+							
+						}
+						vm.recipes = response.data;
+						console.log(response.data);
 					})
 			}
 		},

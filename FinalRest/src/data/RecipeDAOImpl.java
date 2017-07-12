@@ -29,33 +29,38 @@ public class RecipeDAOImpl implements RecipeDAO{
 		
 		ObjectMapper mapper = new ObjectMapper();
 
-			ArrayList<Ingredient> ingredients = 
-					mapper.readValue(json, new TypeReference<List<Ingredient>>(){});
-			
-			String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
-			String recipeQuery = "SELECT r FROM Recipe r WHERE";
-//		
-			
-			List<Ingredient> managedIngs = new ArrayList<Ingredient>();
-			for (Ingredient ingd : ingredients) {
-				Ingredient managed = em.createQuery(ingredientQuery, Ingredient.class)
+		List<Ingredient> ingredients = 
+				mapper.readValue(json, new TypeReference<List<Ingredient>>(){});
+		
+		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
+		String recipeQuery = "SELECT r FROM Recipe r WHERE";
+
+		List<Ingredient> managedIngs = new ArrayList<Ingredient>();
+		for (Ingredient ingd : ingredients) {
+			Ingredient managed;
+			try {
+				managed = em.createQuery(ingredientQuery, Ingredient.class)
 						.setParameter("name", ingd.getName()).getSingleResult();
-				if (managed == null) continue;
-				managedIngs.add(managed);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				continue;
 			}
-			for(int i = 0; i < managedIngs.size(); i++){
-				if (i == managedIngs.size()-1) {
-					recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients";
-					break;
-				}
-				recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients OR";
+			managedIngs.add(managed);
+		}
+		for(int i = 0; i < managedIngs.size(); i++){
+			if (i == managedIngs.size()-1) {
+				recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients";
+				break;
 			}
-			TypedQuery<Recipe> recipes = em.createQuery(recipeQuery, Recipe.class);
-			for(int i = 0; i < managedIngs.size(); i++){
-				recipes.setParameter("ing" + i, managedIngs.get(i));
-			}
-			System.out.println(recipes);
-			return new HashSet<Recipe>(recipes.getResultList());
+			recipeQuery += " :ing"+i+" MEMBER OF r.recipeIngredients OR";
+		}
+		if (managedIngs.size() == 0) return null;
+		TypedQuery<Recipe> recipes = em.createQuery(recipeQuery, Recipe.class);
+		for(int i = 0; i < managedIngs.size(); i++){
+			recipes.setParameter("ing" + i, managedIngs.get(i));
+		}
+		return new HashSet<Recipe>(recipes.getResultList());
 	}
 
 	@Override
