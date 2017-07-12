@@ -5,13 +5,6 @@ angular.module('recipe')
 		controller : function(recipeService) {
 			var vm = this;
 			
-			vm.selected = null;
-			
-			vm.showList = true;
-			
-			vm.changeListVisibility = function() {
-				vm.showList = vm.showList ? false : true;
-			}
 			
 			vm.ingredients = [];
 			
@@ -37,6 +30,26 @@ angular.module('recipe')
 							
 						}
 						console.log(response.data);
+					})
+			}
+			
+			vm.selected = null;
+			
+			vm.showList = true;
+			
+			vm.changeListVisibility = function() {
+				vm.showList = vm.showList ? false : true;
+			}
+			
+			vm.loadDetails = function (recipe) {
+				recipeService.showIngredients(recipe)
+					.then(function(response){
+						vm.selected.recipeIngredients = response.data;
+						recipeService.showInstructions(recipe)
+							.then(function(response){
+								vm.selected.instructions = response.data;
+								console.log(vm.selected.instructions);
+							})
 					})
 			}
 		},

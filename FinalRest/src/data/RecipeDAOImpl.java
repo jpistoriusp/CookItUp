@@ -16,8 +16,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Ingredient;
+import entities.Instruction;
 import entities.Recipe;
-import entities.User;
+import entities.RecipeIngredient;
 
 @Transactional
 public class RecipeDAOImpl implements RecipeDAO{
@@ -96,6 +97,18 @@ public class RecipeDAOImpl implements RecipeDAO{
 	public Boolean destroy(int uid, int rid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Set<RecipeIngredient> showIngredients(int rid) {
+		String query = "SELECT ring FROM RecipeIngredient ring WHERE ring.recipe.id = :rid";
+		return new HashSet<RecipeIngredient>(em.createQuery(query,RecipeIngredient.class).setParameter("rid", rid).getResultList());
+	}
+
+	@Override
+	public Set<Instruction> showInstructions(int rid) {
+		String query = "SELECT i FROM Instruction i WHERE i.recipe.id = :rid";
+		return new HashSet<Instruction>(em.createQuery(query,Instruction.class).setParameter("rid", rid).getResultList());
 	}
 
 }

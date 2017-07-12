@@ -18,7 +18,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="recipe in vm.recipes" ng-click="vm.selected = recipe; vm.showList = false">
+		<tr ng-repeat="recipe in vm.recipes" ng-click="vm.selected = recipe; vm.showList = false; vm.loadDetails(recipe)">
 			<td>{{recipe.title}}</td>
 			<td><img alt="" src="{{recipe.imgUrl}}"/></td>
 			<td><a href="{{recipe.sourceUrl}}">Source</a></td>
