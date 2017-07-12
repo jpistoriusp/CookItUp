@@ -40,7 +40,7 @@ angular.module('recipe')
 		service.showIngredients = function(recipe) {
 			return $http({
 				method : 'GET',
-				url : 'api/recipe/'+recipe.id+'/recipeIngredient'
+				url : 'api/search/recipe/'+recipe.id+'/recipeIngredient'
 			})
 		}
 		
