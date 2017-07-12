@@ -8,6 +8,9 @@ angular.module('authModule').component('login',{
 			.then(function(res){
 				// must create path
 				$location.path('/');
+			})
+			.catch(function(e){
+				$location.path('/login');
 			});
 			
 		}

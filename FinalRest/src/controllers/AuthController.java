@@ -24,7 +24,7 @@ public class AuthController {
 	@RequestMapping(path = "/register/", method = RequestMethod.POST)
 	public User register(HttpSession session, @RequestBody User user, HttpServletResponse response) {
 		User u = authDAO.register(user);
-		System.out.println(u);
+		System.out.println(u+"asdfasdf");
 		if(u!=null){
 			
 			session.setAttribute("user", u);
@@ -37,10 +37,16 @@ public class AuthController {
 	}
 
 	@RequestMapping(path = "/login/", method = RequestMethod.POST)
-	public User login(HttpSession session, @RequestBody User user) {
-		User u = authDAO.register(user);
+	public User login(HttpSession session, @RequestBody User user, HttpServletResponse response) {
+		User u = authDAO.login(user);
 		session.setAttribute("user", u);
+		if(u != null){
 		return u;
+		}
+		else{
+			response.setStatus(400);
+			return null;
+		}
 	}
 
 	@RequestMapping(path = "/logout/", method = RequestMethod.POST)
