@@ -43,6 +43,12 @@ angular.module('recipe')
 				url : 'api/search/recipe/'+recipe.id+'/recipeIngredient'
 			})
 		}
+		service.showInstructions = function(recipe) {
+			return $http({
+				method : 'GET',
+				url : 'api/search/recipe/'+recipe.id+'/instruction'
+			})
+		}
 		
 		return service;
 	})

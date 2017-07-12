@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import data.RecipeDAO;
+import entities.Instruction;
 import entities.Recipe;
 import entities.RecipeIngredient;
 
@@ -51,6 +52,11 @@ public class RecipeController {
 	@RequestMapping(path = "search/recipe/{rid}/recipeIngredient", method = RequestMethod.GET)
 	public Collection<RecipeIngredient> showIngredients(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid){
 		return recipedao.showIngredients(rid);
+	}
+	
+	@RequestMapping(path = "search/recipe/{rid}/instruction", method = RequestMethod.GET)
+	public Collection<Instruction> showInstructions(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid){
+		return recipedao.showInstructions(rid);
 	}
   
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.DELETE)
