@@ -11,12 +11,12 @@
 </form>
 
 <form ng-show="vm.showEditForm">
-	<input type=text placeholder="First Name" ng-model="profile.firstName" />
-	<input type="text" placeholder="Last Name" ng-model="profile.lastName" />
-	<input type="number" placeholder="Age" ng-model="profile.age" />
-	<input type="number" placeholder="Weight" ng-model="profile.weight" />
-	<input type="text" placeholder="City and State" ng-model="profile.location" />
-	<input type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
+	<input type=text placeholder="First Name" ng-value="vm.profile.firstName" ng-model="profile.firstName" />
+	<input type="text" placeholder="Last Name" ng-value="vm.profile.lastName" ng-model="profile.lastName" />
+	<input type="number" placeholder="Age" ng-value="vm.profile.age" ng-model="profile.age" />
+	<input type="number" placeholder="Weight" ng-value="vm.profile.weight" ng-model="profile.weight" />
+	<input type="text" placeholder="City and State" ng-value="vm.profile.location" ng-model="profile.location" />
+	<input type="text" placeholder="Profile Pic URL" ng-value="vm.profile.profilePic" ng-model="profile.profilePic" />
 	<input type="submit" value="Edit" ng-click="vm.updateProfile(profile); vm.showEditForm=false"/>
 </form>
 
@@ -33,14 +33,14 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td>{{vm.profile.picture}}</td>
+			<td><img src="{{vm.profile.profilePic}}" height="42" width="42"></td>
 			<td>{{vm.profile.firstName}}</td>
 			<td>{{vm.profile.lastName}}</td>
 			<td>{{vm.profile.age}}</td>
 			<td>{{vm.profile.weight}}</td>
 			<td>{{vm.profile.location}}</td>
-			<td><button type="button" ng-show="vm.showCreateButton" ng-click="vm.showEditForm=true ; vm.showTable()">Edit Profile</button></td>
-			<td><button type="button" ng-hide="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
+			<td><button type="button" ng-hide="vm.showCreateButton" ng-click="vm.showEditForm=true">Edit Profile</button></td>
+			<td><button type="button" ng-show="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
 		</tr>
 	</tbody>
 </table>

@@ -3,21 +3,28 @@ angular.module('staticModule')
 	templateUrl : "app/staticModule/profile/profile.component.html",
 		controller: function(staticService, $location){
 			var vm = this;
-			vm.showCreateButton = true;
+			vm.showCreateButton = false;
 			vm.showCreateForm = false;
 			vm.showEditForm = false;
 			
 			vm.showTable = function(){
-				if(!(vm.showCreateForm && vm.showEditForm)) {
+				console.log("in show table")
+				if(!(vm.showCreateForm || vm.showEditForm)) {
 					return true;
 				}
 				return false;
 			}
+			
+			vm.showTable();
 						
 			vm.loadProfile = function(){
 				staticService.index()
 				.then(function(res){
+					vm.showCreateButton = false;
 					vm.profile = res.data;
+				})
+				.catch(function(e){
+					vm.showCreateButton = true;
 				})
 			}
 			

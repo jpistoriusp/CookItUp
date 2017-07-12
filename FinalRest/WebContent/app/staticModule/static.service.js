@@ -43,7 +43,9 @@ angular.module('staticModule').factory('staticService', function($http, authServ
 //            });
     };
     
-    service.update = function(profile) {  
+    service.update = function(profile) {
+    	console.log(profile)
+    	  console.log("profile first Name: "+profile)
         service.checkLogin();
         return $http({
               method : 'PUT',
