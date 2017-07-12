@@ -21,7 +21,7 @@ public class RecipeController {
 	@Autowired
 	private RecipeDAO recipedao;
 	
-	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)
+	@RequestMapping(path = "search/recipe", method = RequestMethod.POST)
 	public Collection<Recipe> index(HttpServletRequest req, HttpServletResponse res, @RequestBody String json) {
 		
 		try {
@@ -37,10 +37,10 @@ public class RecipeController {
 		return recipedao.show(uid, rid);
 	}
   
-//	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)
-//	public Recipe create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String recipeJson){
-//		return recipedao.create(uid, recipeJson);
-//	}
+	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)
+	public Recipe create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String recipeJson){
+		return recipedao.create(uid, recipeJson);
+	}
   
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.PUT)
 	public Recipe update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid, @RequestBody String recipeJson){

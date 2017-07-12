@@ -12,14 +12,29 @@ angular.module('recipe')
 		}
 		
 		service.index = function(ingredients){
-			checkLogin();
-			var userId = authService.getToken().id;
 			return $http({
 				method : 'POST',
-				url : 'api/user/'+/*userId*/1+'/recipe',
+				url : 'api/search/recipe',
 				headers : { 'Content-type' : "application/json"},
 				data : ingredients
 			})
+		}
+		
+		service.create = function(recipe){
+			checkLogin();
+			return $http({
+				method : 'POST',
+				url : 'api/user/' + userId + '/recipe',
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				data : recipe
+			})
+//				.then(function(response){
+//					$rootScope.$broadcast('createdRecipe', {
+//			            recipe : response.data
+//			          });
+//				})
 		}
 		
 		return service;

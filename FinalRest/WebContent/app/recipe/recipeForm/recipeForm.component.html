@@ -1,6 +1,6 @@
 <form id="createRecipeForm">
 	<label for="createRecipeForm">Create a recipe:</label>
-	<input type="text" ng-model="recipe.title"/>
-	<input type="text" ng-model="recipe.imgUrl"/>
+	<input type="text" placeholder="Recipe Name" ng-model="recipe.title"/>
+	<input type="text" placeholder="Post an image url" ng-model="recipe.imgUrl"/>
 	<input type="submit" value="Create Recipe" ng-click="vm.createRecipe(recipe); recipe={}"/>
 </form>
