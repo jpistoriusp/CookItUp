@@ -14,6 +14,10 @@ angular.module('appModule',['staticModule','fave', 'ngRoute', 'recipe','authModu
 			
 				template : "<register></register>"
 				
+			}).when('/favorite', {
+			
+				template : "<fave></fave>"
+				
 			})
 			.otherwise({
 				template : '<not-found></not-found>'
