@@ -80,6 +80,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		fave.setRecipe(em.find(Recipe.class, rid));
 		fave.setUser(em.find(User.class, uid));
 		em.persist(fave);
+		em.flush();
 		return fave.getRecipe();
 	}
 
