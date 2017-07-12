@@ -14,6 +14,7 @@ Instructions:
 	</ol>
 </div>
 <div>
-	<button ng-show="" ng-click="vm.backButton()">Back To List</button>
-	<label>Favorite<input type="checkbox" ng-click="vm.updateFavorites(recipe)"/></label>
+	<button ng-click="vm.backButton()">Back To List</button>
+	<label>Favorite<input type="checkbox" ng-model="vm.favorite" 
+		ng-change="vm.updateFavorites(vm.recipe)"/></label>
 </div>
