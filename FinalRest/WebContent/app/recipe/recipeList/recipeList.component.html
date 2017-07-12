@@ -3,9 +3,26 @@
 	<input type="text" ng-model="ingredient.name"/>
 	<input type="submit" value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}"/>
 </form>
-<form id="findRecipesForm">
+<form id="findRecipesForm" ng-hide="vm.recipe.length">
 	<ul>
 		<li ng-repeat="i in vm.ingredients">{{i.name}} <span><button ng-click="vm.deleteIngredient(i)">x</button></span></li>
 	</ul>
 	<button ng-click="vm.findRecipes(vm.ingredients)">Find Recipes</button>
 </form>
+
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="r in vm.recipes">
+			<td>{{r.title}}</td>
+			<td><img alt="" src="{{r.imgUrl}}"/></td>
+			<td><a href="{{r.sourceUrl}}">Source</a></td>
+		</tr>
+	</tbody>
+</table>
