@@ -1,17 +1,26 @@
 <h1>Profile</h1>
 
-<form ng-show="vm.showForm" ng-init="profile={}">
+<form ng-show="vm.showCreateForm">
 	<input type=text placeholder="First Name" ng-model="profile.firstName" />
 	<input type="text" placeholder="Last Name" ng-model="profile.lastName" />
 	<input type="number" placeholder="Age" ng-model="profile.age" />
 	<input type="number" placeholder="Weight" ng-model="profile.weight" />
 	<input type="text" placeholder="City and State" ng-model="profile.location" />
 	<input type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
-	<input type="submit" value="Create" ng-show="vm.showCreateButton" ng-click="vm.createProfile(profile); vm.showForm=false; vm.showCreateButton=false"/>
-	<input type="submit" value="Edit" ng-hide="vm.showCreateButton" ng-click="vm.updateProfile(profile); vm.showForm = false"/>
+	<input type="submit" value="Create" ng-click="vm.createProfile(profile); vm.showCreateForm=false"/>
 </form>
 
-<table ng-hide="vm.showForm">
+<form ng-show="vm.showEditForm">
+	<input type=text placeholder="First Name" ng-model="profile.firstName" />
+	<input type="text" placeholder="Last Name" ng-model="profile.lastName" />
+	<input type="number" placeholder="Age" ng-model="profile.age" />
+	<input type="number" placeholder="Weight" ng-model="profile.weight" />
+	<input type="text" placeholder="City and State" ng-model="profile.location" />
+	<input type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
+	<input type="submit" value="Edit" ng-click="vm.updateProfile(profile); vm.showEditForm=false"/>
+</form>
+
+<table ng-show="vm.showTable()">
 	<thead>
 		<tr>
 			<th>Picture</th>
@@ -30,7 +39,8 @@
 			<td>{{vm.profile.age}}</td>
 			<td>{{vm.profile.weight}}</td>
 			<td>{{vm.profile.location}}</td>
-			<td><button type="button" ng-click="vm.showForm=true">Edit Profile</button></td>
+			<td><button type="button" ng-show="vm.showCreateButton" ng-click="vm.showEditForm=true ; vm.showTable()">Edit Profile</button></td>
+			<td><button type="button" ng-hide="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
 		</tr>
 	</tbody>
 </table>
