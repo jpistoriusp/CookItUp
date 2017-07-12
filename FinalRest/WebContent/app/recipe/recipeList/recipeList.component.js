@@ -5,7 +5,6 @@ angular.module('recipe')
 		controller : function(recipeService) {
 			var vm = this;
 			
-			
 			vm.ingredients = [];
 			
 			vm.addIngredient = function(i){

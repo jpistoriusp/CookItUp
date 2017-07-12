@@ -13,4 +13,7 @@ Instructions:
 		<li ng-repeat="inst in vm.recipe.instructions | orderBy : 'stepNumber'">{{inst.text}}</li>
 	</ol>
 </div>
-<div><button ng-click="vm.backButton()">Back To List</button></div>
+<div>
+	<button ng-show="" ng-click="vm.backButton()">Back To List</button>
+	<label>Favorite<input type="checkbox" ng-click="vm.updateFavorites(recipe)"/></label>
+</div>
