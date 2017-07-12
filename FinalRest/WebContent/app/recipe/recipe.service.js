@@ -37,5 +37,12 @@ angular.module('recipe')
 //				})
 		}
 		
+		service.showIngredients = function(recipe) {
+			return $http({
+				method : 'GET',
+				url : 'api/recipe/'+recipe.id+'/recipeIngredient'
+			})
+		}
+		
 		return service;
 	})
