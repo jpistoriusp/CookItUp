@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.RecipeDAO;
 import entities.Instruction;
+import entities.Rating;
 import entities.Recipe;
 import entities.RecipeIngredient;
 
@@ -63,4 +64,26 @@ public class RecipeController {
 	public Boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
 		return recipedao.destroy(uid, rid);
 	}
+	
+	@RequestMapping(path = "user/{uid}/recipe/{rid}/unfave", method = RequestMethod.DELETE)
+	public Boolean destroyFave(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
+		return recipedao.destroyFave(uid, rid);
+	}
+	
+	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.POST)
+	public Recipe addToFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid){
+		return recipedao.addToFavorite(uid, rid);
+	}
+	
+	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.GET)
+	public Collection<Recipe> setOfFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid){
+		return recipedao.showFavorite(uid);
+	}
+	
+	@RequestMapping(path = "user/{uid}/recipe/rate/{rid}", method = RequestMethod.POST)
+	public Rating rateRecipe(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int rid,@RequestBody String jsonRating){
+		return recipedao.addRating(uid, rid, jsonRating);
+	}
+	
+	
 }
