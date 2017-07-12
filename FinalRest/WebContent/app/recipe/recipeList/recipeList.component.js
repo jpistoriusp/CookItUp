@@ -48,7 +48,6 @@ angular.module('recipe')
 						recipeService.showInstructions(recipe)
 							.then(function(response){
 								vm.selected.instructions = response.data;
-								console.log(vm.selected.instructions);
 							})
 					})
 			}
