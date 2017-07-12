@@ -19,6 +19,11 @@ public class ProfileController {
 	@Autowired
 	private ProfileDAO profileDAO;
 	
+	@RequestMapping(path = "/user/{uid}/profile", method = RequestMethod.GET)
+	public Profile index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
+		return profileDAO.index(uid);
+	}
+	
 	@RequestMapping(path = "/user/{uid}/profile/{pid}", method = RequestMethod.GET)
     public Profile show(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int pid) {
         return profileDAO.show(uid, pid);
@@ -29,8 +34,8 @@ public class ProfileController {
         return profileDAO.create(uid, profileJson);
     }
     
-    @RequestMapping(path = "/user/{uid}/profile/{pid}", method = RequestMethod.PUT)
-    public Profile update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int pid, @RequestBody String profileJson) {
-        return profileDAO.update(uid, pid, profileJson);
+    @RequestMapping(path = "/user/{uid}/profile", method = RequestMethod.PUT)
+    public Profile update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String profileJson) {
+        return profileDAO.update(uid, profileJson);
     }
 }

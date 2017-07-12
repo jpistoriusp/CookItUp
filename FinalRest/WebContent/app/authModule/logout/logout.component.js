@@ -5,7 +5,6 @@ angular.module('authModule').component('logout',{
 		
 		vm.logout = function (){
 			authService.logout().then(function(res){
-				//must add home view
 				$location.path('/');
 			})
 		}

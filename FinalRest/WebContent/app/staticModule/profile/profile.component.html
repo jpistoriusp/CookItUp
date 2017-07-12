@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 
-<form ng-show="vm.showForm">
+<form ng-show="vm.showForm" ng-init="profile={}">
 	<input type=text placeholder="First Name" ng-model="profile.firstName" />
 	<input type="text" placeholder="Last Name" ng-model="profile.lastName" />
 	<input type="number" placeholder="Age" ng-model="profile.age" />
@@ -24,12 +24,12 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td>{{profile.picture}}</td>
-			<td>{{profile.firstName}}</td>
-			<td>{{profile.lastName}}</td>
-			<td>{{profile.age}}</td>
-			<td>{{profile.weight}}</td>
-			<td>{{profile.location}}</td>
+			<td>{{vm.profile.picture}}</td>
+			<td>{{vm.profile.firstName}}</td>
+			<td>{{vm.profile.lastName}}</td>
+			<td>{{vm.profile.age}}</td>
+			<td>{{vm.profile.weight}}</td>
+			<td>{{vm.profile.location}}</td>
 			<td><button type="button" ng-click="vm.showForm=true">Edit Profile</button></td>
 		</tr>
 	</tbody>
