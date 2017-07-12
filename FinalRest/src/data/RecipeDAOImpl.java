@@ -107,7 +107,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 			e.printStackTrace();
 			return null;
 		}
-		
+		return null;
 	}
 
 
@@ -155,16 +155,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
-	public Set<Recipe> showFavorite(int uid) {
-		String favoriteQ = "SELECT f FROM Favorite f WHERE f.user.id = :uid";
-
-		List<Favorite> f = new ArrayList<Favorite>(
-				em.createQuery(favoriteQ, Favorite.class).setParameter("uid", uid).getResultList());
-		List<Recipe> r = new ArrayList<Recipe>();
-		for (Favorite favorite : f) {
-			r.add(favorite.getRecipe());
-		}
-		return new HashSet<Recipe>(r);
+	public Set<Favorite> showFavorite(int uid) {
+		String favoriteQ = "SELECT f FROM Favorite f JOIN FETCH f.recipe WHERE f.user.id = :uid";
+		return new HashSet<Favorite>(em.createQuery(favoriteQ, Favorite.class).setParameter("uid", uid).getResultList());
 	}
 
 	public Boolean destroyFave(int uid, int rid) {

@@ -3,21 +3,27 @@ angular.module('recipe')
 		
 		templateUrl : 'app/recipe/recipeShow/recipeShow.component.html',
 		
-		controller : function(recipeService,authService){
+		controller : function(recipeService,authService,$scope){
 			
 			var vm = this;
 			
 			vm.favorite = false;
-			recipeService.showUserFavorites()
-				.then(function(response){
-					var favorites = response.data;
-					favorites.forEach(function(fav,idx,arr){
-						if (fav.recipe.id === vm.recipe.id) {
-							vm.favorite = true;
-							break;
-						}
+			
+			$scope.$on('recipeSelected', function(e,object){
+			
+				if (!object.value) {
+					recipeService.showUserFavorites()
+						.then(function(response){
+							var favorites = response.data;
+							console.log(favorites);
+							favorites.forEach(function(fav,idx,arr){
+								if (fav.recipe.id === vm.recipe.id) {
+									vm.favorite = true;
+								}
+							})
 					})
-				})
+				}
+			})
 			
 			var checkLogin = function(){
 				if(authService.getToken()) return;
@@ -48,6 +54,7 @@ angular.module('recipe')
 		
 		bindings : {
 			recipe : '<',
-			goBack : '&'
+			goBack : '&',
+			showList : '='
 		}
 	})
