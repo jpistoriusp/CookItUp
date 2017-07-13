@@ -21,6 +21,7 @@
 		<tr ng-repeat="recipe in vm.recipes" ng-click="vm.toggle(recipe)">
 			<td>{{recipe.title}}</td>
 			<td><img alt="" src="{{recipe.imgUrl}}"/></td>
+			<td>Rating: {{recipe.avgRating | number:1}}</td>
 			<td><a href="{{recipe.sourceUrl}}">Source</a></td>
 		</tr>
 	</tbody>

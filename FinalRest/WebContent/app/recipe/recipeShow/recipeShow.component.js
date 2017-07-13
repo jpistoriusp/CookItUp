@@ -9,8 +9,7 @@ angular.module('recipe')
 			
 			vm.favorite = false;
 			
-			$scope.$on('recipeSelected', function(e,object){
-			
+			$scope.$on('recipeSelected', function(e,object){			
 				if (!object.value) {
 					recipeService.showUserFavorites()
 						.then(function(response){
