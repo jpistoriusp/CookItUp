@@ -205,6 +205,33 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8;
 
+--
+-- Table structure for table `tag_ingredient`
+--
+
+DROP TABLE IF EXISTS `tag_ingredient`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tag_ingredient` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag_id` int(11) NOT NULL,
+  `ingredient_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_tag_has_ingredient_ingredient1_idx` (`ingredient_id`),
+  KEY `fk_tag_has_ingredient_tag1_idx` (`tag_id`),
+  CONSTRAINT `fk_tag_has_ingredient_ingredient1` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tag_has_ingredient_tag1` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tag_ingredient`
+--
+
+LOCK TABLES `tag_ingredient` WRITE;
+/*!40000 ALTER TABLE `tag_ingredient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tag_ingredient` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- -----------------------------------------------------
 -- Table `recipe_tag`
@@ -251,7 +278,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cookitupdb`;
-INSERT INTO `user` (`id`, `email`, `password`) VALUES (1, 'a@a.com', '1');
+INSERT INTO `user` VALUES (1,'nancy@test.com','password'),(2,'chowman@test.com','pw123'),(3,'nancy2@test.com','$2a$10$5Pq4z7SMRHWpqsasf1Etu.pp1HEWMlN/gjRVLi2Xovx8ViJKKFDhe'),(4,'nancy3@test.com','$2a$10$9dy9ensRN2mXmhxP6/UUruFl3rK37t0hJALNW9jQ5vn.F4/6ryCNO');
 
 COMMIT;
 
@@ -285,4 +312,3 @@ INSERT INTO `rating` (`id`, `user_id`, `recipe_id`, `value`, `review`) VALUES (8
 INSERT INTO `rating` (`id`, `user_id`, `recipe_id`, `value`, `review`) VALUES (9, 1, 3, 4, 'Yum!');
 
 COMMIT;
-

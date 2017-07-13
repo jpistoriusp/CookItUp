@@ -19,8 +19,6 @@ public class Tag {
 
 	private String name;
 	
-	private boolean selected;
-
 	@ManyToMany(mappedBy = "tags")
 	@JsonIgnore
 	private List<Recipe> recipe;
@@ -53,15 +51,6 @@ public class Tag {
 
 	public void setIngredient(List<Ingredient> ingredient) {
 		this.ingredient = ingredient;
-	}
-	
-
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
 	}
 
 	public int getId() {
