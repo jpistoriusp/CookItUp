@@ -14,7 +14,7 @@ Instructions:
 	</ol>
 </div>
 <div>
-	<h3>Rating: {{vm.recipe.avgRating | number:1}}</h3>
+	<h3>Average Rating: {{vm.recipe.avgRating | number:1}}</h3>
 </div>
 <div>
 	<h5 ng-repeat="rating in vm.recipe.rating | limitTo: displayNum">
