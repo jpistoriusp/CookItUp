@@ -248,7 +248,14 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Set<Tag> showTags() {
-		String query = "select t from Tag t";
+		String query = "SELECT t from Tag t";
 		return new HashSet<>(em.createQuery(query, Tag.class).getResultList());
+	}
+	
+	@Override
+	public Set<Recipe> showFilteredRecipes(int tid) {
+		String query = "SELECT r FROM recipe r JOIN recipe_tag rt ON r.id = rt.recipe_id"
+				+ "JOIN tag t ON rt.tag_id = t.id WHERE t.id = :tid";
+		return new HashSet<>(em.createQuery(query, Recipe.class).setParameter("tid", tid).getResultList());
 	}
 }

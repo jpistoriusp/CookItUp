@@ -8,8 +8,8 @@ angular.module('recipe')
 			vm.ingredients = [];
 			
 			vm.toggle = function(recipe){
-				vm.selected = recipe; 
-				vm.showList = false; 
+				vm.selected = recipe;
+				vm.showList = false;
 				vm.loadDetails(recipe);
 				
 				$rootScope.$broadcast('recipeSelected', {

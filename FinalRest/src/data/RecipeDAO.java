@@ -26,5 +26,6 @@ public interface RecipeDAO {
 	public Rating addRating(int uid, int rid,String jsonRating);
 	public Boolean destroyFave(int uid, int rid);
 	public Set<Tag> showTags();
+	Set<Recipe> showFilteredRecipes(int tid);
 	
 }

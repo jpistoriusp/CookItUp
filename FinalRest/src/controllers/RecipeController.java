@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -96,5 +97,8 @@ public class RecipeController {
 		return recipedao.showTags();
 	}
 	
-	
+	@RequestMapping(path = "search/recip/tag/{tid}", method = RequestMethod.GET)
+	public Set<Recipe> showTags(HttpServletRequest req, HttpServletResponse res, @PathVariable int tid){
+		return recipedao.showFilteredRecipes(tid);
+	}
 }
