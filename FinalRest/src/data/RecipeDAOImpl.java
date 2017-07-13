@@ -22,6 +22,7 @@ import entities.Rating;
 import entities.Recipe;
 import entities.RecipeDTO;
 import entities.RecipeIngredient;
+import entities.Tag;
 import entities.User;
 
 @Transactional
@@ -38,7 +39,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {});
 
 		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
-		String recipeQuery = "SELECT r FROM Recipe r WHERE";
+		String recipeQuery = "SELECT r FROM Recipe r JOIN FETCH r.rating WHERE";
 
 		List<Ingredient> managedIngs = new ArrayList<Ingredient>();
 		for (Ingredient ingd : ingredients) {
@@ -205,4 +206,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 		}
 	}
 
+	@Override
+	public Set<Tag> showTags() {
+		String query = "select t from tags t";
+		return new HashSet<>(em.createQuery(query, Tag.class).getResultList());
+	}
 }
