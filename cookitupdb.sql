@@ -183,7 +183,6 @@ CREATE TABLE `instruction` (
   `recipe_id` int(11) DEFAULT NULL,
   `step_number` int(11) DEFAULT NULL,
   `text` varchar(2000) DEFAULT NULL,
->>>>>>> 2c3cbd1abfee09033582776ee6fc7970b4fb03bb
   PRIMARY KEY (`id`),
   KEY `recipe_id_idx` (`recipe_id`),
   CONSTRAINT `recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -302,7 +301,6 @@ CREATE TABLE `recipe_ingredient` (
   `ingredient_id` int(11) NOT NULL,
   `quantity` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
-<<<<<<< HEAD
   INDEX `fk_user_has_recipe_recipe1_idx` (`recipe_id` ASC),
   INDEX `fk_user_has_recipe_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_user_has_recipe_user1`
@@ -429,7 +427,6 @@ INSERT INTO `rating` (`id`, `user_id`, `recipe_id`, `value`) VALUES (1, 1, 1, 4)
 
 COMMIT;
 
-=======
   KEY `fk_recipe_has_ingredient_ingredient1_idx` (`ingredient_id`),
   KEY `fk_recipe_has_ingredient_recipe1_idx` (`recipe_id`),
   CONSTRAINT `fk_recipe_has_ingredient_ingredient1` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -564,4 +561,3 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-07-13 13:40:42
->>>>>>> 2c3cbd1abfee09033582776ee6fc7970b4fb03bb
