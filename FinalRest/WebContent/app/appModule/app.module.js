@@ -1,4 +1,4 @@
-angular.module('appModule',['staticModule','fave', 'ngRoute', 'recipe','authModule','nav'])
+angular.module('appModule',['staticModule','fave','mod', 'ngRoute', 'recipe','authModule','nav'])
 	.config(function($routeProvider){
 		$routeProvider
 			.when('/', {
@@ -17,6 +17,10 @@ angular.module('appModule',['staticModule','fave', 'ngRoute', 'recipe','authModu
 			}).when('/favorite', {
 			
 				template : "<fave></fave>"
+				
+			}).when('/moderator', {
+			
+				template : "<mod></mod>"
 				
 			})
 			.otherwise({

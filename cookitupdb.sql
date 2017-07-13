@@ -155,7 +155,8 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
-INSERT INTO `rating` VALUES (1,1,1,4,NULL);
+INSERT INTO `rating` VALUES (1,1,1,4,'Delicious!!!'),(2,1,1,3,'Pretty Good'),(3,1,1,2,'So so'), (4,1,1,1,'Yuck!'),
+(5,1,2,5,'Amazing!!!'),(6,1,2,1,'Terrible!'),(7,1,3,5,'Great!'),(8,1,3,1,'Bad!!!'),(9,1,3,2,'Just Ok'),(10,1,2,5,'Perfect!');
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
