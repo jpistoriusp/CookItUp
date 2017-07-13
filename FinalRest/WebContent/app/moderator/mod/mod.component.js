@@ -9,7 +9,15 @@ angular.module('mod').component('mod', {
 				vm.reviewList = result.data;
 			});
 		}
-		vm.favorite();
+		
+	vm.deleteReview = function(id){
+		modService.del(id)
+		.then(function(result){
+			vm.reviewList.splice(id-1);
+		});
+		}
+		
+		vm.listReview();
 	},
 	controllerAs : 'vm'
 });
