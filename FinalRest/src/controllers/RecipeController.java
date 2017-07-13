@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import data.RecipeDAO;
+import entities.Favorite;
 import entities.Instruction;
 import entities.Rating;
 import entities.Recipe;
 import entities.RecipeIngredient;
+import entities.Tag;
 
 @RestController
 public class RecipeController {
@@ -80,13 +82,18 @@ public class RecipeController {
 	}
 	
 	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.GET)
-	public Collection<Recipe> setOfFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid){
+	public Collection<Favorite> setOfFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid){
 		return recipedao.showFavorite(uid);
 	}
 	
 	@RequestMapping(path = "user/{uid}/recipe/rate/{rid}", method = RequestMethod.POST)
 	public Rating rateRecipe(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int rid,@RequestBody String jsonRating){
 		return recipedao.addRating(uid, rid, jsonRating);
+	}
+
+	@RequestMapping(path = "user/{uid}/recipe/{rid}/tag", method = RequestMethod.GET)
+	public Collection<Tag> showTags(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int rid,@RequestBody String jsonRating){
+		return recipedao.showTags();
 	}
 	
 	

@@ -66,6 +66,15 @@ angular.module('recipe')
 			})
 		}
 		
+		service.showUserFavorites = function(uid){
+			checkLogin();
+			var uid = authService.getToken().id;
+			return $http({
+				method : 'GET',
+				url : 'api/user/'+uid+'/recipe'
+			})
+		}
+		
 		service.addToFavorites = function(recipe){
 			checkLogin();
 			var uid = authService.getToken().id;
@@ -74,14 +83,14 @@ angular.module('recipe')
 				url : 'api/user/'+uid+'/recipe/'+recipe.id
 			})
 		}
-//		service.deleteFromFavorites = function(recipe){
-//			checkLogin();
-//			var uid = authService.getToken().id;
-//			return $http({
-//				method : 'POST',
-//				url : 'api/user/'+uid+'/recipe/'+recipe.id
-//			})
-//		}
+		service.deleteFromFavorites = function(recipe){
+			checkLogin();
+			var uid = authService.getToken().id;
+			return $http({
+				method : 'DELETE',
+				url : 'api/user/'+uid+'/recipe/'+recipe.id+'/unfave'
+			})
+		}
 		
 		return service;
 	})

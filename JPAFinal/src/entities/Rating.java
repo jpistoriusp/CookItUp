@@ -70,10 +70,5 @@ public class Rating {
 	public String toString() {
 		return "Rating [id=" + id + ", value=" + value + "]";
 	}
-	
-	
 
-
-	
-	
 }

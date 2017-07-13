@@ -2,10 +2,20 @@ angular.module('recipe')
 	.component('recipeList', {
 		templateUrl : 'app/recipe/recipeList/recipeList.component.html',
 		
-		controller : function(recipeService) {
+		controller : function(recipeService, $rootScope) {
 			var vm = this;
 			
 			vm.ingredients = [];
+			
+			vm.toggle = function(recipe){
+				vm.selected = recipe; 
+				vm.showList = false; 
+				vm.loadDetails(recipe);
+				
+				$rootScope.$broadcast('recipeSelected', {
+					value : vm.showList
+				})
+			}
 			
 			vm.addIngredient = function(i){
 				vm.ingredients.push(i);
@@ -25,9 +35,13 @@ angular.module('recipe')
 				recipeService.index(ingredients)
 					.then(function(response){
 						vm.recipes = response.data;
-						if (!response.data) {
-							
-						}
+						vm.recipes.forEach(function(r,idx,arr){
+							var total = 0;
+							r.rating.forEach(function(rat,idx,arr){
+								total += rat.value
+							})
+							r.avgRating = total/r.rating.length;
+						})
 						console.log(response.data);
 					})
 			}
@@ -41,6 +55,7 @@ angular.module('recipe')
 			}
 			
 			vm.loadDetails = function (recipe) {
+				recipeService.showRecipe
 				recipeService.showIngredients(recipe)
 					.then(function(response){
 						vm.selected.recipeIngredients = response.data;

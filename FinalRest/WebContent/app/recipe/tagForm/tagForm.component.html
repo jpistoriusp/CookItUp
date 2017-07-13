@@ -1,0 +1,15 @@
+<!-- <form>
+	<input type="checkbox" ng-model="vm.tag" ng-repeat="tag in vm.recipe.tags"
+	ng-change="vm.updateTags(vm.tag)"></input>
+	<input type="submit">Submit</input>
+</form> -->
+<h1>search by tag</h1>
+ <div class="filter">
+    Type
+    <div>
+        <div ng-repeat="tag in vm.recipe.tags">
+            <b><input type="checkbox" ng-model="vm.tag"/>{{vm.tag}}</b>
+            <span>{{vm.tag.name}}</span>
+        </div>
+    </div>
+    </div>
