@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import data.RecipeDAO;
+import entities.Favorite;
 import entities.Instruction;
 import entities.Rating;
 import entities.Recipe;
@@ -80,7 +81,7 @@ public class RecipeController {
 	}
 	
 	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.GET)
-	public Collection<Recipe> setOfFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid){
+	public Collection<Favorite> setOfFavorite(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid){
 		return recipedao.showFavorite(uid);
 	}
 	
