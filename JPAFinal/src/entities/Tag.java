@@ -19,8 +19,6 @@ public class Tag {
 
 	private String name;
 	
-	private boolean selected;
-
 	@ManyToMany(mappedBy = "tags")
 	@JsonIgnore
 	private List<Recipe> recipe;
