@@ -18,7 +18,7 @@ Instructions:
 </div>
 <div>
 	<h5 ng-repeat="rating in vm.recipe.rating | limitTo: displayNum">
-		{{rating.review}} Rating: {{rating.value | number:1}}
+		Review: {{rating.review}} | Rating: {{rating.value | number:1}}
 	</h5>
 		<button ng-hide="vm.clicked" ng-click="increaseBy(); vm.clicked=true">See more...</button>
 		<button ng-show="vm.clicked" ng-click="displayNum=1; vm.clicked=false">See fewer...</button>
