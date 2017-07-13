@@ -28,3 +28,12 @@ Instructions:
 	<label>Favorite<input type="checkbox" ng-model="vm.favorite" 
 		ng-change="vm.updateFavorites(vm.recipe)"/></label>
 </div>
+
+<div>
+	<form id="reviewRecipeForm">
+	<label for="reviewRecipeForm">Leave a review:</label>
+	<input type="text" placeholder="Rate(0-4)" ng-model="vm.recipeRating.value"/>
+	<input type="text" placeholder="Write a review" ng-model="vm.recipeRating.review"/>
+	<input type="submit" value="Submit" ng-click="vm.createRating(vm.recipeRating)"/>
+</form>
+</div>

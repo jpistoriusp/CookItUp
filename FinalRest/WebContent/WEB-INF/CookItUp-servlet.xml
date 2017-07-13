@@ -23,6 +23,7 @@
 	</bean>
 
 	<bean id="Recipedao" class="data.RecipeDAOImpl" /> 
+	<bean id="Moddao" class="data.ModDAOImpl" /> 
 	<bean id="Authdao" class="data.AuthDAOImpl" />
 	<bean id="Profiledao" class="data.ProfileDAOImpl" />
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
