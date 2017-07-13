@@ -22,8 +22,8 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(400) NULL,
-  `password` VARCHAR(400) NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(250) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `image_url` VARCHAR(400) NULL,
   `source_url` VARCHAR(400) NULL,
-  `title` VARCHAR(100) NULL,
+  `title` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `age` INT NULL,
-  `profile_pic` VARCHAR(255) NULL,
+  `profile_pic` VARCHAR(45) NULL,
   `location` VARCHAR(45) NULL,
   `weight` DECIMAL(5,2) NULL,
   `user_id` INT NOT NULL,
@@ -74,6 +74,7 @@ DROP TABLE IF EXISTS `tag` ;
 CREATE TABLE IF NOT EXISTS `tag` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
+  `selected` TINYINT(1) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -191,51 +192,6 @@ CREATE TABLE IF NOT EXISTS `rating` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `instruction`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `instruction` ;
-
-CREATE TABLE IF NOT EXISTS `instruction` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `recipe_id` INT NULL,
-  `step_number` INT NULL,
-  `text` VARCHAR(2000) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `recipe_id_idx` (`recipe_id` ASC),
-  CONSTRAINT `recipe_id`
-    FOREIGN KEY (`recipe_id`)
-    REFERENCES `recipe` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `favorite`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `favorite` ;
-
-CREATE TABLE IF NOT EXISTS `favorite` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `user_id` INT NULL,
-  `recipe_id` INT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `user_id_idx` (`user_id` ASC),
-  INDEX `recipe_id_idx` (`recipe_id` ASC),
-  CONSTRAINT `fk_user_has_favorite`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_recipe`
-    FOREIGN KEY (`recipe_id`)
-    REFERENCES `recipe` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 SET SQL_MODE = '';
 GRANT USAGE ON *.* TO cooker;
  DROP USER cooker;
@@ -288,8 +244,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cookitupdb`;
-INSERT INTO `tag` (`id`, `name`) VALUES (1, 'Asian');
-INSERT INTO `tag` (`id`, `name`) VALUES (2, 'Vegetarian');
+INSERT INTO `tag` (`id`, `name`, `selected`) VALUES (1, 'Asian', NULL);
+INSERT INTO `tag` (`id`, `name`, `selected`) VALUES (2, 'Vegetarian', NULL);
 
 COMMIT;
 
@@ -345,34 +301,6 @@ COMMIT;
 START TRANSACTION;
 USE `cookitupdb`;
 INSERT INTO `rating` (`id`, `user_id`, `recipe_id`, `value`) VALUES (1, 1, 1, 4);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `instruction`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `cookitupdb`;
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (1, 1, 1, 'Heat 1 tbsp oil in wok; add chopped onions and stir-fry until onions turn a nice brown color, about 8-10 minutes; remove from wok.');
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (2, 1, 2, 'Mix egg with 3 drops of soy and 3 drops of sesame oil; set aside.');
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (3, 1, 3, 'Add 1/2 tbsp oil to wok, swirling to coat surfaces; add egg mixture; working quickly, swirl egg until egg sets against wok; when egg puffs, flip egg and cook other side briefly; remove from wok, and chop into small pieces.');
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (4, 1, 4, 'Heat 1 tbsp oil in wok; add selected meat to wok, along with carrots, peas, and cooked onion; stir-fry for 2 minutes.');
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (5, 1, 5, 'Add rice, green onions, and bean sprouts, tossing to mix well; stir-fry for 3 minutes.');
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (6, 1, 6, 'Add 2 tbsp of light soy sauce and chopped egg to rice mixture and fold in; stir-fry for 1 minute more; serve.');
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (7, 2, 7, 'Place avocado, cilantro, yogurt, scallions, garlic, lime juice, sugar and salt in a blender; blend until smooth.');
-INSERT INTO `instruction` (`id`, `recipe_id`, `step_number`, `text`) VALUES (8, 2, 8, 'Place greens in an individual salad bowl; toss with 2 tablespoons of the dressing. (Refrigerate the remaining dressing.) Top the greens with black beans, corn and tomatoes.');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `favorite`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `cookitupdb`;
-INSERT INTO `favorite` (`id`, `user_id`, `recipe_id`) VALUES (1, 1, 1);
-INSERT INTO `favorite` (`id`, `user_id`, `recipe_id`) VALUES (2, 1, 2);
 
 COMMIT;
 

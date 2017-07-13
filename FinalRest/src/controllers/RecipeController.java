@@ -91,8 +91,8 @@ public class RecipeController {
 		return recipedao.addRating(uid, rid, jsonRating);
 	}
 
-	@RequestMapping(path = "user/{uid}/recipe/{rid}/tag", method = RequestMethod.GET)
-	public Collection<Tag> showTags(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,@PathVariable int rid,@RequestBody String jsonRating){
+	@RequestMapping(path = "search/tag", method = RequestMethod.GET)
+	public Collection<Tag> showTags(HttpServletRequest req, HttpServletResponse res){
 		return recipedao.showTags();
 	}
 	

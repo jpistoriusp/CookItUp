@@ -208,7 +208,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Set<Tag> showTags() {
-		String query = "select t from tags t";
+		String query = "select t from Tag t";
 		return new HashSet<>(em.createQuery(query, Tag.class).getResultList());
 	}
 }
