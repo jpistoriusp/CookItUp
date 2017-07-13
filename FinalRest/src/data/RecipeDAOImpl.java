@@ -107,7 +107,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 			e.printStackTrace();
 			return null;
 		}
-		return null;
 	}
 
 
