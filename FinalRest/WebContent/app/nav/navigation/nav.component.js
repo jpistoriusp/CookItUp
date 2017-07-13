@@ -13,7 +13,7 @@ angular.module('nav').component('navigation', {
 		
 		vm.moderator = function() {
 			console.log(authService.getToken().id);
-			if (authService.getToken().id == 3) {
+			if (authService.getToken().id == 5) {
 				
 				return true;
 			}
