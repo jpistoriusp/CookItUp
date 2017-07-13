@@ -47,6 +47,10 @@ angular.module('recipe')
 					})
 				}
 			}
+			$scope.displayNum = 1;
+			$scope.increaseBy = function(num) {
+			  $scope.displayNum +=num;
+			}
 		},
 		
 		controllerAs : 'vm',
