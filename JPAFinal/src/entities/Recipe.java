@@ -42,7 +42,7 @@ public class Recipe {
 	@JsonIgnore
 	private List<Tag> tags;
 
-	@OneToMany(mappedBy = "recipe")
+	@OneToMany(mappedBy = "recipe", fetch=FetchType.EAGER)
 	private List<Rating> rating;
 	
 	@OneToMany(mappedBy = "recipe")

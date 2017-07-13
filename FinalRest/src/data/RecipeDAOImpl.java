@@ -17,7 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import entities.Favorite;
 import entities.Ingredient;
+import entities.IngredientDTO;
 import entities.Instruction;
+import entities.InstructionDTO;
 import entities.Rating;
 import entities.Recipe;
 import entities.RecipeDTO;
@@ -39,7 +41,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {});
 
 		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
-		String recipeQuery = "SELECT r FROM Recipe r JOIN FETCH r.rating WHERE";
+		String recipeQuery = "SELECT r FROM Recipe r WHERE";
 
 		List<Ingredient> managedIngs = new ArrayList<Ingredient>();
 		for (Ingredient ingd : ingredients) {
@@ -91,17 +93,55 @@ public class RecipeDAOImpl implements RecipeDAO {
 			em.persist(r);
 			em.flush();
 			
-			Ingredient ing = new Ingredient();
-			ing.setName(recipeDTO.getIng());
-			em.persist(ing);
-			em.flush();
 			
-			RecipeIngredient ri = new RecipeIngredient();
-			ri.setIngredient(ing);
-			ri.setRecipe(r);
-			ri.setQuantity(recipeDTO.getQuantity());
-			em.persist(ri);
-			em.flush();
+			String qry = "Select i from Ingredient i";
+			List<Ingredient> managedIngs = new ArrayList<>();
+			managedIngs = em.createQuery(qry,Ingredient.class).getResultList();
+
+			for (IngredientDTO i : recipeDTO.getIngredients()) {
+				Ingredient managedIng = null;
+				boolean exists = false;
+				
+				for (Ingredient ingredient : managedIngs) {
+					if(ingredient.getName()==i.getName()){
+						exists = true;
+						managedIng = ingredient;
+					}
+				}
+				
+				if(exists){
+					RecipeIngredient ri = new RecipeIngredient();
+					ri.setIngredient(managedIng);
+					ri.setRecipe(r);
+					ri.setQuantity(i.getQuantity());
+					em.persist(ri);
+					em.flush();
+				}
+				else{
+					Ingredient newIng = new Ingredient();
+					newIng.setName(i.getName());
+					em.persist(newIng);
+					em.flush();
+					
+					RecipeIngredient ri = new RecipeIngredient();
+					ri.setIngredient(newIng);
+					ri.setRecipe(r);
+					ri.setQuantity(i.getQuantity());
+					em.persist(ri);
+					em.flush();
+				}
+				
+			}
+			
+			List<InstructionDTO> instructions = recipeDTO.getInstructions();
+			for (InstructionDTO instr : instructions) {
+				Instruction newInstr = new Instruction();
+				newInstr.setStepNumber(instr.getStepNumber());
+				newInstr.setText(instr.getText());
+				newInstr.setRecipe(r);
+				em.persist(newInstr);
+				em.flush();
+			}
 			
 			return r;
 		} catch (IOException e) {
