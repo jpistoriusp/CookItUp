@@ -22,6 +22,7 @@ import entities.Rating;
 import entities.Recipe;
 import entities.RecipeDTO;
 import entities.RecipeIngredient;
+import entities.Tag;
 import entities.User;
 
 @Transactional
@@ -203,5 +204,11 @@ public class RecipeDAOImpl implements RecipeDAO {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public Set<Tag> showTags() {
+		String query = "select t from tags t";
+		return new HashSet<>(em.createQuery(query, Tag.class).getResultList());
 	}
 }
