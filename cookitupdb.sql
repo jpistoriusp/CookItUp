@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -101,7 +101,6 @@ CREATE TABLE IF NOT EXISTS `recipe_tag` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `recipe_id` INT NOT NULL,
   `tag_id` INT NOT NULL,
-=======
 -- MySQL dump 10.13  Distrib 5.6.35, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: cookitupdb
