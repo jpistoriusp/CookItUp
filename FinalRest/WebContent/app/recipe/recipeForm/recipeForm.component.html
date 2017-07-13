@@ -1,8 +1,28 @@
 <form id="createRecipeForm">
 	<label for="createRecipeForm">Create a recipe:</label>
-	<input type="text" placeholder="Recipe Name" ng-model="recipeDTO.title"/>
-	<input type="text" placeholder="Post an image url" ng-model="recipeDTO.imgUrl"/>
-	<input type="text" placeholder="Quantity" ng-model="recipeDTO.quantity"/>
-	<input type="text" placeholder="Ingredient" ng-model="recipeDTO.ing"/>
-	<input type="submit" value="Add" ng-click="vm.createRecipe(recipeDTO); recipeDTO={}"/>
+	<input type="text" placeholder="Recipe Name" ng-model="vm.recipe.title"/>
+	<input type="text" placeholder="Post an image url" ng-model="vm.recipe.imgUrl"/><br>
+	
+	
+	<input type="text" placeholder="Quantity" ng-model="vm.recipe.ingredients[0].quantity"/>
+	<input type="text" placeholder="Ingredient" ng-model="vm.recipe.ingredients[0].name"/><br>
+	
+	<div ng-repeat="item in vm.ingredientArray">
+		<input type="text" placeholder="Quantity" ng-model="vm.recipe.ingredients[item.num].quantity"/>
+		<input type="text" placeholder="Ingredient" ng-model="vm.recipe.ingredients[item.num].name"/><br>
+	</div>
+	
+	<button ng-click="vm.ingredientInput()">Add Ingredient</button><br>
+					  
+	<input type="text" placeholder="Step Number" ng-model="vm.recipe.instructions[0].stepNumber"/>
+	<input type="text" placeholder="Instructions" ng-model="vm.recipe.instructions[0].text"/>
+	
+	<div ng-repeat="item in vm.instructionArray">
+		<input type="text" placeholder="Step" ng-model="vm.recipe.instructions[item.num].stepNumber"/>
+		<input type="text" placeholder="Instruction" ng-model="vm.recipe.instructions[item.num].text"/><br>
+	</div>
+	
+	<button ng-click="vm.instructionInput()">Add Step</button>
+					 
+	<input type="submit" value="Add" ng-click="vm.createRecipe(vm.recipe)"/>
 </form>

@@ -35,9 +35,13 @@ angular.module('recipe')
 				recipeService.index(ingredients)
 					.then(function(response){
 						vm.recipes = response.data;
-						if (!response.data) {
-							
-						}
+						vm.recipes.forEach(function(r,idx,arr){
+							var total = 0;
+							r.rating.forEach(function(rat,idx,arr){
+								total += rat.value
+							})
+							r.avgRating = total/r.rating.length;
+						})
 						console.log(response.data);
 					})
 			}

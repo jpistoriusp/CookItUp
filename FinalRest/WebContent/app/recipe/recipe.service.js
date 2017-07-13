@@ -91,6 +91,12 @@ angular.module('recipe')
 				url : 'api/user/'+uid+'/recipe/'+recipe.id+'/unfave'
 			})
 		}
+		service.showTags = function() {
+			return $http({
+				method : 'GET',
+				url : 'api/search/tag'
+			})
+		}
 		
 		return service;
 	})

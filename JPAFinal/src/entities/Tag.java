@@ -18,7 +18,7 @@ public class Tag {
 	private int id;
 
 	private String name;
-
+	
 	@ManyToMany(mappedBy = "tags")
 	@JsonIgnore
 	private List<Recipe> recipe;
@@ -51,6 +51,10 @@ public class Tag {
 
 	public void setIngredient(List<Ingredient> ingredient) {
 		this.ingredient = ingredient;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	@Override
