@@ -43,7 +43,6 @@ public class Recipe {
 	private List<Tag> tags;
 
 	@OneToMany(mappedBy = "recipe")
-	@JsonIgnore
 	private List<Rating> rating;
 	
 	@OneToMany(mappedBy = "recipe")
