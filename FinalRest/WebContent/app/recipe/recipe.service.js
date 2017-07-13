@@ -66,6 +66,15 @@ angular.module('recipe')
 			})
 		}
 		
+		service.showUserFavorites = function(uid){
+			checkLogin();
+			var uid = authService.getToken().id;
+			return $http({
+				method : 'GET',
+				url : 'api/user/'+uid+'/recipe'
+			})
+		}
+		
 		service.addToFavorites = function(recipe){
 			checkLogin();
 			var uid = authService.getToken().id;

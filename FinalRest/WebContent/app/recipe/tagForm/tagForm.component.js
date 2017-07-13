@@ -5,7 +5,9 @@ angular.module('recipe')
 			
 			var vm = this;
 			
-			
+			vm.showTags = function() {
+				
+			}
 			
 		},
 		controllerAs : 'vm'

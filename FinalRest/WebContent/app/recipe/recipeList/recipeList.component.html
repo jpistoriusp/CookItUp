@@ -18,7 +18,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="recipe in vm.recipes" ng-click="vm.selected = recipe; vm.showList = false; vm.loadDetails(recipe)">
+		<tr ng-repeat="recipe in vm.recipes" ng-click="vm.toggle(recipe)">
 			<td>{{recipe.title}}</td>
 			<td><img alt="" src="{{recipe.imgUrl}}"/></td>
 			<td><a href="{{recipe.sourceUrl}}">Source</a></td>
@@ -26,4 +26,4 @@
 	</tbody>
 </table>
 <recipe-show ng-hide="vm.showList" recipe="vm.selected" 
-	go-back="vm.changeListVisibility()"></recipe-show>
+	go-back="vm.changeListVisibility()" showList="vm.showList"></recipe-show>

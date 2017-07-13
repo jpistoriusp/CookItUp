@@ -6,6 +6,7 @@ angular.module('nav').component('navigation',{
 				if(authService.getToken().id){
 					return true;
 				}
+
 				return false;
 			}
 		},

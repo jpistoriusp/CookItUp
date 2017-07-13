@@ -36,11 +36,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {
-		});
+		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {});
 
 		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
-		String recipeQuery = "SELECT r FROM Recipe r WHERE";
+		String recipeQuery = "SELECT r FROM Recipe r JOIN FETCH r.rating WHERE";
 
 		List<Ingredient> managedIngs = new ArrayList<Ingredient>();
 		for (Ingredient ingd : ingredients) {
@@ -109,7 +108,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
 
 
@@ -157,16 +155,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
-	public Set<Recipe> showFavorite(int uid) {
-		String favoriteQ = "SELECT f FROM Favorite f WHERE f.user.id = :uid";
-
-		List<Favorite> f = new ArrayList<Favorite>(
-				em.createQuery(favoriteQ, Favorite.class).setParameter("uid", uid).getResultList());
-		List<Recipe> r = new ArrayList<Recipe>();
-		for (Favorite favorite : f) {
-			r.add(favorite.getRecipe());
-		}
-		return new HashSet<Recipe>(r);
+	public Set<Favorite> showFavorite(int uid) {
+		String favoriteQ = "SELECT f FROM Favorite f JOIN FETCH f.recipe WHERE f.user.id = :uid";
+		return new HashSet<Favorite>(em.createQuery(favoriteQ, Favorite.class).setParameter("uid", uid).getResultList());
 	}
 
 	public Boolean destroyFave(int uid, int rid) {
@@ -220,5 +211,4 @@ public class RecipeDAOImpl implements RecipeDAO {
 		String query = "select t from tags t";
 		return new HashSet<>(em.createQuery(query, Tag.class).getResultList());
 	}
-
 }

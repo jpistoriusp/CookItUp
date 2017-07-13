@@ -2,10 +2,20 @@ angular.module('recipe')
 	.component('recipeList', {
 		templateUrl : 'app/recipe/recipeList/recipeList.component.html',
 		
-		controller : function(recipeService) {
+		controller : function(recipeService, $rootScope) {
 			var vm = this;
 			
 			vm.ingredients = [];
+			
+			vm.toggle = function(recipe){
+				vm.selected = recipe; 
+				vm.showList = false; 
+				vm.loadDetails(recipe);
+				
+				$rootScope.$broadcast('recipeSelected', {
+					value : vm.showList
+				})
+			}
 			
 			vm.addIngredient = function(i){
 				vm.ingredients.push(i);
@@ -41,6 +51,7 @@ angular.module('recipe')
 			}
 			
 			vm.loadDetails = function (recipe) {
+				recipeService.showRecipe
 				recipeService.showIngredients(recipe)
 					.then(function(response){
 						vm.selected.recipeIngredients = response.data;
