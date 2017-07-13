@@ -6,40 +6,37 @@ public class RecipeDTO {
 
 	private String title;
 	private String imgUrl;
-	private String quantity;
-	private String ing;
+	private List<IngredientDTO> ingredients;
+	private List<InstructionDTO> instructions;
 	
-	
-	
-	public String getImgUrl() {
-		return imgUrl;
-	}
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	public String getQuantity() {
-		return quantity;
+	public String getImgUrl() {
+		return imgUrl;
 	}
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
-	
-	public String getIng() {
-		return ing;
+	public List<IngredientDTO> getIngredients() {
+		return ingredients;
 	}
-	public void setIng(String ing) {
-		this.ing = ing;
+	public void setIngredients(List<IngredientDTO> ingredients) {
+		this.ingredients = ingredients;
+	}
+	public List<InstructionDTO> getInstructions() {
+		return instructions;
+	}
+	public void setInstructions(List<InstructionDTO> instructions) {
+		this.instructions = instructions;
 	}
 	@Override
 	public String toString() {
-		return "RecipeDTO [title=" + title + ", imgUrl=" + imgUrl + ", quantity=" + quantity + ", ing=" + ing + "]";
+		return "RecipeDTO [title=" + title + ", imgUrl=" + imgUrl + ", ingredients="
+				+ ingredients + ", instructions=" + instructions + "]";
 	}
 	
 	
