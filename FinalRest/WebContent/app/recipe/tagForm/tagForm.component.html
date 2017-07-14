@@ -4,6 +4,6 @@
 	<input type="submit">Submit</input>
 </form> -->
 <h1>Sort by Type</h1>
- 	<div ng-repeat="tag in vm.tags">
- 		<input type="checkbox" value="{{tag.name}}" ng-checked="">{{tag.name}}test 
+ 	<div ng-repeat="tag in vm.tags | recipeFilter">
+ 		<input type="checkbox" value="{{tag.id}}" ng-model="vm.tag" ng-change="vm.filterRecipes()">{{tag.name}}
  	</div> 
