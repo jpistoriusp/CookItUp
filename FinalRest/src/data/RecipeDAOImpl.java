@@ -2,6 +2,7 @@ package data;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -80,7 +81,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe createRecipe(int uid, String recipeJson) {
-		System.out.println("In createRecipe DAO");
 		System.out.println(recipeJson);
 		ObjectMapper mapper = new ObjectMapper();
 	    try {
@@ -89,10 +89,19 @@ public class RecipeDAOImpl implements RecipeDAO {
 			Recipe r = new Recipe();
 			r.setTitle(recipeDTO.getTitle());
 			r.setImgUrl(recipeDTO.getImgUrl());
+			
+			Tag managedTag = em.createQuery("SELECT t FROM Tag t WHERE t.name='User-submitted'",
+					Tag.class).getSingleResult();
+			List<Tag> tags = new ArrayList<>();
+			tags.add(managedTag);
+			r.setTags(tags);
+			
 			//maybe create set User method when personalizing accounts
 //			recipe.setUser(em.find(User.class, uid));
 			em.persist(r);
 			em.flush();
+			
+
 			
 			
 			String qry = "Select i from Ingredient i";
@@ -272,5 +281,16 @@ public class RecipeDAOImpl implements RecipeDAO {
 		String query = "SELECT r FROM recipe r JOIN recipe_tag rt ON r.id = rt.recipe_id"
 				+ "JOIN tag t ON rt.tag_id = t.id WHERE t.id = :tid";
 		return new HashSet<>(em.createQuery(query, Recipe.class).setParameter("tid", tid).getResultList());
+	}
+	
+	@Override
+	public Recipe showRandomRecipe(){
+		System.out.print("************************************in dao");
+		String query = "SELECT r FROM Recipe r";
+		List<Recipe> rec = em.createQuery(query, Recipe.class).getResultList();
+		Collections.shuffle(rec);		
+		System.out.print("RANDOM RECIPE" + rec.get(0));
+
+		return rec.get(0);
 	}
 }

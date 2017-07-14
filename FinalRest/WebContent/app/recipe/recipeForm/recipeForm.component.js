@@ -31,9 +31,8 @@ angular.module('recipe').component(
 					});
 				};
 
-				vm.createRecipe = function() {
-					console.log(vm.recipe);
-					recipeService.createRecipe(angular.copy(vm.recipe)).then(
+				vm.createRecipe = function(recipe) {
+					recipeService.createRecipe(recipe).then(
 							function(response) {
 							});
 				}

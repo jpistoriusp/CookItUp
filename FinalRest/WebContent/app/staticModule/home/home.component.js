@@ -4,6 +4,7 @@ angular.module('staticModule')
 		controller: function(staticService, $location, authService){
 			
 			var vm = this;
+			var vm = randomRecipe = {};
 			
 			vm.loginChecker = function() {
 				if (authService.getToken().id) {
@@ -15,12 +16,21 @@ angular.module('staticModule')
 			}
 			
 			vm.displayProfile = function(){
-				console.log("in display profile")
 				staticService.index()
 				.then(function(res){
 					$location.path('/profile');
 				})
 			}
+			
+			vm.getRecipeOfTheDay = function() {
+				staticService.getRandomRecipe()
+				.then(function(res){
+					console.log(res.data);
+					vm.randomRecipe = res.data;
+				})
+			}
+			
+			vm.getRecipeOfTheDay()
 			
 		},
 		controllerAs : 'vm'

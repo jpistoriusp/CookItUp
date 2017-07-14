@@ -82,7 +82,6 @@ angular.module('recipe')
 					})
 			}
 			
-			
 			vm.showTags();
 		},
 		controllerAs : 'vm'

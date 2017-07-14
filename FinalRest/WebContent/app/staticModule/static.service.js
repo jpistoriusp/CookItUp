@@ -56,5 +56,13 @@ angular.module('staticModule').factory('staticService', function($http, authServ
               data : profile
         })
     }
+    
+    service.getRandomRecipe = function(){
+		return $http({
+			method : 'GET',
+			url : 'api/recipe/random',
+			})
+	}
+    
     return service;
 })

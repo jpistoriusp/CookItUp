@@ -28,5 +28,6 @@ public interface RecipeDAO {
 	public Boolean destroyFave(int uid, int rid);
 	public Set<Tag> showTags();
 	Set<Recipe> showFilteredRecipes(int tid);
+	public Recipe showRandomRecipe();
 	
 }
