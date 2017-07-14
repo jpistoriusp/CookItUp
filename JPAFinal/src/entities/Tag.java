@@ -21,7 +21,7 @@ public class Tag {
 	private String name;
 	
 	@ManyToMany(mappedBy = "tags")
-	@JsonBackReference
+	@JsonIgnore
 	private List<Recipe> recipe;
 
 	@ManyToMany(mappedBy = "tags")

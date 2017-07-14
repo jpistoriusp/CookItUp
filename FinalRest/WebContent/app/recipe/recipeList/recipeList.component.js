@@ -7,6 +7,8 @@ angular.module('recipe')
 			
 			vm.ingredients = [];
 			
+			vm.showFilter = false;
+			
 			vm.toggle = function(recipe){
 				vm.selected = recipe;
 				vm.showList = false;
