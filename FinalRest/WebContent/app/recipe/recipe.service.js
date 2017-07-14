@@ -84,9 +84,11 @@ angular.module('recipe')
 			console.log("in create rating");
 			console.log(rating);
 			checkLogin();
+			var uid = authService.getToken().id;
+			console.log(uid);
 			return $http({
 				method : 'POST',
-				url : 'api/user/' + userId + '/recipe/rating' ,
+				url : 'api/user/' + uid + '/recipe/rating' ,
 				headers : {
 					'Content-Type' : 'application/json'
 				},
