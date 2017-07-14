@@ -2,8 +2,8 @@
  	<div ng-repeat="tag in vm.tags">
  		<input type="checkbox" ng-model="tag.selected">{{tag.name}}
  	</div> 
- 	<div ng-repeat="recipe in vm.recipes | recipeFilter:vm.tags">
+ 	<div ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags">
  		<ul>
- 			<li>{{recipe}}</li>
+ 			<li>{{recipe.title}}</li>
  		</ul>
  	</div>

@@ -13,14 +13,17 @@ angular.module('recipe')
 				recipeService.showTags()
 					.then(function(response){
 						vm.tags = response.data;
+							vm.tags.forEach(function(tag, idx, arr){
+								tag.selected = false;
+							})
 					})
-				vm.tags.forEach(function(tag, idx, arr){
-						tag.selected = false;
-				})
 			}
 			
 			
 			vm.showTags();
 		},
-		controllerAs : 'vm'
+		controllerAs : 'vm',
+		bindings : {
+			recipes : '<'
+		}
 	})

@@ -2,7 +2,7 @@ angular.module('recipe')
 	.component('recipeList', {
 		templateUrl : 'app/recipe/recipeList/recipeList.component.html',
 		
-		controller : function(recipeService, $rootScope) {
+		controller : function(recipeService, $rootScope, $filter) {
 			var vm = this;
 			
 			vm.ingredients = [];
@@ -67,6 +67,23 @@ angular.module('recipe')
 							})
 					})
 			}
+			
+			vm.tags = [];
+			vm.recipes = [];
+			vm.filteredRecipes = [];
+			
+			vm.showTags = function() {
+				recipeService.showTags()
+					.then(function(response){
+						vm.tags = response.data;
+							vm.tags.forEach(function(tag, idx, arr){
+								tag.selected = false;
+							})
+					})
+			}
+			
+			
+			vm.showTags();
 		},
 		controllerAs : 'vm'
 	})
