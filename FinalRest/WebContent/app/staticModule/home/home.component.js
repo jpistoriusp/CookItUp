@@ -4,14 +4,24 @@ angular.module('staticModule')
 		controller: function(staticService, $location){
 			
 			var vm = this;
+			var vm = randomRecipe = {};
 			
 			vm.displayProfile = function(){
-				console.log("in display profile")
 				staticService.index()
 				.then(function(res){
 					$location.path('/profile');
 				})
 			}
+			
+			vm.getRecipeOfTheDay = function() {
+				staticService.getRandomRecipe()
+				.then(function(res){
+					console.log(res.data);
+					vm.randomRecipe = res.data;
+				})
+			}
+			
+			vm.getRecipeOfTheDay()
 			
 		},
 		controllerAs : 'vm'

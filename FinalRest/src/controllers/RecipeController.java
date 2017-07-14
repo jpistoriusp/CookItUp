@@ -103,8 +103,13 @@ public class RecipeController {
 		return recipedao.showTags();
 	}
 	
-	@RequestMapping(path = "search/recip/tag/{tid}", method = RequestMethod.GET)
+	@RequestMapping(path = "search/recipe/tag/{tid}", method = RequestMethod.GET)
 	public Set<Recipe> showTags(HttpServletRequest req, HttpServletResponse res, @PathVariable int tid){
 		return recipedao.showFilteredRecipes(tid);
+	}
+	
+	@RequestMapping(path = "recipe/random", method = RequestMethod.GET)
+	public Recipe showRandomRecipe(HttpServletRequest req, HttpServletResponse res){
+		return recipedao.showRandomRecipe();
 	}
 }

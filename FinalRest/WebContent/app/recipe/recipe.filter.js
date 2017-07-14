@@ -6,7 +6,6 @@ angular.module('recipe')
 			recipes.forEach(function(recipe, idx, arr){
 				recipe.tags.forEach(function(tag, idx, arr){
 					tags.forEach(function(t, idx, arr){
-						console.log(t.selected)
 						if (t.selected) {
 							listCheck = true;
 						}
@@ -17,7 +16,6 @@ angular.module('recipe')
 				})
 			});
 			if (!listCheck) {
-				console.log("in return")
 				return recipes;
 			}
 			return filteredRecipes;

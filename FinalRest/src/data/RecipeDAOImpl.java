@@ -2,6 +2,7 @@ package data;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -272,5 +273,16 @@ public class RecipeDAOImpl implements RecipeDAO {
 		String query = "SELECT r FROM recipe r JOIN recipe_tag rt ON r.id = rt.recipe_id"
 				+ "JOIN tag t ON rt.tag_id = t.id WHERE t.id = :tid";
 		return new HashSet<>(em.createQuery(query, Recipe.class).setParameter("tid", tid).getResultList());
+	}
+	
+	@Override
+	public Recipe showRandomRecipe(){
+		System.out.print("************************************in dao");
+		String query = "SELECT r FROM Recipe r";
+		List<Recipe> rec = em.createQuery(query, Recipe.class).getResultList();
+		Collections.shuffle(rec);		
+		System.out.print("RANDOM RECIPE" + rec.get(0));
+
+		return rec.get(0);
 	}
 }
