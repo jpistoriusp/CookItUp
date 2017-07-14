@@ -31,7 +31,7 @@ CREATE TABLE `favorite` (
   KEY `recipe_id_idx` (`recipe_id`),
   CONSTRAINT `fk_user_has_favorite` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_recipe` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `favorite` (
 
 LOCK TABLES `favorite` WRITE;
 /*!40000 ALTER TABLE `favorite` DISABLE KEYS */;
-INSERT INTO `favorite` VALUES (1,1,1),(2,1,2);
+INSERT INTO `favorite` VALUES (1,1,1),(2,1,2),(3,3,12);
 /*!40000 ALTER TABLE `favorite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +115,7 @@ CREATE TABLE `profile` (
   PRIMARY KEY (`id`),
   KEY `fk_profile_user1_idx` (`user_id`),
   CONSTRAINT `fk_profile_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'Nancy','Tran',25,NULL,'Denver',200.00,1),(2,'Chowder','Tran',4,NULL,'Denver',50.00,2);
+INSERT INTO `profile` VALUES (1,'Nancy','Tran',25,NULL,'Denver',200.00,1),(2,'Chowder','Tran',4,NULL,'Denver',50.00,2),(3,'Paul','Pistorius',26,NULL,'Denver, Co',185.00,3);
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,8 +155,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
-INSERT INTO `rating` VALUES (1,1,1,4,'Delicious!!!'),(2,1,1,3,'Pretty Good'),(3,1,1,2,'So so'), (4,1,1,1,'Yuck!'),
-(5,1,2,5,'Amazing!!!'),(6,1,2,1,'Terrible!'),(7,1,3,5,'Great!'),(8,1,3,1,'Bad!!!'),(9,1,3,2,'Just Ok'),(10,1,2,5,'Perfect!');
+INSERT INTO `rating` VALUES (1,1,1,4,NULL);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +254,6 @@ DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
-  `selected` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -332,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-13 13:57:14
+-- Dump completed on 2017-07-14 15:04:07
