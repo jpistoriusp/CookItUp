@@ -9,19 +9,24 @@ angular.module('recipe')
 			
 			vm.favorite = false;
 			
-			$scope.$on('recipeSelected', function(e,object){			
-				if (!object.value) {
+			vm.recipe = {}
+			
+			$scope.$on('recipeSelected', function(e,object){	
+				if (!object.value && authService.getToken().id) {
 					recipeService.showUserFavorites()
 						.then(function(response){
 							var favorites = response.data;
 							console.log(favorites);
 							favorites.forEach(function(fav,idx,arr){
+								console.log(vm.recipe.id)
 								if (fav.recipe.id === vm.recipe.id) {
 									vm.favorite = true;
 								}
 							})
 					})
+
 				}
+				console.log(vm.recipe)
 			})
 			
 			var checkLogin = function(){
@@ -49,7 +54,7 @@ angular.module('recipe')
 			}
 			$scope.displayNum = 1;
 			$scope.increaseBy = function(num) {
-			  $scope.displayNum +=num;
+				$scope.displayNum +=num;
 			}
 			
 			vm.recipeRating = {};
