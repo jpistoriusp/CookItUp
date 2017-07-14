@@ -56,6 +56,14 @@ angular.module('recipe')
 			$scope.increaseBy = function(num) {
 				$scope.displayNum +=num;
 			}
+			
+			vm.recipeRating = {};
+			vm.recipe = {};
+			vm.createRating = function(){
+				vm.recipeRating.recipe = vm.recipe;
+				console.log(vm.recipeRating);
+				recipeService.createRating = function(vm.recipeRating);
+			}
 		},
 		
 		controllerAs : 'vm',

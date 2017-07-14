@@ -34,24 +34,6 @@ angular.module('recipe')
 					console.log(response.data);
 				})
 		}
-//		
-//		service.createRecipeIngredient = function(recipeId,recipeIngredient,
-//						ingredient){
-//			console.log("in service create recIng");
-//			console.log(recipeIngredient);
-//			console.log(ingredient);
-//			return $http({
-//				method : 'POST',
-//				url : 'api/recipe/' + recipeId + '/ingredient',
-//				headers : {
-//					'Content-Type' : 'application/json'
-//				},
-//				data : recipeIngredient
-//			})
-//			.then(function(response){
-//				console.log(response.data);
-//			})
-//		}
 		
 		service.showIngredients = function(recipe) {
 			return $http({
@@ -96,6 +78,10 @@ angular.module('recipe')
 				method : 'GET',
 				url : 'api/search/tag'
 			})
+		}
+		
+		service.createRating = function(rating){
+			
 		}
 		
 		return service;

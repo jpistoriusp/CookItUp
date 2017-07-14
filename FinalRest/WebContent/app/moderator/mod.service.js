@@ -10,6 +10,13 @@ angular.module('mod')
 			})
 		}
 		
+		service.del = function(id){
+			return $http({
+				method : 'DELETE',
+				url : 'api/search/rating/'+id,
+			})
+		}
+		
 
 
 		
