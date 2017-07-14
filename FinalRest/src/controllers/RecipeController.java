@@ -47,6 +47,11 @@ public class RecipeController {
 	public Recipe create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String recipeDtoJson){
 		return recipedao.createRecipe(uid, recipeDtoJson);
 	}
+	
+	@RequestMapping(path = "user/{uid}/recipe/rating", method = RequestMethod.POST)
+	public Rating createRating(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String ratingDtoJson){
+		return recipedao.createRating(uid, ratingDtoJson);
+	}
   
 	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.PUT)
 	public Recipe update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid, @RequestBody String recipeJson){
@@ -68,10 +73,11 @@ public class RecipeController {
 		return recipedao.destroy(uid, rid);
 	}
 	
-	@RequestMapping(path = "recipe/{rid}/ingredient", method = RequestMethod.POST)
-	public RecipeIngredient createRecipeIngredient(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid, @RequestBody String recipeIngJson){
-		return recipedao.createRecipeIngredient(rid,recipeIngJson);
-	}
+//	@RequestMapping(path = "recipe/{rid}/ingredient", method = RequestMethod.POST)
+//	public RecipeIngredient createRecipeIngredient(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid, @RequestBody String recipeIngJson){
+//		return recipedao.createRecipeIngredient(rid,recipeIngJson);
+//	}
+	
 	@RequestMapping(path = "user/{uid}/recipe/{rid}/unfave", method = RequestMethod.DELETE)
 	public Boolean destroyFave(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid) {
 		return recipedao.destroyFave(uid, rid);
