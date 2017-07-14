@@ -21,6 +21,7 @@ import entities.IngredientDTO;
 import entities.Instruction;
 import entities.InstructionDTO;
 import entities.Rating;
+import entities.RatingDTO;
 import entities.Recipe;
 import entities.RecipeDTO;
 import entities.RecipeIngredient;
@@ -153,7 +154,22 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public Rating createRating(int uid, String ratingJson){
 		System.out.println(ratingJson);
-		return null;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			RatingDTO ratingDto = mapper.readValue(ratingJson, RatingDTO.class);
+			Rating r = new Rating();
+			r.setRecipe(ratingDto.getRecipe());
+			r.setUser(em.find(User.class, uid));
+			r.setValue(ratingDto.getValue());
+			r.setReview(ratingDto.getReview());
+			em.persist(r);
+			em.flush();
+			
+			return r;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 //	@Override
