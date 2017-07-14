@@ -149,27 +149,26 @@ public class RecipeDAOImpl implements RecipeDAO {
 			return null;
 		}
 	}
-
-
+	
 	@Override
-	public Ingredient createIngredient(String ingredientJson) {
-		// TODO Auto-generated method stub
+	public Rating createRating(int uid, String ratingJson){
+		System.out.println(ratingJson);
 		return null;
 	}
 
-	@Override
-	public RecipeIngredient createRecipeIngredient(int rid, String recipeIngJson) {
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			RecipeIngredient recipeIng = mapper.readValue(recipeIngJson, RecipeIngredient.class);
-			em.persist(recipeIng);
-			em.flush();
-			return recipeIng;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+//	@Override
+//	public RecipeIngredient createRecipeIngredient(int rid, String recipeIngJson) {
+//		ObjectMapper mapper = new ObjectMapper();
+//		try {
+//			RecipeIngredient recipeIng = mapper.readValue(recipeIngJson, RecipeIngredient.class);
+//			em.persist(recipeIng);
+//			em.flush();
+//			return recipeIng;
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//	}
 
 	@Override
 	public Recipe update(int uid, int rid, String recipeJson) {

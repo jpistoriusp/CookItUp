@@ -56,8 +56,7 @@ angular.module('recipe')
 			vm.recipe = {};
 			vm.createRating = function(){
 				vm.recipeRating.recipe = vm.recipe;
-				console.log(vm.recipeRating);
-				recipeService.createRating = function(vm.recipeRating);
+				recipeService.createRating(vm.recipeRating);
 			}
 		},
 		

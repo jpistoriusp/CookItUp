@@ -81,7 +81,20 @@ angular.module('recipe')
 		}
 		
 		service.createRating = function(rating){
-			
+			console.log("in create rating");
+			console.log(rating);
+			checkLogin();
+			return $http({
+				method : 'POST',
+				url : 'api/user/' + userId + '/recipe/rating' ,
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				data : rating
+			})
+				.then(function(response){
+					console.log(response.data);
+				})
 		}
 		
 		return service;
