@@ -15,8 +15,9 @@ public interface RecipeDAO {
 	public Set<Recipe> index(String json) throws Exception;
 	public Recipe show(int uid, int rid);
 	public Recipe createRecipe(int uid, String recipeJson);
-	public Ingredient createIngredient(String ingredientJson);
-	public RecipeIngredient createRecipeIngredient(int rid, String recipeIngJson);
+//	public Ingredient createIngredient(String ingredientJson);
+//	public RecipeIngredient createRecipeIngredient(int rid, String recipeIngJson);
+	public Rating createRating(int uid, String ratingJson);
 	public Recipe update(int uid, int rid, String recipeJson);
 	public Set<RecipeIngredient> showIngredients(int rid);
 	public Set<Instruction> showInstructions(int rid);
