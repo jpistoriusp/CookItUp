@@ -6,10 +6,12 @@
 <div ng-hide='vm.loginChecker()'>
 <div class="col-md-1 navi pull-right"><a href="#/login">Login</a></div>
 <div class="col-md-3 navi"><a href="#/register">Create User</a></div>
+
 </div>
 
 
 <div ng-show="vm.loginChecker()">
+<div class="col-md-1 navi pull-right" ng-click="vm.displayProfile()"><a href="#/profile">Profile</div>
 <div class="col-md-1 navi pull-right"><logout></logout></div>
 <div class="col-md-1 navi"><a href="#/favorite">Favorites</a></div>
 <div ng-show="vm.moderator()">

@@ -12,6 +12,11 @@
   background-color: green;
 }
 
+.btn-sm{
+
+	    margin-top: -5px;
+}
+
 .done{
 	text-decoration: line-through;
 	color:gray;
