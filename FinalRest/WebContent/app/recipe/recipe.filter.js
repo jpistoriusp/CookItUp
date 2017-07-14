@@ -1,7 +1,6 @@
 angular.module('recipe')
 	.filter('recipeFilter', function(){
 		return function(recipes, tags) {
-			console.log("infilter")
 			var filteredRecipes = [];
 			recipes.forEach(function(recipe, idx, arr){
 				console.log(recipe.tags)

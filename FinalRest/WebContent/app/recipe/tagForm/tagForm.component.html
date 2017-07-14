@@ -1,8 +1,3 @@
-<!-- <form>
-	<input type="checkbox" ng-model="vm.tag" ng-repeat="tag in vm.recipe.tags"
-	ng-change="vm.updateTags(vm.tag)"></input>
-	<input type="submit">Submit</input>
-</form> -->
 <h1>Sort by Type</h1>
  	<div ng-repeat="tag in vm.tags">
  		<input type="checkbox" ng-model="tag.selected">{{tag.name}}
