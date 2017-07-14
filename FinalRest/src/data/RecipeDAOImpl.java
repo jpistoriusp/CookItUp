@@ -81,7 +81,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe createRecipe(int uid, String recipeJson) {
-		System.out.println("In createRecipe DAO");
 		System.out.println(recipeJson);
 		ObjectMapper mapper = new ObjectMapper();
 	    try {
@@ -90,10 +89,19 @@ public class RecipeDAOImpl implements RecipeDAO {
 			Recipe r = new Recipe();
 			r.setTitle(recipeDTO.getTitle());
 			r.setImgUrl(recipeDTO.getImgUrl());
+			
+			Tag managedTag = em.createQuery("SELECT t FROM Tag t WHERE t.name='User-submitted'",
+					Tag.class).getSingleResult();
+			List<Tag> tags = new ArrayList<>();
+			tags.add(managedTag);
+			r.setTags(tags);
+			
 			//maybe create set User method when personalizing accounts
 //			recipe.setUser(em.find(User.class, uid));
 			em.persist(r);
 			em.flush();
+			
+
 			
 			
 			String qry = "Select i from Ingredient i";

@@ -1,10 +1,19 @@
 angular.module('staticModule')
 	.component('home', {
 		templateUrl : "app/staticModule/home/home.component.html",
-		controller: function(staticService, $location){
+		controller: function(staticService, $location, authService){
 			
 			var vm = this;
 			var vm = randomRecipe = {};
+			
+			vm.loginChecker = function() {
+				if (authService.getToken().id) {
+					console.log('true');
+					return true;
+				}
+				console.log('false');
+				return false;
+			}
 			
 			vm.displayProfile = function(){
 				staticService.index()

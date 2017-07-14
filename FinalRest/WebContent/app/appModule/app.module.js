@@ -22,6 +22,10 @@ angular.module('appModule',['staticModule','fave','mod', 'ngRoute', 'recipe','au
 			
 				template : "<mod></mod>"
 				
+			}).when('/about', {
+			
+				template : "<about></about>"
+				
 			})
 			.otherwise({
 				template : '<not-found></not-found>'
