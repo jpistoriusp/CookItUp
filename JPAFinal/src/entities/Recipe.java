@@ -39,7 +39,7 @@ public class Recipe {
 
 	@ManyToMany
 	@JoinTable(name = "recipe_tag", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-	@JsonIgnore
+	@JsonManagedReference
 	private List<Tag> tags;
 
 	@OneToMany(mappedBy = "recipe", fetch=FetchType.EAGER)
