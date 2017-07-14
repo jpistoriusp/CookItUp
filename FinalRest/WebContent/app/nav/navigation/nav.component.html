@@ -1,19 +1,32 @@
-<div>
-<a href="#/">Home</a>
-<a href="#/about">About</a>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid">
+ 
+	<div class="col-md-1 navi"><a href="#/">Home</a></div>
+	<div class="col-md-1 navi"><a href="#/about">About</a></div>
 <div ng-hide='vm.loginChecker()'>
-<a href="#/login">Login</a>
-<a href="#/register">Create User</a>
-</div>
+<div class="col-md-1 navi pull-right"><a href="#/login">Login</a></div>
+<div class="col-md-3 navi"><a href="#/register">Create User</a></div>
+
 </div>
 
 
 <div ng-show="vm.loginChecker()">
-<logout></logout>
-<a href="#/favorite">Favorites</a>
+<div class="col-md-1 navi pull-right" ng-click="vm.displayProfile()"><a href="#/profile">Profile</div>
+<div class="col-md-1 navi pull-right"><logout></logout></div>
+<div class="col-md-1 navi"><a href="#/favorite">Favorites</a></div>
 <div ng-show="vm.moderator()">
-<a href="#/moderator">Show alllllllll!!!!!!!</a>
+<div class="col-md-5 navi"><a href="#/moderator">Show alllllllll!!!!!!!</a></div>
 </div>
 </div>
+</div>
+</nav>
+
+
+
+
+
+
+
+
 
 

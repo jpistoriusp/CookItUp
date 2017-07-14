@@ -22,9 +22,11 @@ angular.module('recipe')
 		
 		service.createRecipe = function(recipeDTO){
 			checkLogin();
+			var uid = authService.getToken().id;
+			console.log(uid);
 			return $http({
 				method : 'POST',
-				url : 'api/user/' + userId + '/recipe',
+				url : 'api/user/' + uid + '/recipe',
 				headers : {
 					'Content-Type' : 'application/json'
 				},
@@ -81,7 +83,19 @@ angular.module('recipe')
 		}
 		
 		service.createRating = function(rating){
-			
+			checkLogin();
+			var uid = authService.getToken().id;
+			return $http({
+				method : 'POST',
+				url : 'api/user/' + uid + '/recipe/rating' ,
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				data : rating
+			})
+				.then(function(response){
+					console.log(response.data);
+				})
 		}
 		
 		return service;

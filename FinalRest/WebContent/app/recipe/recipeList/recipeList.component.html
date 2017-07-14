@@ -8,10 +8,18 @@
 		<ul>
 			<li ng-repeat="i in vm.ingredients">{{i.name}} <span><button ng-click="vm.deleteIngredient(i)">x</button></span></li>
 		</ul>
-		<button ng-click="vm.findRecipes(vm.ingredients)">Find Recipes</button>
+		<button ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button>
 	</form>
 </div>
 <table ng-show="vm.showList">
+	<div ng-show="vm.showFilter">
+<!-- 		<tag-form recipes="vm.recipes"></tag-form>
+ -->	
+ <h1>Sort by Type</h1>
+ 	<div ng-repeat="tag in vm.tags">
+ 		<input type="checkbox" ng-model="tag.selected">{{tag.name}}
+ 	</div> 
+ </div>
 	<thead>
 		<tr>
 			<th></th>
@@ -20,7 +28,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="recipe in vm.recipes" ng-click="vm.toggle(recipe)">
+		<tr ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags" ng-click="vm.toggle(recipe) ; vm.showFilter = false">
 			<td>{{recipe.title}}</td>
 			<td><img alt="" src="{{recipe.imgUrl}}"/></td>
 			<td>Rating: {{recipe.avgRating | number:1}}</td>
