@@ -13,7 +13,7 @@ angular.module('mod').component('mod', {
 	vm.deleteReview = function(id){
 		modService.del(id)
 		.then(function(result){
-			vm.reviewList.splice(id-1);
+			vm.listReview();
 		});
 		}
 		
