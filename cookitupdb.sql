@@ -266,7 +266,7 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-INSERT INTO `tag` VALUES (1,'Asian',NULL),(2,'Vegetarian',NULL);
+INSERT INTO `tag` VALUES (1,'User-submitted',NULL),(2,'Asian',NULL),(3,'Vegetarian',NULL);
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 

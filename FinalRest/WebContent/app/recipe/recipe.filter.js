@@ -17,7 +17,6 @@ angular.module('recipe')
 				})
 			});
 			if (!listCheck) {
-				console.log("in return")
 				return recipes;
 			}
 			return filteredRecipes;
