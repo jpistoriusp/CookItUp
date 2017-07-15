@@ -1,24 +1,24 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid">
- 
-	<div class="col-md-1 navi"><a href="#/">Home</a></div>
-	<div class="col-md-1 navi"><a href="#/about">About</a></div>
-<div ng-hide='vm.loginChecker()'>
-<div class="col-md-1 navi pull-right"><a href="#/login">Login</a></div>
-<div class="col-md-3 navi"><a href="#/register">Create User</a></div>
-
-</div>
-
-
-<div ng-show="vm.loginChecker()">
-<div class="col-md-1 navi pull-right" ng-click="vm.displayProfile()"><a href="#/profile">Profile</div>
-<div class="col-md-1 navi pull-right"><logout></logout></div>
-<div class="col-md-1 navi"><a href="#/favorite">Favorites</a></div>
-<div ng-show="vm.moderator()">
-<div class="col-md-5 navi"><a href="#/moderator">Show alllllllll!!!!!!!</a></div>
-</div>
-</div>
-</div>
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#/">Home</a></li>
+				<li><a href="#/about">About</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right" ng-hide='vm.loginChecker()'>
+				<li><a href="#/login">Login</a></li>
+				<li><a href="#/register">Create User</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right" ng-show="vm.loginChecker()">
+				<li>	<a href="#/profile" ng-click="vm.displayProfile()">Profile</a></li>
+				<li><logout></logout></li>
+				<li><a href="#/favorite">Favorites</a></li>
+				<li ng-show="vm.moderator()"><a href="#/moderator">Show alllllllll!!!!!!!</a></li>
+			</ul>
+		</div>
+	</div>
 </nav>
 
 
