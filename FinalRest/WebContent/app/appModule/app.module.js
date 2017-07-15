@@ -6,7 +6,11 @@ angular.module('appModule',['staticModule','fave','mod', 'ngRoute', 'recipe','au
 			})
 			.when('/profile', {
 				template : '<profile></profile>'
-			}).when('/login', {
+			})
+			.when('/createrecipe', {
+					template : '<recipe-form></recipe-form>'
+				})
+			.when('/login', {
 			
 				template : "<login></login>"
 				

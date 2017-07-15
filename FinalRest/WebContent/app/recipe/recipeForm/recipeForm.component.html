@@ -1,28 +1,63 @@
+<div class="container">
+<div class="row">
+<div class="col-md-6">
 <form id="createRecipeForm">
-	<label for="createRecipeForm">Create a recipe:</label>
-	<input type="text" placeholder="Recipe Name" ng-model="vm.recipe.title"/>
-	<input type="text" placeholder="Post an image url" ng-model="vm.recipe.imgUrl"/><br>
-	
-	
-	<input type="text" placeholder="Quantity" ng-model="vm.recipe.ingredients[0].quantity"/>
-	<input type="text" placeholder="Ingredient" ng-model="vm.recipe.ingredients[0].name"/><br>
-	
+	<div class="form-group">
+		<label for="createRecipeForm">Create a recipe:</label> <input
+			type="text" class="form-control" placeholder="Recipe Name"
+			ng-model="vm.recipe.title" />
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control"
+			placeholder="Post an image url" ng-model="vm.recipe.imgUrl" /><br>
+	</div>
+
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Quantity"
+			ng-model="vm.recipe.ingredients[0].quantity" />
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Ingredient"
+			ng-model="vm.recipe.ingredients[0].name" /><br>
+	</div>
 	<div ng-repeat="item in vm.ingredientArray">
-		<input type="text" placeholder="Quantity" ng-model="vm.recipe.ingredients[item.num].quantity"/>
-		<input type="text" placeholder="Ingredient" ng-model="vm.recipe.ingredients[item.num].name"/><br>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Quantity"
+				ng-model="vm.recipe.ingredients[item.num].quantity" />
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Ingredient"
+				ng-model="vm.recipe.ingredients[item.num].name" /><br>
+		</div>
 	</div>
-	
-	<button ng-click="vm.ingredientInput()">Add Ingredient</button><br>
-					  
-	<input type="text" placeholder="Step Number" ng-model="vm.recipe.instructions[0].stepNumber"/>
-	<input type="text" placeholder="Instructions" ng-model="vm.recipe.instructions[0].text"/>
-	
+
+	<button ng-click="vm.ingredientInput()">Add Ingredient</button>
+	<br>
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Step Number"
+			ng-model="vm.recipe.instructions[0].stepNumber" />
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Instructions"
+			ng-model="vm.recipe.instructions[0].text" />
+	</div>
 	<div ng-repeat="item in vm.instructionArray">
-		<input type="text" placeholder="Step" ng-model="vm.recipe.instructions[item.num].stepNumber"/>
-		<input type="text" placeholder="Instruction" ng-model="vm.recipe.instructions[item.num].text"/><br>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Step"
+				ng-model="vm.recipe.instructions[item.num].stepNumber" />
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Instruction"
+				ng-model="vm.recipe.instructions[item.num].text" /><br>
+		</div>
 	</div>
-	
+
 	<button ng-click="vm.instructionInput()">Add Step</button>
-					 
-	<input type="submit" value="Add" ng-click="vm.createRecipe(vm.recipe); vm.recipe={}"/>
+
+	<input type="submit" class="btn btn-default" value="Add"
+		ng-click="vm.createRecipe(vm.recipe); vm.recipe={}" />
+
 </form>
+</div>
+</div>
+</div>
