@@ -1,3 +1,12 @@
+body{
+	background-color: #BBBBBB;
+}
+.bodybackground{
+	background-color: #BBBBBB;
+}
+.frontlogo{
+	width: 25em;
+}
 .logo{
 	width: 4em;	
 }
