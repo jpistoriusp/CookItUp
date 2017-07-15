@@ -1,16 +1,16 @@
-<div class="row">
-<div class="col-md-10 text-center">
 <div ng-show="vm.showList">
 	<form id="addIngredientForm">
 		<label for="addIngredientForm">Enter an Ingredient:</label>
 		<input type="text" ng-model="ingredient.name"/>
-		<input type="submit" value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}"/>
+		<input class="btn btn-success" type="submit" value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}"/>
 	</form>
 	<form id="findRecipesForm">
-		<ul>
-			<li ng-repeat="i in vm.ingredients">{{i.name}} <span><button ng-click="vm.deleteIngredient(i)">x</button></span></li>
+		<ul class="list-group list-recipes">
+			<li ng-repeat="i in vm.ingredients" class="list-group-item list-group-item-success" >{{i.name}}
+				<button class="btn btn-link glyphicon glyphicon-remove" ng-click="vm.deleteIngredient(i)"></button>
+			</li>
 		</ul>
-		<button ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button>
+		<button class="btn btn-success" ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button>
 	</form>
 </div>
 <table ng-show="vm.showList">
@@ -40,5 +40,3 @@
 </table>
 <recipe-show ng-hide="vm.showList" recipe="vm.selected" 
 	go-back="vm.changeListVisibility()" showList="vm.showList"></recipe-show>
-	</div>
-	</div>

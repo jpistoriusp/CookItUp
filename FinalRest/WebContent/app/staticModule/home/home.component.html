@@ -3,23 +3,23 @@
 </div>
 
 <div ng-show ='vm.loginChecker()'>
-<a href='#/createrecipe' class='btn btn-default'>Create a recipe</a>
+<a href='#/createrecipe' class='btn btn-success'>Create a recipe</a>
 </div>
 
 <div class="container">      
 <div class="row">
 	<div class="col-sm-9 text-center">
 		<img src="images/logo.png" class="frontlogo">
+		<div>
+			<recipe-list></recipe-list>
+		</div>
 	</div>
     <div class="col-sm-3">
     	<div class="card-container">
          <div class="card">
              <div class="front">
                  <div class="cover">
-                     <img src="images/rotating_card_thumb3.png"/>
-                 </div>
-                 <div class="user">
-                     <img class="img-circle" src="images/rotating_card_profile.png"/>
+                     <img src="{{vm.randomRecipe.imgUrl}}">
                  </div>
                  <div class="content">
                      <div class="main">
@@ -30,7 +30,7 @@
                      </div>
                      <div class="footer">
                          <div class="rating">
-                             <i class="fa fa-mail-forward"></i> Auto Rotation
+                             <i class="fa fa-mail-forward"></i> Hover for Recipe Directions
                          </div>
                      </div>
                  </div>

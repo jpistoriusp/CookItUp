@@ -235,3 +235,9 @@ padding-top: 15px;
 .card .stats p{
 	color: #777777;
 }
+
+.list-recipes .btn {
+	position: absolute;
+	right: 0;
+	color: #D34747;
+}
