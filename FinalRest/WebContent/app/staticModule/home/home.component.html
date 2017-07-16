@@ -37,13 +37,13 @@
              </div> <!-- end front panel -->
              <div class="back">
                  <div class="header">
-                     <h5 class="motto">"See the list below"</h5>
+                     <h5 class="motto">{{vm.randomRecipe.title}}</h5>
                  </div>
                  <div class="content">
                      <div class="main">
-                         <h4 class="text-center">Ingredients</h4>
+                         <h6 class="text-center">Ingredients</h6>
                        <div class="text-center" ng-repeat="ri in vm.randomRecipe.recipeIngredients">{{ri.quantity}} {{ri.ingredient.name}}</div>
-                  		<h4>Instructions</h4>
+                       	<h6 class="text-center">Instructions</h6>
                        <div class="text-left">
 	                       	<ol>
 	                       		<li ng-repeat="i in vm.randomRecipe.instructions | orderBy: 'stepNum'">{{i.text}}</li>
