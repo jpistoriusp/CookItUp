@@ -292,4 +292,12 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 		return rec.get(0);
 	}
+
+	@Override
+	public Set<Ingredient> showIngred(int id) {
+		System.out.println(id);
+		String query = "SELECT i FROM Ingredient i JOIN recipe_ingredient ri ON ri.Ingredient.id = i.id WHERE ri.Recipe.id = :id";
+		System.out.println(new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList()));
+		return new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList());
+	}
 }

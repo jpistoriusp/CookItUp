@@ -29,5 +29,6 @@ public interface RecipeDAO {
 	public Set<Tag> showTags();
 	Set<Recipe> showFilteredRecipes(int tid);
 	public Recipe showRandomRecipe();
+	public Set<Ingredient> showIngred(int id);
 	
 }

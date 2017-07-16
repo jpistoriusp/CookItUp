@@ -6,6 +6,7 @@ angular.module('staticModule')
 			var vm = this;
 			
 			vm.randomRecipe = {};
+			vm.rndomIngred=[];
 			
 			vm.loginChecker = function() {
 				if (authService.getToken().id) {
@@ -23,10 +24,18 @@ angular.module('staticModule')
 				})
 			}
 			
+	
+			
 			vm.getRecipeOfTheDay = function() {
 				staticService.getRandomRecipe()
 				.then(function(res){
-					console.log(res.data);
+					console.log(res.data.id);
+					staticService.getIngred(res.data.id)
+					.then(function(res){
+						vm.rndomIngred = res.data;
+					})
+					
+					
 					vm.randomRecipe = res.data;
 				})
 			}
