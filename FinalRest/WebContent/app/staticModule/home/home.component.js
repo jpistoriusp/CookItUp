@@ -4,11 +4,12 @@ angular.module('staticModule')
 		controller: function(staticService, $location, authService){
 			
 			var vm = this;
+			
 			vm.randomRecipe = {};
+			vm.rndomIngred=[];
 			
 			vm.loginChecker = function() {
 				if (authService.getToken().id) {
-					console.log('true');
 					return true;
 				}
 				console.log('false');
@@ -22,11 +23,20 @@ angular.module('staticModule')
 				})
 			}
 			
+	
+			
 			vm.getRecipeOfTheDay = function() {
 				staticService.getRandomRecipe()
 				.then(function(res){
-					console.log(res.data);
 					vm.randomRecipe = res.data;
+					staticService.getIngred(res.data.id)
+					.then(function(res){
+						vm.randomRecipe.recipeIngredients = res.data;
+						staticService.getInstructions(vm.randomRecipe.id)
+							.then(function(res){
+								vm.randomRecipe.instructions = res.data
+							})
+					})
 				})
 			}
 			

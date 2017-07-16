@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.RecipeDAO;
 import entities.Favorite;
+import entities.Ingredient;
 import entities.Instruction;
 import entities.Rating;
 import entities.Recipe;
@@ -111,5 +112,10 @@ public class RecipeController {
 	@RequestMapping(path = "recipe/random", method = RequestMethod.GET)
 	public Recipe showRandomRecipe(HttpServletRequest req, HttpServletResponse res){
 		return recipedao.showRandomRecipe();
+	}
+	
+	@RequestMapping(path = "recipe/{rid}/random", method = RequestMethod.GET)
+	public Set<Ingredient> getIngred(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid){
+		return recipedao.showIngred(rid);
 	}
 }

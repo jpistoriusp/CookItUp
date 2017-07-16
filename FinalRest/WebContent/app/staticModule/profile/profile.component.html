@@ -1,28 +1,87 @@
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<form ng-show="vm.showCreateForm">
+			<h1>Create Profile</h1>
+			<div class="form-group">
+			<label for="FirstName">First Name:</label>
+				<input class="form-control" type=text placeholder="First Name" ng-model="profile.firstName" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="Last Name" ng-model="profile.lastName" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="number" placeholder="Age" ng-model="profile.age" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="number" placeholder="Weight" ng-model="profile.weight" />
+			</div>	
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="City and State" ng-model="profile.location" />
+			</div>		
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
+			</div>	
+			<div class="form-group">
+				<input class="form-control btn btn-success" type="submit" value="Create" ng-click="vm.createProfile(profile); vm.showCreateForm=false"/>
+			</div>
+		</form>
+	</div>
+</div>
+
+	<div class="col-md-5 col-md-offset-3">
+		<form ng-show="vm.showEditForm" class="form-horizontal">
+			<div class="col-sm-6 col-sm-offset-6">
+			<h1 class="text-center">Edit Profile</h1>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">First Name:</label>
+				<div class="col-sm-7">
+					<input class="form-control" type="text" placeholder="First Name" ng-value="vm.profile.firstName" ng-model="profile.firstName" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">Last Name:</label>
+				<div class="col-sm-7">
+					<input class="form-control" type="text" placeholder="Last Name" ng-value="vm.profile.lastName" ng-model="profile.lastName" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">Age:</label>
+				<div class="col-sm-7">				
+					<input class="form-control" type="number" placeholder="Age" ng-value="vm.profile.age" ng-model="profile.age" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">Weight:</label>
+				<div class="col-sm-7">
+					<input class="form-control" type="number" placeholder="Weight" ng-value="vm.profile.weight" ng-model="profile.weight" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">City and State:</label>
+				<div class="col-sm-7">				
+					<input class="form-control" type="text" placeholder="City and State" ng-value="vm.profile.location" ng-model="profile.location" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-5 control-label">Profile Pic URL:</label>
+				<div class="col-sm-7">				
+					<input class="form-control" type="text" placeholder="Profile Pic URL" ng-value="vm.profile.profilePic" ng-model="profile.profilePic" />
+				</div>
+			</div>
+			<div class="col-sm-4 col-sm-offset-8">
+			<div class="form-group">
+				<input class="form-control btn btn-success" type="submit" value="Edit" ng-click="vm.updateProfile(profile); vm.showEditForm=false"/>
+			</div>
+			</div>
+		</form>
+	</div>
+
+<div ng-show="vm.showTable()">
+<table class="table table-bordered">
 <h1>Profile</h1>
-
-<form ng-show="vm.showCreateForm">
-	<input type=text placeholder="First Name" ng-model="profile.firstName" />
-	<input type="text" placeholder="Last Name" ng-model="profile.lastName" />
-	<input type="number" placeholder="Age" ng-model="profile.age" />
-	<input type="number" placeholder="Weight" ng-model="profile.weight" />
-	<input type="text" placeholder="City and State" ng-model="profile.location" />
-	<input type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
-	<input type="submit" value="Create" ng-click="vm.createProfile(profile); vm.showCreateForm=false"/>
-</form>
-
-<form ng-show="vm.showEditForm">
-	<input type=text placeholder="First Name" ng-value="vm.profile.firstName" ng-model="profile.firstName" />
-	<input type="text" placeholder="Last Name" ng-value="vm.profile.lastName" ng-model="profile.lastName" />
-	<input type="number" placeholder="Age" ng-value="vm.profile.age" ng-model="profile.age" />
-	<input type="number" placeholder="Weight" ng-value="vm.profile.weight" ng-model="profile.weight" />
-	<input type="text" placeholder="City and State" ng-value="vm.profile.location" ng-model="profile.location" />
-	<input type="text" placeholder="Profile Pic URL" ng-value="vm.profile.profilePic" ng-model="profile.profilePic" />
-	<input type="submit" value="Edit" ng-click="vm.updateProfile(profile); vm.showEditForm=false"/>
-</form>
-
-<table ng-show="vm.showTable()">
 	<thead>
-		<tr>
+		<tr class="active">
 			<th>Picture</th>
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -32,15 +91,16 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
+		<tr class="success">
 			<td><img src="{{vm.profile.profilePic}}" height="42" width="42"></td>
 			<td>{{vm.profile.firstName}}</td>
 			<td>{{vm.profile.lastName}}</td>
 			<td>{{vm.profile.age}}</td>
 			<td>{{vm.profile.weight}}</td>
 			<td>{{vm.profile.location}}</td>
-			<td><button type="button" ng-hide="vm.showCreateButton" ng-click="vm.showEditForm=true">Edit Profile</button></td>
-			<td><button type="button" ng-show="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
+			<td><button type="button" class="btn btn-success" ng-hide="vm.showCreateButton" ng-click="vm.showEditForm=true">Edit Profile</button></td>
+			<td><button type="button" class="btn btn-success" ng-show="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
 		</tr>
 	</tbody>
 </table>
+</div>
