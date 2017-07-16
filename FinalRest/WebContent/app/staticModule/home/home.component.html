@@ -1,12 +1,84 @@
-<h1>Home</h1>
-
-
-<div ng-show ='vm.loginChecker()'>
-<button ng-click="vm.displayProfile()"><a href="#/profile">Profile</button>
-<div>{{vm.randomRecipe.title}}</div>
-</div>
-
-
 <div ng-hide ='vm.loginChecker()'>
 <h3>Please login if you want to view profile</h3>
 </div>
+
+<div ng-show ='vm.loginChecker()'>
+<a href='#/createrecipe' class='btn btn-success'>Create a recipe</a>
+</div>
+
+<div class="container">      
+<div class="row">
+	<div class="col-sm-9 text-center">
+		<img src="images/logo.png" class="frontlogo">
+		<div>
+			<recipe-list></recipe-list>
+		</div>
+	</div>
+    <div class="col-sm-3">
+    	<div class="card-container">
+         <div class="card">
+             <div class="front">
+                 <div class="cover">
+                     <img src="{{vm.randomRecipe.imgUrl}}">
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h3 class="name">Recipe Of The day</h3>
+                         <p class="profession">{{vm.randomRecipe.title}}</p>
+
+                         <p class="text-center">"Get a new recipe each day"</p>
+                     </div>
+                     <div class="footer">
+                         <div class="rating">
+                             <i class="fa fa-mail-forward"></i> Hover for Recipe Directions
+                         </div>
+                     </div>
+                 </div>
+             </div> <!-- end front panel -->
+             <div class="back">
+                 <div class="header">
+                     <h5 class="motto">"See the list below"</h5>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h4 class="text-center">Ingredients Needed</h4>
+                       <!--   <div class="text-center" ng-repeat="i in vm.randomRecipe.recipeIngredients"></div>
+                         -->
+
+                         <div class="stats-container">
+                             <div class="stats">
+                                 <h4>235</h4>
+                                 <p>
+                                     Followers
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>114</h4>
+                                 <p>
+                                     Following
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>35</h4>
+                                 <p>
+                                     Projects
+                                 </p>
+                             </div>
+                         </div>
+
+                     </div>
+                 </div>
+                 <div class="footer">
+                     <div class="social-links text-center">
+                         <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                         <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                         <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                     </div>
+                 </div>
+             </div> <!-- end back panel -->
+         </div> <!-- end card -->
+     </div> <!-- end card-container -->
+     	
+     </div>
+   </div>     
+</div>  
