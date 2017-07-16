@@ -66,9 +66,9 @@ angular.module('staticModule').factory('staticService', function($http, authServ
     
     service.getIngred = function(rid){
     	return $http({
-    		method : 'GET',
-    		url : 'api/recipe/'+rid+'/random',
-    	})
+			method : 'GET',
+			url : 'api/search/recipe/'+rid+'/recipeIngredient'
+	})
     }
     
     return service;

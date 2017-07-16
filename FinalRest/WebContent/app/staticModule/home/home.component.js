@@ -29,14 +29,11 @@ angular.module('staticModule')
 			vm.getRecipeOfTheDay = function() {
 				staticService.getRandomRecipe()
 				.then(function(res){
-					console.log(res.data.id);
+					vm.randomRecipe = res.data;
 					staticService.getIngred(res.data.id)
 					.then(function(res){
-						vm.rndomIngred = res.data;
+						vm.randomRecipe.recipeIngredients = res.data;
 					})
-					
-					
-					vm.randomRecipe = res.data;
 				})
 			}
 			
