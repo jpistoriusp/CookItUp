@@ -4,7 +4,7 @@ angular.module('staticModule')
 		controller: function(staticService, $location, authService){
 			
 			var vm = this;
-			var vm = randomRecipe = {};
+			vm.randomRecipe = {};
 			
 			vm.loginChecker = function() {
 				if (authService.getToken().id) {

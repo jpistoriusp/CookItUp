@@ -286,7 +286,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public Recipe showRandomRecipe(){
 		System.out.print("************************************in dao");
-		String query = "SELECT r FROM Recipe r";
+		String query = "SELECT r FROM Recipe r join fetch r.tags";
 		List<Recipe> rec = em.createQuery(query, Recipe.class).getResultList();
 		Collections.shuffle(rec);		
 		System.out.print("RANDOM RECIPE" + rec.get(0));
