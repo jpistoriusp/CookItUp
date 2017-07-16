@@ -10,7 +10,6 @@ angular.module('staticModule')
 			
 			vm.loginChecker = function() {
 				if (authService.getToken().id) {
-					console.log('true');
 					return true;
 				}
 				console.log('false');

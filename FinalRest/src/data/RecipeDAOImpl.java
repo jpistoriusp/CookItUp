@@ -211,7 +211,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 	public Recipe addToFavorite(int uid, int rid) {
 		// TODO Auto-generated method stub
 		Favorite fave = new Favorite();
-		fave.setRecipe(em.find(Recipe.class, rid));
+		fave.setRecipe(em.createQuery("SELECT r FROM Recipe r JOIN FETCH "
+				+ "r.tags WHERE r.id ="+rid,Recipe.class).getSingleResult());
+//		fave.setRecipe(em.find(Recipe.class, rid));
 		fave.setUser(em.find(User.class, uid));
 		em.persist(fave);
 		em.flush();
@@ -220,7 +222,8 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Set<Favorite> showFavorite(int uid) {
-		String favoriteQ = "SELECT f FROM Favorite f JOIN FETCH f.recipe WHERE f.user.id = :uid";
+		String favoriteQ = "SELECT f FROM Favorite f JOIN FETCH f.recipe r "
+				+ "JOIN FETCH r.tags WHERE f.user.id = :uid";
 		return new HashSet<Favorite>(em.createQuery(favoriteQ, Favorite.class).setParameter("uid", uid).getResultList());
 	}
 

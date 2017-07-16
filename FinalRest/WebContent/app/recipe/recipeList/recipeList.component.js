@@ -57,7 +57,6 @@ angular.module('recipe')
 			}
 			
 			vm.loadDetails = function (recipe) {
-				recipeService.showRecipe
 				recipeService.showIngredients(recipe)
 					.then(function(response){
 						vm.selected.recipeIngredients = response.data;
