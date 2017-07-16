@@ -33,6 +33,10 @@ angular.module('staticModule')
 					staticService.getIngred(res.data.id)
 					.then(function(res){
 						vm.randomRecipe.recipeIngredients = res.data;
+						staticService.getInstructions(vm.randomRecipe.id)
+							.then(function(res){
+								vm.randomRecipe.instructions = res.data
+							})
 					})
 				})
 			}

@@ -41,9 +41,14 @@
                  </div>
                  <div class="content">
                      <div class="main">
-                         <h4 class="text-center">Ingredients Needed</h4>
-                       <div class="text-center" ng-repeat="ri in vm.randomRecipe.recipeIngredients">{{ri.ingredient.name}}</div>
-                  
+                         <h4 class="text-center">Ingredients</h4>
+                       <div class="text-center" ng-repeat="ri in vm.randomRecipe.recipeIngredients">{{ri.quantity}} {{ri.ingredient.name}}</div>
+                  		<h4>Instructions</h4>
+                       <div class="text-left">
+	                       	<ol>
+	                       		<li ng-repeat="i in vm.randomRecipe.instructions | orderBy: 'stepNum'">{{i.text}}</li>
+	                       	</ol>
+                       </div>
 
                          <div class="stats-container">
                              <div class="stats">
