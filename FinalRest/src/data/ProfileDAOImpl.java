@@ -32,9 +32,12 @@ public class ProfileDAOImpl implements ProfileDAO {
 		ObjectMapper mapper = new ObjectMapper();
 		Profile mappedProfile = null;
 		User u = em.find(User.class, uid);
+		System.out.println(uid+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		
 		try {
 			mappedProfile = mapper.readValue(profileJson, Profile.class);
 			mappedProfile.setUser(u);
+			System.out.println(mappedProfile);
 			em.persist(mappedProfile);
 			em.flush();
 		} catch (Exception e) {
@@ -59,6 +62,11 @@ public class ProfileDAOImpl implements ProfileDAO {
 			e.printStackTrace();
 		}
 		return managedUser.getProfile();
+	}
+
+	@Override
+	public User showUser(int uid) {
+		return em.find(User.class, uid);
 	}
 
 }
