@@ -2,6 +2,13 @@ angular.module('staticModule').factory('staticService', function($http, authServ
 	
 	var service = {}
 	
+	var showUser = function(uid){
+		return $http({
+			method : 'GET',
+			url : 'api/search/user/'+uid
+		})
+	}
+	
 	service.checkLogin = function() {
 		var user = authService.getToken()
 		if(!user.id) {
@@ -10,7 +17,6 @@ angular.module('staticModule').factory('staticService', function($http, authServ
 	}
 	
 	service.index = function() {
-		console.log(authService.getToken().id)
 		service.checkLogin();
 		return $http({
 			method : 'GET',
@@ -28,19 +34,14 @@ angular.module('staticModule').factory('staticService', function($http, authServ
     
     service.create = function(profile) {
         service.checkLogin();
-        return $http({
-              method : 'POST',
-              url : "api/user/"+authService.getToken().id+"/profile",
-              headers : {
-                'Content-Type' : 'application/json'
-              },
-              data : profile
-            })
-//            .then(function(resp) {
-//                $rootScope.$broadcast('newMessage', {
-//                    message : resp.data
-//                });
-//            });
+    			return $http({
+    				method : 'POST',
+    				url : "api/user/"+authService.getToken().id+"/profile",
+    				headers : {
+    					'Content-Type' : 'application/json'
+    				},
+    				data : profile
+    			})
     };
     
     service.update = function(profile) {

@@ -8,7 +8,6 @@ angular.module('staticModule')
 			vm.showEditForm = false;
 			
 			vm.showTable = function(){
-				console.log("in show table")
 				if(!(vm.showCreateForm || vm.showEditForm)) {
 					return true;
 				}
@@ -33,9 +32,10 @@ angular.module('staticModule')
 			vm.createProfile = function(profile){
 				vm.showCreateButton = false;
 				staticService.create(profile)
-				.then(function(res){
-					vm.loadProfile();
-					$location.path('/profile');
+					.then(function(res){
+						console.log(res.data);
+						vm.loadProfile();
+						$location.path('/profile');
 				})
 			}
 			
