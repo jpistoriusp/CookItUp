@@ -82,7 +82,7 @@ padding-top: 15px;
     transform: none;
 }
 /* flip speed goes here */
-.dailycard {
+.card {
 	 -webkit-transition: -webkit-transform .5s;
    -moz-transition: -moz-transform .5s;
      -o-transition: -o-transform .5s;
