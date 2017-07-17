@@ -1,41 +1,52 @@
 <div ng-show="vm.showList">
 	<form id="addIngredientForm">
-		<label for="addIngredientForm">Enter an Ingredient:</label>
-		<input type="text" ng-model="ingredient.name"/>
-		<input class="btn btn-success" type="submit" value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}"/>
+		<label for="addIngredientForm">Enter an Ingredient:</label> <input
+			type="text" ng-model="ingredient.name" /> <input
+			class="btn btn-success" type="submit" value="Add"
+			ng-click="vm.addIngredient(ingredient); ingredient={}" />
 	</form>
 	<form id="findRecipesForm">
 		<ul class="list-group list-recipes">
-			<li ng-repeat="i in vm.ingredients" class="list-group-item list-group-item-success" >{{i.name}}
-				<button class="btn btn-link glyphicon glyphicon-remove" ng-click="vm.deleteIngredient(i)"></button>
+			<li ng-repeat="i in vm.ingredients"
+				class="list-group-item list-group-item-success">{{i.name}}
+				<button class="btn btn-link glyphicon glyphicon-remove"
+					ng-click="vm.deleteIngredient(i)"></button>
 			</li>
 		</ul>
-		<button class="btn btn-success" ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button>
+		<button class="btn btn-success"
+			ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find
+			Recipes</button>
 	</form>
 </div>
 
 <table ng-show="vm.showList">
 	<div ng-show="vm.showFilter">
- <h1>Sort by Type</h1>
- 	<div ng-repeat="tag in vm.tags">
- 		<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
- 	</div> 
- </div>
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
+		<h1>Sort by Type</h1>
+		<div ng-repeat="tag in vm.tags">
+			<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
+		</div>
+	</div>
 	<tbody>
-		<tr ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags" ng-click="vm.toggle(recipe) ; vm.showFilter = false">
-			<td>{{recipe.title}}</td>
-			<td><img class= "thumbnail" alt="" src="{{recipe.imgUrl}}"/></td>
-			<td>Rating: {{recipe.avgRating | number:1}}</td>
-			<td><a href="{{recipe.sourceUrl}}">Source</a></td>
+		<tr>
+			<td ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags">
+				<div class="card" style="width: 20rem; background-color: #f2ffbf">
+					<div
+						style="overflow: Hidden; width: 9.7em; height: 9.7em; display: inline-block;">
+						<img class="cardpicture" alt="" src="{{recipe.imgUrl}}"
+							style="height: 100%;" />
+					</div>
+					<div class="card-block">
+						<h4 class="card-title">{{recipe.title}}</h4>
+						<p class="card-text">Rating: {{recipe.avgRating | number:1}}</p>
+						<div ng-click="vm.toggle(recipe) ; vm.showFilter = false"
+							class="btn btn-success" style="margin-bottom: 4px;">Go to
+							Recipe</div>
+						<br>
+					</div>
+				</div>
+			</td>
 		</tr>
 	</tbody>
 </table>
-<recipe-show ng-hide="vm.showList" recipe="vm.selected" 
+<recipe-show ng-hide="vm.showList" recipe="vm.selected"
 	go-back="vm.changeListVisibility()" showList="vm.showList"></recipe-show>
