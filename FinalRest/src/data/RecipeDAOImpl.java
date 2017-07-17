@@ -311,37 +311,38 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public void jsonTest() {
-//		System.out.println("in jsontest");
-//		try {
-//			URL url = new URL(
-//					"https://api.edamam.com/search?q=soup&app_id=4e3145e9&app_key=d3336f8c5171f54cb9b61d65f173a5f3&from=0&to=100");
-//			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//			conn.setRequestMethod("GET");
-//			conn.connect();
-//			int responsecode = conn.getResponseCode();
-//			if (responsecode > 500)
-//				throw new RuntimeException("HttpResponseCode: " + responsecode);
-//			else {
-//				Scanner sc = new Scanner(url.openStream());
-//				String inline = "";
-//				while (sc.hasNext()) {
-//					inline += sc.nextLine();
-//				}
-//				System.out.println("\nJSON data in string format");
-//				System.out.println(inline);
-//				sc.close();
-//
-//				// javax.json.stream.JsonParser parser = Json.createParser(new
-//				// StringReader("[]"));
-//
-//			}
-//
-//		} catch (MalformedURLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		System.out.println("in jsontest");
+		try {
+			URL url = new URL(
+					"https://api.edamam.com/search?q=soup&app_id=4e3145e9&app_key=d3336f8c5171f54cb9b61d65f173a5f3&from=0&to=100");
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.connect();
+			int responsecode = conn.getResponseCode();
+			if (responsecode > 500)
+				throw new RuntimeException("HttpResponseCode: " + responsecode);
+			else {
+				Scanner sc = new Scanner(url.openStream());
+				String inline = "";
+				String[] jsonArray = null;
+				while (sc.hasNext()) {
+					inline += sc.nextLine();
+				}
+				System.out.println("\nJSON data in string format");
+				System.out.println(inline);
+				sc.close();
+
+				// javax.json.stream.JsonParser parser = Json.createParser(new
+				// StringReader("[]"));
+
+			}
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
