@@ -32,7 +32,7 @@
 	<tbody>
 		<tr ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags" ng-click="vm.toggle(recipe) ; vm.showFilter = false">
 			<td>{{recipe.title}}</td>
-			<td><img alt="" src="{{recipe.imgUrl}}"/></td>
+			<td><img class= "thumbnail" alt="" src="{{recipe.imgUrl}}"/></td>
 			<td>Rating: {{recipe.avgRating | number:1}}</td>
 			<td><a href="{{recipe.sourceUrl}}">Source</a></td>
 		</tr>
