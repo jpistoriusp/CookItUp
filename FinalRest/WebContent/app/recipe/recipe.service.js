@@ -98,5 +98,12 @@ angular.module('recipe')
 				})
 		}
 		
+		service.showRecipe = function(recipe){
+			return $http({
+				method : 'GET',
+				url : 'api/search/recipe/'+recipe.id
+			})
+		}
+		
 		return service;
 	})

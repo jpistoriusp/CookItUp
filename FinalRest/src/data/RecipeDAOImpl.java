@@ -80,9 +80,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
-	public Recipe show(int uid, int rid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Recipe show(int rid) {
+		Recipe r = em.createQuery("SELECT r FROM Recipe r "
+				+ "JOIN FETCH r.tags WHERE r.id="+rid, Recipe.class).getSingleResult();
+		return r;
 	}
 
 	@Override
