@@ -53,6 +53,14 @@
 		</div>
 	</div>
 
+	
+	<div ng-repeat="tag in vm.tags">
+		
+		<!-- <<select ng-model="vm.tags" ng-options="tag.name for tag in tags">
+		</select> -->
+ 		<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
+ 	</div> 
+ 	
 	<button class="btn btn-success" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
 
 	<input type="submit" class="btn btn-success" value="Add"
