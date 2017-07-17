@@ -6,8 +6,8 @@
 	<h2>{{vm.recipe.title}}</h2>
 </div>
 <div class="">
-	Ingredients:
-	<ul id="list-ingredients" class="pull-left col-md-offset-4">
+	<h4>Ingredients:</h4>
+	<ul id="list-ingredients" class="col-md-offset-4">
 		<li ng-repeat="ring in vm.recipe.recipeIngredients">{{ring.quantity}}
 			{{ring.ingredient.name}}</li>
 	</ul>
@@ -24,7 +24,8 @@
 </div>
 <div>
 	<h5 ng-repeat="rating in vm.recipe.rating | limitTo: displayNum">
-		Review: {{rating.review}} | Rating: {{rating.value | number:1}}</h5>
+		Review: {{rating.review}} | Rating: {{rating.value | number:1}}
+	</h5>
 	<button ng-hide="vm.clicked" ng-click="increaseBy(); vm.clicked=true">See
 		more...</button>
 	<button ng-show="vm.clicked" ng-click="displayNum=1; vm.clicked=false">See
@@ -48,9 +49,7 @@
 	<form id="reviewRecipeForm">
 		<label for="reviewRecipeForm">Leave a review:</label> <input
 			type="text" placeholder="Rate(1-5)" ng-model="vm.recipeRating.value" />
-		<input type="text" placeholder="Write a review"
-			ng-model="vm.recipeRating.review" /> <input type="submit"
-			value="Submit"
-			ng-click="vm.createRating(vm.recipe,vm.recipeRating); vm.recipeRating = {}" />
+		<input type="text" placeholder="Write a review" ng-model="vm.recipeRating.review" /> 
+		<input type="submit" value="Submit" ng-click="vm.createRating(vm.recipe,vm.recipeRating); vm.recipeRating = {}" />
 	</form>
 </div>
