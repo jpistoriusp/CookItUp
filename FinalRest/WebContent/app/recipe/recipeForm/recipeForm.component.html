@@ -52,7 +52,15 @@
 		</div>
 	</div>
 
-	<button ng-click="vm.instructionInput()">Add Step</button>
+	<div><button ng-click="vm.instructionInput()">Add Step</button></div>
+	
+	<div ng-repeat="tag in vm.tags">
+		
+		<!-- <<select ng-model="vm.tags" ng-options="tag.name for tag in tags">
+		</select> -->
+ 		<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
+ 	</div> 
+ 	
 
 	<input type="submit" class="btn btn-default" value="Add"
 		ng-click="vm.createRecipe(vm.recipe); vm.recipe={}" />

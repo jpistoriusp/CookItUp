@@ -8,7 +8,16 @@ public class RecipeDTO {
 	private String imgUrl;
 	private List<IngredientDTO> ingredients;
 	private List<InstructionDTO> instructions;
+	private List<Tag> tags;
 	
+	
+	
+	public List<Tag> getTags() {
+		return tags;
+	}
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -35,8 +44,8 @@ public class RecipeDTO {
 	}
 	@Override
 	public String toString() {
-		return "RecipeDTO [title=" + title + ", imgUrl=" + imgUrl + ", ingredients="
-				+ ingredients + ", instructions=" + instructions + "]";
+		return "RecipeDTO [title=" + title + ", imgUrl=" + imgUrl + ", ingredients=" + ingredients + ", instructions="
+				+ instructions + ", tags=" + tags + "]";
 	}
 	
 	
