@@ -66,12 +66,19 @@ angular.module('recipe')
 						recipeService.showRecipe(vm.recipe)
 							.then(function(resp){
 								vm.recipe = resp.data;
-								console.log(vm.recipe+"*************");
 								var total = 0;
 								vm.recipe.rating.forEach(function(rat,idx,arr){
 									total += rat.value
 								})
 								vm.recipe.avgRating = total/vm.recipe.rating.length;
+								recipeService.showIngredients(vm.recipe)
+									.then(function(resp){
+										vm.recipe.recipeIngredients = resp.data;
+										recipeService.showInstructions(vm.recipe)
+											.then(function(resp){
+												vm.recipe.instructions = resp.data;
+											})
+									})
 							})
 					})
 			}
