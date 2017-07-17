@@ -23,6 +23,14 @@ angular.module('recipe').component(
 
 				};
 
+				
+				var stepCounter = 0;
+				vm.addStepNumber = function(){
+				vm.recipe.instructions[stepCounter].stepNumber=stepCounter+1;
+				stepCounter++;
+				}
+				
+				
 				var insCounter = 0;
 				vm.instructionInput = function() {
 					insCounter++;
@@ -32,8 +40,10 @@ angular.module('recipe').component(
 				};
 
 				vm.createRecipe = function(recipe) {
+					vm.addStepNumber();
 					recipeService.createRecipe(recipe).then(
 							function(response) {
+							 stepCounter = 0;
 							});
 				}
 
