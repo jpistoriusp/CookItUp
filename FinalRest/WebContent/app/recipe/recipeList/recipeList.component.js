@@ -44,7 +44,6 @@ angular.module('recipe')
 							})
 							r.avgRating = total/r.rating.length;
 						})
-						console.log(response.data);
 					})
 			}
 			
