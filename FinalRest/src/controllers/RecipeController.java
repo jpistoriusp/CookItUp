@@ -40,9 +40,9 @@ public class RecipeController {
 		}
 	}
   
-	@RequestMapping(path = "user/{uid}/recipe/{rid}", method = RequestMethod.GET)
-	public Recipe show(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int rid){
-		return recipedao.show(uid, rid);
+	@RequestMapping(path = "search/recipe/{rid}", method = RequestMethod.GET)
+	public Recipe show(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid){
+		return recipedao.show(rid);
 	}
   
 	@RequestMapping(path = "user/{uid}/recipe", method = RequestMethod.POST)

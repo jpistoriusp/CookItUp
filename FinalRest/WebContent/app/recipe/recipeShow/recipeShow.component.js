@@ -61,7 +61,26 @@ angular.module('recipe')
 			vm.recipe = {};
 			vm.createRating = function(){
 				vm.recipeRating.recipe = vm.recipe;
-				recipeService.createRating(vm.recipeRating);
+				recipeService.createRating(vm.recipeRating)
+					.then(function(res){
+						recipeService.showRecipe(vm.recipe)
+							.then(function(resp){
+								vm.recipe = resp.data;
+								var total = 0;
+								vm.recipe.rating.forEach(function(rat,idx,arr){
+									total += rat.value
+								})
+								vm.recipe.avgRating = total/vm.recipe.rating.length;
+								recipeService.showIngredients(vm.recipe)
+									.then(function(resp){
+										vm.recipe.recipeIngredients = resp.data;
+										recipeService.showInstructions(vm.recipe)
+											.then(function(resp){
+												vm.recipe.instructions = resp.data;
+											})
+									})
+							})
+					})
 			}
 		},
 		
