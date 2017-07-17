@@ -10,7 +10,9 @@ body{
 .logo{
 	width: 4em;	
 }
-
+.recipeimage{
+	width: 4em;
+}
 .errors {
 	font-size:150%;
   color: red;
@@ -26,7 +28,7 @@ body{
 
 .btn-sm{
 
-	    margin-top: -5px;
+	    margin-top: 10px;
 }
 
 .done{
@@ -47,7 +49,8 @@ padding-top: 15px;
 }
 
 .thumbnail {
-	width: 4em;
+	width: 10em;
+	
 }
 
 .card-container {
