@@ -12,6 +12,7 @@
 			<ul class="nav navbar-nav navbar-right" ng-hide='vm.loginChecker()'>
 				<li><login></login></li>  
 <!-- 				<li><a href="#/login">Login</a></li> -->
+				<!-- <li><a href='#' data-toggle="modal" data-target="#loginModal">Login</a></li> -->
 				<li><a href="#/register">Create User</a></li>
 			</ul>
 			
@@ -27,8 +28,27 @@
 
 
 
+<div class="modal fade" id="loginModal" role="dialog">
+			<div class="modal-dialog">
 
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Log in</h4>
+					</div>
+					<div class="modal-body">
+						<input type="email" ng-model="user.email" placeholder="E-mail"/>
+						<input type="password" ng-model="user.password" placeholder="password"/>
+						<input type="submit" value="Login" ng-click="vm.login(user)"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
 
+			</div>
+		</div>
 
 
 
