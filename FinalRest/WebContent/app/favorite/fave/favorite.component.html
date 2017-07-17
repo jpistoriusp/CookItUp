@@ -1,1 +1,27 @@
-<div ng-repeat="fave in vm.listFave"><img src="{{fave.recipe.imgUrl}}" alt="Food picture"></div>
+<div ng-show="vm.showList">
+	<div class="text-center"><h3 >Favorites</h3></div>
+	<table>
+		<tbody>
+			<tr>
+				<td ng-repeat="fave in vm.listFave">
+					<div class="card" style="width: 20rem; background-color: #f2ffbf">
+						<div style="overflow: Hidden; width: 9.7em; height: 9.7em; display: inline-block;">
+							<img class="cardpicture" alt="" src="{{fave.recipe.imgUrl}}"
+								style="height: 100%;" />
+						</div>
+						<div class="card-block">
+							<h4 class="card-title">{{fave.recipe.title}}</h4>
+							<p class="card-text">Rating: {{fave.recipe.avgRating | number:1}}</p>
+							<div ng-click="vm.toggle(fave); vm.showList=false"
+								class="btn btn-success" style="margin-bottom: 4px;">Go to
+								Recipe</div>
+							<br>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<recipe-show ng-hide="vm.showList" recipe="vm.selected"
+	go-back="vm.changeListVisibility()" showList="vm.showList"></recipe-show>
