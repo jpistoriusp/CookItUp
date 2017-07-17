@@ -4,6 +4,9 @@ body{
 .bodybackground{
 	background-color: #BBBBBB;
 }
+#list-ingredients {
+	list-style: none;
+}
 .frontlogo{
 	width: 25em;
 }
