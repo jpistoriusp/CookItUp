@@ -32,6 +32,7 @@ public class RecipeController {
 	public Collection<Recipe> index(HttpServletRequest req, HttpServletResponse res, @RequestBody String json) {
 		
 		try {
+			recipedao.jsonTest();
 			return recipedao.index(json);
 		} catch (Exception e) {
 			e.printStackTrace();

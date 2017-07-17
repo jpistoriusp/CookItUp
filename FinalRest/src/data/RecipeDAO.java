@@ -30,5 +30,6 @@ public interface RecipeDAO {
 	Set<Recipe> showFilteredRecipes(int tid);
 	public Recipe showRandomRecipe();
 	public Set<Ingredient> showIngred(int id);
+	void jsonTest();
 	
 }
