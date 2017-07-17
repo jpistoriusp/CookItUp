@@ -29,11 +29,19 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags" ng-click="vm.toggle(recipe) ; vm.showFilter = false">
-			<td>{{recipe.title}}</td>
-			<td><img class= "thumbnail" alt="" src="{{recipe.imgUrl}}"/></td>
-			<td>Rating: {{recipe.avgRating | number:1}}</td>
-			<td><a href="{{recipe.sourceUrl}}">Source</a></td>
+		<tr>
+		<td ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags">		
+	<div class="card" style="width: 20rem; background-color:#f2ffbf">
+	<div style="overflow: Hidden; width:9.7em; height:9.7em;">
+  		<img alt="" src="{{recipe.imgUrl}}"/>
+    </div>
+  <div class="card-block">
+    <h4 class="card-title">{{recipe.title}}</h4>
+    <p class="card-text">Rating: {{recipe.avgRating | number:1}}</p>
+    <div ng-click="vm.toggle(recipe) ; vm.showFilter = false" class="btn btn-success">Go to Recipe</div><br>
+  </div>
+</div>
+</td>
 		</tr>
 	</tbody>
 </table>
