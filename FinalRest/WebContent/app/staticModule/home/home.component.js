@@ -1,12 +1,25 @@
 angular.module('staticModule')
 	.component('home', {
 		templateUrl : "app/staticModule/home/home.component.html",
-		controller: function(staticService, $location, authService){
+		controller: function(staticService, $location, authService, $scope){
 			
 			var vm = this;
 			
 			vm.randomRecipe = {};
 			vm.rndomIngred=[];
+			vm.showDaily = true;
+
+			$scope.$on('recipeDaily', function(e){
+				if (vm.showDaily) {
+					vm.showDaily = false;
+				} else {
+					vm.showDaily = true;
+				}
+			})
+			
+			vm.dailyChecker = function() {
+				recipeService.toggleDaily();
+			}
 			
 			vm.loginChecker = function() {
 				if (authService.getToken().id) {
