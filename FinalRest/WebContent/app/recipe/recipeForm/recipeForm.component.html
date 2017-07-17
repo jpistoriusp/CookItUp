@@ -31,9 +31,9 @@
 		</div>
 	</div>
 
-	<button ng-click="vm.ingredientInput()">Add Ingredient</button>
+	<button class="btn btn-success" ng-click="vm.ingredientInput()">Add Ingredient</button>
 	<br>
-	
+	<br>
 <!-- 	<div class="form-group">
 		<input type="hide" class="form-control" placeholder="Step Number"
 			ng-model="vm.recipe.instructions[0].stepNumber" />
@@ -53,9 +53,9 @@
 		</div>
 	</div>
 
-	<button ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
+	<button class="btn btn-success" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
 
-	<input type="submit" class="btn btn-default" value="Add"
+	<input type="submit" class="btn btn-success" value="Add"
 		ng-click="vm.createRecipe(vm.recipe); vm.recipe={}" />
 
 </form>
