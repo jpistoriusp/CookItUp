@@ -16,6 +16,7 @@
 		<class>entities.Profile</class>
 		<class>entities.Ingredient</class>
 		<class>entities.Instruction</class>
+		<class>entities.RecipeIngredient</class>
 		<class>entities.Favorite</class>
 	
 		<properties>
