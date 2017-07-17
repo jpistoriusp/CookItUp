@@ -1,7 +1,15 @@
 angular.module('nav').component('navigation', {
 	templateUrl : 'app/nav/navigation/nav.component.html',
-	controller : function(authService) {
+	controller : function(authService, $location) {
 		var vm = this;
+		
+		vm.login = function(user){
+			authService.login(user)
+				.then(function(resp){
+					$location.path('/');
+				})
+		}
+		
 		vm.loginChecker = function() {
 			if (authService.getToken().id) {
 				

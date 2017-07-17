@@ -1,6 +1,7 @@
 package data;
 
 import entities.Profile;
+import entities.User;
 
 public interface ProfileDAO {
 	
@@ -11,4 +12,6 @@ public interface ProfileDAO {
 	public Profile create(int uid, String profileJson);
 	
 	public Profile update(int uid, String profileJson);
+	
+	public User showUser(int uid);
 }

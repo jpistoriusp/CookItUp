@@ -4,8 +4,16 @@ body{
 .bodybackground{
 	background-color: #BBBBBB;
 }
+#list-ingredients {
+	list-style: none;
+	text-align: justify;
+}
 .frontlogo{
 	width: 25em;
+}
+.cardpicture{
+	vertical-align: middle;
+    margin-top: 4px;
 }
 .logo{
 	width: 4em;	
@@ -128,7 +136,9 @@ padding-top: 15px;
 .card{
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 4px;
-    color: #444444;
+    border: solid;
+    margin: 12px;
+    color: #435e3d;
 }
 .card-container, .front, .back {
 	width: 100%;
