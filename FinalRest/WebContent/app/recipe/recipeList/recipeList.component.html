@@ -13,13 +13,12 @@
 		<button class="btn btn-success" ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button>
 	</form>
 </div>
+
 <table ng-show="vm.showList">
 	<div ng-show="vm.showFilter">
-<!-- 		<tag-form recipes="vm.recipes"></tag-form>
- -->	
  <h1>Sort by Type</h1>
  	<div ng-repeat="tag in vm.tags">
- 		<input type="checkbox" ng-model="tag.selected">{{tag.name}}
+ 		<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
  	</div> 
  </div>
 	<thead>

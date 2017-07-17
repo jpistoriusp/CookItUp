@@ -292,7 +292,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe showRandomRecipe() {
-		System.out.print("************************************in dao");
 		String query = "SELECT r FROM Recipe r JOIN FETCH r.tags";
 		List<Recipe> rec = em.createQuery(query, Recipe.class).getResultList();
 		Collections.shuffle(rec);
@@ -325,6 +324,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 			else {
 				Scanner sc = new Scanner(url.openStream());
 				String inline = "";
+				String[] jsonArray = null;
 				while (sc.hasNext()) {
 					inline += sc.nextLine();
 				}
