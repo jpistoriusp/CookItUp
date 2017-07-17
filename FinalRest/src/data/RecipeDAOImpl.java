@@ -325,6 +325,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 			else {
 				Scanner sc = new Scanner(url.openStream());
 				String inline = "";
+				String[] jsonArray = null;
 				while (sc.hasNext()) {
 					inline += sc.nextLine();
 				}
