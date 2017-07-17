@@ -7,6 +7,10 @@ body{
 .frontlogo{
 	width: 25em;
 }
+.cardpicture{
+	vertical-align: middle;
+    margin-top: 4px;
+}
 .logo{
 	width: 4em;	
 }
@@ -78,7 +82,7 @@ padding-top: 15px;
     transform: none;
 }
 /* flip speed goes here */
-.card {
+.dailycard {
 	 -webkit-transition: -webkit-transform .5s;
    -moz-transition: -moz-transform .5s;
      -o-transition: -o-transform .5s;
@@ -128,7 +132,9 @@ padding-top: 15px;
 .card{
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 4px;
-    color: #444444;
+    border: solid;
+    margin: 12px;
+    color: #435e3d;
 }
 .card-container, .front, .back {
 	width: 100%;
