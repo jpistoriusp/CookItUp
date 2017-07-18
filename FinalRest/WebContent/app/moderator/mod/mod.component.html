@@ -1,1 +1,21 @@
-<div ng-repeat="r in vm.reviewList | orderBy:'id'" >{{r}} <button ng-click="vm.deleteReview(r.id)">delete</button></div>
+<h1>Edit Page</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Value</th>
+      <th>Review</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+       <tr ng-repeat="r in vm.reviewList | orderBy:'id'">
+      <th>{{r.id}}</th>
+      <th>{{r.value}}</th>
+      <th>{{r.review}}</th>
+      <th><button ng-click="vm.deleteReview(r.id)">delete</button></th>
+    </tr>
+</tbody>
+</table>
+
