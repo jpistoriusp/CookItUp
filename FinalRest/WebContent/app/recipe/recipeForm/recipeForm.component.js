@@ -41,25 +41,8 @@ angular.module('recipe').component(
 				};
 
 				vm.tags = [];
-				
-				vm.createRecipe = function(recipe) {
-					
-					vm.tags.forEach(function(tag,index,array){
-						if(tag.selected === true){
-							console.log(tag);
-							console.log(vm.recipe.tags);
-							vm.recipe.tags.push(tag);
-						}
-					})
-					vm.addStepNumber();
-					recipeService.createRecipe(recipe).then(
-							function(response) {
-							 stepCounter = 0;
-							});
-				}
-				
+				vm.tagName = "";
 				vm.selectedTags = [];
-				
 				
 				vm.showTags = function() {
 					recipeService.showTags()
@@ -74,6 +57,35 @@ angular.module('recipe').component(
 				}
 				
 				vm.showTags();
+				
+				vm.createTag = function(tagName) {
+					console.log("create Tag");
+					if(tagName){
+						console.log(vm.tags.length);
+						var newTag = {};
+						newTag.id = vm.tags.length + 1;
+						newTag.name = tagName;
+						console.log(newTag);
+						vm.recipe.tags.push(newTag);
+					}
+				}
+				
+				vm.createRecipe = function(recipe) {
+					console.log("create recipe");
+					console.log(recipe);
+					vm.tags.forEach(function(tag,index,array){
+						if(tag.selected === true){
+							console.log(tag);
+							console.log(vm.recipe.tags);
+							vm.recipe.tags.push(tag);
+						}
+					})
+					vm.addStepNumber();
+					recipeService.createRecipe(recipe).then(
+							function(response) {
+							 stepCounter = 0;
+							});
+				}
 
 			},
 

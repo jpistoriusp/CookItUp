@@ -34,10 +34,7 @@
 	<button class="btn btn-success" ng-click="vm.ingredientInput()">Add Ingredient</button>
 	<br>
 	<br>
-<!-- 	<div class="form-group">
-		<input type="hide" class="form-control" placeholder="Step Number"
-			ng-model="vm.recipe.instructions[0].stepNumber" />
-	</div> -->
+
 	<div class="form-group">
 		<input type="text" class="form-control" placeholder="Instructions"
 			ng-model="vm.recipe.instructions[0].text"  />
@@ -55,16 +52,17 @@
 
 	
 	<div ng-repeat="tag in vm.tags">
-		
-		<!-- <<select ng-model="vm.tags" ng-options="tag.name for tag in tags">
-		</select> -->
  		<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
+ 	</div> 
+	
+	<div>
+ 		<input type="text" placeholder="New Tag" ng-model="vm.tagName"/>
  	</div> 
  	
 	<button class="btn btn-success" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
 
 	<input type="submit" class="btn btn-success" value="Add"
-		ng-click="vm.createRecipe(vm.recipe); vm.recipe={}" />
+		ng-click="vm.createTag(vm.tagName); vm.createRecipe(vm.recipe); vm.recipe={}" />
 
 </form>
 </div>
