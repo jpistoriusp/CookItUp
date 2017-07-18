@@ -49,6 +49,7 @@
 				ng-model="vm.recipe.instructions[item.num].text" /><br>
 		</div>
 	</div>
+			<button class="btn btn-success" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
 
 	
 	<div ng-repeat="tag in vm.tags">
@@ -59,7 +60,6 @@
  		<input type="text" placeholder="New Tag" ng-model="vm.tagName"/>
  	</div> 
  	
-	<button class="btn btn-success" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
 
 	<input type="submit" class="btn btn-success" value="Add"
 		ng-click="vm.createTag(vm.tagName); vm.createRecipe(vm.recipe); vm.recipe={}" />

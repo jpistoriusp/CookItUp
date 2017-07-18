@@ -1,3 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#/"> <img alt="Brand"
+				src="images/logo-small.png" height="20" width="69">
+			</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#/about">About</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right" ng-hide='vm.loginChecker()'>
+				<li><a href='#' data-toggle="modal" data-target="#loginModal">Login</a></li>
+				<li><a href='#' data-toggle="modal" data-target="#register">Register</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right" ng-show="vm.loginChecker()">
+				<li><a href="#/profile" ng-click="vm.displayProfile()">Profile</a></li>
+				<li><logout></logout></li>
+				<li><a href="#/favorite">Favorites</a></li>
+				<li ng-show="vm.moderator()"><a href="#/moderator">Show All
+						Reviews</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
 <div class="modal fade" id="loginModal" role="dialog">
 	<div class="modal-dialog">
 
@@ -10,8 +37,6 @@
 			<div class="modal-body">
 				<input type="email" ng-model="user.email" placeholder="E-mail" /> <input
 					type="password" ng-model="user.password" placeholder="password" />
-				
-					
 			</div>
 			<div class="modal-footer">
 			<input type="submit" value="Login" ng-click="vm.login(user)" data-dismiss="modal" />
@@ -46,45 +71,3 @@
 
 	</div>
 </div>
-
-
-
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#/"> <img alt="Brand"
-				src="images/logo-small.png" height="20" width="69">
-			</a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="#/about">About</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right" ng-hide='vm.loginChecker()'>
-				<li><login></login></li>
-				<!-- 				<li><a href="#/login">Login</a></li> -->
-				<!-- <li><a href='#' data-toggle="modal" data-target="#loginModal">Login</a></li> -->
-				<li><register></register></li>
-			</ul>
-
-			<ul class="nav navbar-nav navbar-right" ng-show="vm.loginChecker()">
-				<li><a href="#/profile" ng-click="vm.displayProfile()">Profile</a></li>
-				<li><logout></logout></li>
-				<li><a href="#/favorite">Favorites</a></li>
-				<li ng-show="vm.moderator()"><a href="#/moderator">Show All
-						Reviews</a></li>
-			</ul>
-
-		</div>
-
-	</div>
-
-
-</nav>
-
-
-
-
-
-
-

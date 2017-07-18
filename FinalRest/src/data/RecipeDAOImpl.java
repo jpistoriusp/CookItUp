@@ -122,13 +122,15 @@ public class RecipeDAOImpl implements RecipeDAO {
 			String qry = "Select i from Ingredient i";
 			List<Ingredient> managedIngs = new ArrayList<>();
 			managedIngs = em.createQuery(qry, Ingredient.class).getResultList();
+			System.out.println(managedIngs);
+			System.out.println(recipeDTO.getIngredients());
 
 			for (IngredientDTO i : recipeDTO.getIngredients()) {
 				Ingredient managedIng = null;
 				boolean exists = false;
 
 				for (Ingredient ingredient : managedIngs) {
-					if (ingredient.getName() == i.getName()) {
+					if (ingredient.getName().toLowerCase().equals(i.getName().toLowerCase())) {
 						exists = true;
 						managedIng = ingredient;
 					}
