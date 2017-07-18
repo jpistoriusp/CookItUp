@@ -71,6 +71,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		for (int i = 0; i < managedIngs.size(); i++) {
 			recipes.setParameter("ing" + i, managedIngs.get(i));
 		}
+		System.out.println(recipes.getResultList());
 		return new HashSet<Recipe>(recipes.getResultList());
 	}
 
@@ -91,6 +92,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 			r.setImgUrl(recipeDTO.getImgUrl());
 
 			List<Tag> recipeDtoTags = recipeDTO.getTags();
+//			if(recipeDtoTags == null) {
+//				Tag tag = new Tag();
+//				tag.setName("User-submitted");
+//			}
 			for (Tag tag : recipeDtoTags) {
 				List<Tag> managedTags = em.createQuery("SELECT t FROM Tag t WHERE t.name=:name", Tag.class)
 						.setParameter("name", tag.getName())
