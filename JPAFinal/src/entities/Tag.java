@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Tag {
@@ -20,7 +22,7 @@ public class Tag {
 
 	private String name;
 	
-	@ManyToMany(mappedBy = "tags")
+	@ManyToMany(mappedBy = "tags",cascade={CascadeType.PERSIST})
 	@JsonIgnore
 	private List<Recipe> recipe;
 

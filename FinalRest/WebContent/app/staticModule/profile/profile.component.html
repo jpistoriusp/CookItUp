@@ -36,42 +36,42 @@
 			<div class="form-group">
 				<label class="col-sm-5 control-label">First Name:</label>
 				<div class="col-sm-7">
-					<input class="form-control" type="text" placeholder="First Name" ng-value="vm.profile.firstName" ng-model="profile.firstName" />
+					<input class="form-control" type="text" placeholder="First Name" ng-model="vm.profile.firstName" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">Last Name:</label>
 				<div class="col-sm-7">
-					<input class="form-control" type="text" placeholder="Last Name" ng-value="vm.profile.lastName" ng-model="profile.lastName" />
+					<input class="form-control" type="text" placeholder="Last Name" ng-model="vm.profile.lastName" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">Age:</label>
 				<div class="col-sm-7">				
-					<input class="form-control" type="number" placeholder="Age" ng-value="vm.profile.age" ng-model="profile.age" />
+					<input class="form-control" type="number" placeholder="Age" ng-model="vm.profile.age" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">Weight:</label>
 				<div class="col-sm-7">
-					<input class="form-control" type="number" placeholder="Weight" ng-value="vm.profile.weight" ng-model="profile.weight" />
+					<input class="form-control" type="number" placeholder="Weight" ng-model="vm.profile.weight" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">City and State:</label>
 				<div class="col-sm-7">				
-					<input class="form-control" type="text" placeholder="City and State" ng-value="vm.profile.location" ng-model="profile.location" />
+					<input class="form-control" type="text" placeholder="City and State" ng-model="vm.profile.location" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">Profile Pic URL:</label>
 				<div class="col-sm-7">				
-					<input class="form-control" type="text" placeholder="Profile Pic URL" ng-value="vm.profile.profilePic" ng-model="profile.profilePic" />
+					<input class="form-control" type="text" placeholder="Profile Pic URL" ng-model="vm.profile.profilePic" />
 				</div>
 			</div>
 			<div class="col-sm-4 col-sm-offset-8">
 			<div class="form-group">
-				<input class="form-control btn btn-success" type="submit" value="Edit" ng-click="vm.updateProfile(profile); vm.showEditForm=false"/>
+				<input class="form-control btn btn-success" type="submit" value="Edit" ng-click="vm.updateProfile(vm.profile); vm.showEditForm=false"/>
 			</div>
 			</div>
 		</form>
@@ -100,6 +100,11 @@
 			<td>{{vm.profile.location}}</td>
 			<td><button type="button" class="btn btn-success" ng-hide="vm.showCreateButton" ng-click="vm.showEditForm=true">Edit Profile</button></td>
 			<td><button type="button" class="btn btn-success" ng-show="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
+			<td>
+				<div>
+					<a href='#/createrecipe' class='btn btn-success'>Create a recipe</a>
+				</div>
+			</td>
 		</tr>
 	</tbody>
 </table>

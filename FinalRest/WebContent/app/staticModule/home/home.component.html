@@ -2,24 +2,24 @@
 	<h3>Please login if you want to view profile</h3>
 </div>
 
-<div ng-show='vm.loginChecker()'>
-	<a href='#/createrecipe' class='btn btn-success'>Create a recipe</a>
-</div>
-
 <div class="container">
 	<div class="row">
 		<div class="col-sm-9 text-center">
-			<img src="images/logo.png" class="frontlogo">
+
+			<div ng-show="vm.showDaily">
+				<img src="images/logo.png" class="frontlogo">
+			</div>
+
 			<div>
 				<recipe-list></recipe-list>
 			</div>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-3" ng-show="vm.showDaily">
 			<div class="card-container">
 				<div class="card">
 					<div class="front">
 						<div class="cover">
-						 <img src="{{vm.randomRecipe.imgUrl}}">
+							<img src="{{vm.randomRecipe.imgUrl}}">
 						</div>
 						<div class="content">
 							<div class="main">

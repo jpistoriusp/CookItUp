@@ -1,15 +1,10 @@
 package data;
 
 import java.io.IOException;
-import java.io.StringReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -88,23 +83,32 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe createRecipe(int uid, String recipeJson) {
-		System.out.println(recipeJson);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			RecipeDTO recipeDTO = mapper.readValue(recipeJson, RecipeDTO.class);
-			System.out.println("RecipeDTO: " + recipeDTO);
 			Recipe r = new Recipe();
 			r.setTitle(recipeDTO.getTitle());
 			r.setImgUrl(recipeDTO.getImgUrl());
 
-			Tag managedTag = em.createQuery("SELECT t FROM Tag t WHERE t.name='User-submitted'", Tag.class)
-					.getSingleResult();
-			List<Tag> tags = new ArrayList<>();
-			tags.add(managedTag);
-			r.setTags(tags);
-
-			// maybe create set User method when personalizing accounts
-			// recipe.setUser(em.find(User.class, uid));
+			List<Tag> recipeDtoTags = recipeDTO.getTags();
+			for (Tag tag : recipeDtoTags) {
+				List<Tag> managedTags = em.createQuery("SELECT t FROM Tag t WHERE t.name=:name", Tag.class)
+						.setParameter("name", tag.getName())
+						.getResultList();
+				if(managedTags.size() > 0){
+					List<Tag> tags = new ArrayList<>();
+					tags.add(managedTags.get(0));
+					r.setTags(tags);
+				}
+				else{
+					Tag t = new Tag();
+					t.setName(tag.getName());
+					List<Tag> tags = new ArrayList<>();
+					tags.add(t);
+					r.setTags(tags);
+					em.persist(t);
+				}
+			}
 			em.persist(r);
 			em.flush();
 
@@ -155,7 +159,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 				em.persist(newInstr);
 				em.flush();
 			}
-
 			return r;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -183,22 +186,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 			return null;
 		}
 	}
-
-	// @Override
-	// public RecipeIngredient createRecipeIngredient(int rid, String
-	// recipeIngJson) {
-	// ObjectMapper mapper = new ObjectMapper();
-	// try {
-	// RecipeIngredient recipeIng = mapper.readValue(recipeIngJson,
-	// RecipeIngredient.class);
-	// em.persist(recipeIng);
-	// em.flush();
-	// return recipeIng;
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// return null;
-	// }
-	// }
 
 	@Override
 	public Recipe update(int uid, int rid, String recipeJson) {
@@ -308,42 +295,5 @@ public class RecipeDAOImpl implements RecipeDAO {
 		System.out
 				.println(new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList()));
 		return new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList());
-	}
-
-	@Override
-	public void jsonTest() {
-		System.out.println("in jsontest");
-		try {
-			URL url = new URL(
-					"https://api.edamam.com/search?q=soup&app_id=4e3145e9&app_key=d3336f8c5171f54cb9b61d65f173a5f3&from=0&to=100");
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.connect();
-			int responsecode = conn.getResponseCode();
-			if (responsecode > 500)
-				throw new RuntimeException("HttpResponseCode: " + responsecode);
-			else {
-				Scanner sc = new Scanner(url.openStream());
-				String inline = "";
-				String[] jsonArray = null;
-				while (sc.hasNext()) {
-					inline += sc.nextLine();
-				}
-				System.out.println("\nJSON data in string format");
-				System.out.println(inline);
-				sc.close();
-
-				// javax.json.stream.JsonParser parser = Json.createParser(new
-				// StringReader("[]"));
-
-			}
-
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

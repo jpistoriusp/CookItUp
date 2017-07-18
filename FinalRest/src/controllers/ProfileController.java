@@ -12,12 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.ProfileDAO;
 import entities.Profile;
+import entities.User;
 
 @RestController
 public class ProfileController {
 	
 	@Autowired
 	private ProfileDAO profileDAO;
+	
+	@RequestMapping(path = "/search/user/{uid}", method = RequestMethod.GET)
+	public User showUser(HttpServletRequest req, HttpServletResponse res,@PathVariable int uid) {
+		return profileDAO.showUser(uid);
+	}
 	
 	@RequestMapping(path = "/user/{uid}/profile", method = RequestMethod.GET)
 	public Profile index(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
@@ -31,7 +37,7 @@ public class ProfileController {
     
     @RequestMapping(path= "/user/{uid}/profile", method = RequestMethod.POST)
     public Profile create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody String profileJson) {
-        return profileDAO.create(uid, profileJson);
+    		return profileDAO.create(uid, profileJson);
     }
     
     @RequestMapping(path = "/user/{uid}/profile", method = RequestMethod.PUT)

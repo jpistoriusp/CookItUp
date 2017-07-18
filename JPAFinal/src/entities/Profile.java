@@ -102,6 +102,4 @@ public class Profile {
 				+ ", profilePic=" + profilePic + ", location=" + location + ", weight=" + weight+"]";
 	}
 
-
-
 }
