@@ -3,10 +3,9 @@
 <div ng-hide='vm.loginChecker()'>
 	<h5 class="loginalert">Please login if you want to view profile</h5>
 </div>
-
 <div class="container">
 	<div class="row">
-		<div class="col-sm-9 text-center">
+		<div class="col-md-9 text-center">
 
 			<div ng-show="vm.showDaily">
 				<img src="images/logo.png" class="frontlogo">
@@ -16,7 +15,7 @@
 				<recipe-list></recipe-list>
 			</div>
 		</div>
-		<div class="col-sm-3" ng-show="vm.showDaily">
+		<div class="col-md-3 rightshow" ng-show="vm.showDaily">
 			<div class="card-container">
 				<div class="card">
 					<div class="front">
@@ -54,10 +53,8 @@
 								</div>
 								<div class="footer">
 									<!-- Trigger the modal with a button -->
-									<button type="button" class="btn btn-lg btn-success"
+									<button type="button" class="daybutton"
 										data-toggle="modal" data-target="#oneModal">Instructions</button>
-
-
 
 								</div>
 							</div>
@@ -96,5 +93,5 @@
 		</div>
 
 	</div>
-
+</div>
 	
