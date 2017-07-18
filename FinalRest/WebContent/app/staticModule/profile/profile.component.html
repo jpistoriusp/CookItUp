@@ -22,12 +22,11 @@
 				<input class="form-control" type="text" placeholder="Profile Pic URL" ng-model="profile.profilePic" />
 			</div>	
 			<div class="form-group">
-				<input class="form-control btn btn-success" type="submit" value="Create" ng-click="vm.createProfile(profile); vm.showCreateForm=false"/>
+				<input class="mybutton" type="submit" value="Create" ng-click="vm.createProfile(profile); vm.showCreateForm=false"/>
 			</div>
 		</form>
 	</div>
 </div>
-
 	<div class="col-md-5 col-md-offset-3">
 		<form ng-show="vm.showEditForm" class="form-horizontal">
 			<div class="col-sm-6 col-sm-offset-6">
@@ -71,7 +70,7 @@
 			</div>
 			<div class="col-sm-4 col-sm-offset-8">
 			<div class="form-group">
-				<input class="form-control btn btn-success" type="submit" value="Edit" ng-click="vm.updateProfile(vm.profile); vm.showEditForm=false"/>
+				<input class="mybutton" type="submit" value="Edit" ng-click="vm.updateProfile(vm.profile); vm.showEditForm=false"/>
 			</div>
 			</div>
 		</form>
@@ -98,11 +97,11 @@
 			<td>{{vm.profile.age}}</td>
 			<td>{{vm.profile.weight}}</td>
 			<td>{{vm.profile.location}}</td>
-			<td><button type="button" class="btn btn-success" ng-hide="vm.showCreateButton" ng-click="vm.showEditForm=true">Edit Profile</button></td>
-			<td><button type="button" class="btn btn-success" ng-show="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
+			<td><button type="button" class="mybutton" ng-hide="vm.showCreateButton" ng-click="vm.showEditForm=true">Edit Profile</button></td>
+			<td><button type="button" class="mybutton" ng-show="vm.showCreateButton" ng-click="vm.showCreateForm=true">Create Profile</button></td>
 			<td>
 				<div>
-					<a href='#/createrecipe' class='btn btn-success'>Create a recipe</a>
+					<a href='#/createrecipe' class='mybutton'>Create a recipe</a>
 				</div>
 			</td>
 		</tr>

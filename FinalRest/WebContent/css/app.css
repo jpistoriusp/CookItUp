@@ -1,9 +1,33 @@
 .loginalert {
 	color: red;
 }
+input[type="button"] {
+	
+}
+.btn btn-link.glyphicon.glyphicon-remove{
+	background-color: white;
+	size: 50%;
+}
+.listrecipe {
+	background-color : #eecec7;
+	width: 35%;
+	margin: auto;
+	column-count: 4;
+    column-gap: 20px;
+    position: relative;
+    display: block;
+    padding: 4px 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c4a59e;
+}
 .recipecard {
-	background: none repeat scroll 0 0 #ffc798;
+	background: none repeat scroll 0 0;
+	background-color : white; 
 	border: solid;
+	border-color : #b3947b;
     border-radius: 4px;
     margin: 12px;
     color: #292929;
@@ -20,6 +44,10 @@
     display: inline-block;
     font-size: 14px;
     border-radius: 10px;
+    outline: none;
+}
+.mybutton:hover{
+	background-color: rgba(163, 144, 110, 0.94);
 }
 .daybutton{
 	background-color: #999999;
@@ -31,10 +59,14 @@
     display: inline-block;
     font-size: 14px;
     border-radius: 10px;
+    outline: none;
+}
+.daybutton:hover {
+    background-color: #484848;
 }
 #rightShow {
 	border-style: solid;
-	background-color: #5ac96b;
+	background-color: #292929;
 	border-radius: 6px;
 }
 #reviewSubmit {
@@ -95,8 +127,7 @@ padding-top: 15px;
 }
 
 .navbar{
-	background-color: rgba(131, 204, 205, 0.7);
-	
+	background-color: rgba(131, 204, 205,1.0);
 }
 
 .notDone{
@@ -198,7 +229,7 @@ padding-top: 15px;
     padding: 10px 20px 20px;
 }
 .card .content .main {
-    min-height: 160px;
+    min-height: 200px;
 }
 .card .back .content .main {
     height: 215px;

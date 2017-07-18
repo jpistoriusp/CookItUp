@@ -104,10 +104,14 @@ public class RecipeDAOImpl implements RecipeDAO {
 			r.setImgUrl(recipeDTO.getImgUrl());
 
 			List<Tag> recipeDtoTags = recipeDTO.getTags();
-//			if(recipeDtoTags == null) {
-//				Tag tag = new Tag();
-//				tag.setName("User-submitted");
-//			}
+			if(recipeDtoTags.size()==0) {
+				Tag tag = new Tag();
+				tag.setName("User-submitted");
+				List<Tag> tags = new ArrayList<>();
+				tags.add(tag);
+				recipeDtoTags = tags;
+				recipeDtoTags.add(tag);
+			}
 			for (Tag tag : recipeDtoTags) {
 				List<Tag> managedTags = em.createQuery("SELECT t FROM Tag t WHERE t.name=:name", Tag.class)
 						.setParameter("name", tag.getName())
@@ -132,8 +136,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 			String qry = "Select i from Ingredient i";
 			List<Ingredient> managedIngs = new ArrayList<>();
 			managedIngs = em.createQuery(qry, Ingredient.class).getResultList();
-			System.out.println(managedIngs);
-			System.out.println(recipeDTO.getIngredients());
 
 			for (IngredientDTO i : recipeDTO.getIngredients()) {
 				Ingredient managedIng = null;
@@ -312,5 +314,11 @@ public class RecipeDAOImpl implements RecipeDAO {
 		System.out
 				.println(new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList()));
 		return new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList());
+	}
+	@Override
+	public Set<Ingredient> indexIngred() {
+
+		String query = "SELECT i FROM Ingredient i";
+		return new HashSet<>(em.createQuery(query, Ingredient.class).getResultList());
 	}
 }

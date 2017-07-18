@@ -118,4 +118,9 @@ public class RecipeController {
 	public Set<Ingredient> getIngred(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid){
 		return recipedao.showIngred(rid);
 	}
+	
+	@RequestMapping(path = "recipe/ingredient", method = RequestMethod.GET)
+	public Set<Ingredient> indexIngred(HttpServletRequest req, HttpServletResponse res){
+		return recipedao.indexIngred();
+	}
 }

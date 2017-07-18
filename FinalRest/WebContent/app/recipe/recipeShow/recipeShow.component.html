@@ -39,9 +39,9 @@
 			<div>
 				<h5 ng-repeat="rating in vm.recipe.rating | limitTo: displayNum">
 					Review: {{rating.review}} | Rating: {{rating.value | number:1}}</h5>
-				<button ng-hide="vm.clicked" class="btn btn-default" id="reviewButt"
+				<button ng-hide="vm.clicked" class="mybutton" id="reviewButt"
 					ng-click="increaseBy(); vm.clicked=true">See more...</button>
-				<button ng-show="vm.clicked" class="btn btn-default" id="reviewButt"
+				<button ng-show="vm.clicked" class="mybutton" id="reviewButt"
 					ng-click="displayNum=1; vm.clicked=false">See fewer...</button>
 			</div>
 			<div>

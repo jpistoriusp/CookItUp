@@ -62,6 +62,7 @@ angular.module('staticModule').factory('staticService', function($http, authServ
 			url : 'api/recipe/random',
 		})
 	}
+
     
     service.getIngred = function(rid){
     		return $http({
