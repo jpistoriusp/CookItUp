@@ -9,6 +9,7 @@ angular.module('staticModule')
 			vm.rndomIngred=[];
 			vm.showDaily = true;
 
+	
 			$scope.$on('recipeDaily', function(e){
 				if (vm.showDaily) {
 					vm.showDaily = false;
