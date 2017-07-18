@@ -11,6 +11,13 @@ angular.module('recipe')
 			$location.path('/login')
 		}
 		
+	    service.indexIngred = function(){
+	    	return $http({
+	    		method : 'GET',
+	    		url : 'api/recipe/ingredient',
+	    	})
+	    }
+		
 		service.index = function(ingredients){
 			return $http({
 				method : 'POST',
