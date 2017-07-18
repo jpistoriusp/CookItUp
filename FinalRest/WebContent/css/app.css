@@ -146,6 +146,8 @@ padding-top: 15px;
     background: none repeat scroll 0 0 #ffc798;
     border-radius: 4px;
     margin: 12px;
+    color: #435e3d;
+    text-align: center;
 }
 .card-container, .front, .back {
 	width: 100%;
@@ -260,7 +262,4 @@ padding-top: 15px;
 	position: absolute;
 	right: 0;
 	color: #D34747;
-}
-.card-title {
-	text-align: center;
 }
