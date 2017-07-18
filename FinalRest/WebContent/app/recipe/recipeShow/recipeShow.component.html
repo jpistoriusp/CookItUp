@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 <div>
+=======
+
+<div class="col-sm-8 text-center" id="leftShow">
+
+<div>
+<div><img class="thumbnail" alt="" src="{{vm.recipe.imgUrl}}"></div>
+<div><h2>{{vm.recipe.title}}</h2></div>
+<!-- <div>
+>>>>>>> bfcba2387fa6239d53a50003c897e74db276c26e
+>>>>>>> c0287f7f1732b3869b04e0472c69f9b36c4ff669
 	<img class="thumbnail" alt="" src="{{vm.recipe.imgUrl}}">
 </div>
 <div>
 	<h2>{{vm.recipe.title}}</h2>
-</div>
+</div> -->
 <div class="">
 	<h4>Ingredients:</h4>
 	<ul id="list-ingredients" class="col-md-offset-4">
@@ -17,6 +28,10 @@ Instructions:
 		<li ng-repeat="inst in vm.recipe.instructions | orderBy : 'stepNumber'">{{inst.text}}</li>
 	</ol>
 </div>
+
+</div>
+
+<div class="col-sm-3 col-sm-offset-1 text-right" id="rightShow">
 <div>
 	<h3>Average Rating: {{vm.recipe.avgRating | number:1}}</h3>
 </div>
@@ -24,13 +39,13 @@ Instructions:
 	<h5 ng-repeat="rating in vm.recipe.rating | limitTo: displayNum">
 		Review: {{rating.review}} | Rating: {{rating.value | number:1}}
 	</h5>
-	<button ng-hide="vm.clicked" ng-click="increaseBy(); vm.clicked=true">See
+	<button ng-hide="vm.clicked" class="btn btn-default" id="reviewButt" ng-click="increaseBy(); vm.clicked=true">See
 		more...</button>
-	<button ng-show="vm.clicked" ng-click="displayNum=1; vm.clicked=false">See
+	<button ng-show="vm.clicked" class="btn btn-default" id="reviewButt" ng-click="displayNum=1; vm.clicked=false">See
 		fewer...</button>
 </div>
 <div>
-	<button ng-click="vm.backButton()">Back To List</button>
+	<button class="btn btn-default" id="reviewButt" ng-click="vm.backButton()">Back To List</button><br>
 	<label>Favorite<input type="checkbox" ng-model="vm.favorite"
 		ng-change="vm.updateFavorites(vm.recipe)"/></label>
 </div>
@@ -40,6 +55,8 @@ Instructions:
 		<label for="reviewRecipeForm">Leave a review:</label> <input
 			type="text" placeholder="Rate(1-5)" ng-model="vm.recipeRating.value" />
 		<input type="text" placeholder="Write a review" ng-model="vm.recipeRating.review" /> 
-		<input type="submit" value="Submit" ng-click="vm.createRating(vm.recipe,vm.recipeRating); vm.recipeRating = {}" />
+		<input class="btn btn-default" id="reviewButt" type="submit" value="Submit" ng-click="vm.createRating(vm.recipe,vm.recipeRating); vm.recipeRating = {}" />
 	</form>
 </div>
+</div>
+
