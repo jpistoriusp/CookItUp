@@ -1,5 +1,14 @@
-body{
-	background-color: #ffffff;
+.loginalert {
+	color: red;
+}
+.recipecard {
+	background: none repeat scroll 0 0 #ffc798;
+	border: solid;
+    border-radius: 4px;
+    margin: 12px;
+    color: #292929;
+    text-align: center;
+	position: relative;
 }
 .mybutton {
 	background-color: rgba(208, 183, 141, 0.94);
@@ -15,7 +24,7 @@ body{
 #rightShow {
 	border-style: solid;
 	background-color: #5ac96b;
-	border-radius: 6%;
+	border-radius: 6px;
 }
 #reviewSubmit {
 	margin-bottom: 6px;
@@ -25,7 +34,7 @@ body{
 }
 
 .bodybackground{
-	background-color: #FDF5E6;
+	background-color: rgba(248, 237, 200, 0.24);
 }
 #list-ingredients {
 	list-style: none;
@@ -85,7 +94,6 @@ padding-top: 15px;
 
 .thumbnail {
 	width: 10em;
-	
 }
 
 .card-container {
@@ -104,11 +112,6 @@ padding-top: 15px;
     transform: none;
 }
 /* flip speed goes here */
-.card {
-    transition: transform 1.95s;
-    transform-style: preserve-3d;
-	position: relative;
-}
 
 /* hide back of pane during swap */
 .front, .back {
@@ -144,10 +147,12 @@ padding-top: 15px;
 
 .card{
     background: none repeat scroll 0 0 #ffc798;
-    border-radius: 4px;
     margin: 12px;
-    color: #435e3d;
+    color: #292929;
     text-align: center;
+    transition: transform 1.95s;
+    transform-style: preserve-3d;
+	position: relative;
 }
 .card-container, .front, .back {
 	width: 100%;
