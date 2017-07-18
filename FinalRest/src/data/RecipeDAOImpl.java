@@ -309,4 +309,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 				.println(new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList()));
 		return new HashSet<>(em.createQuery(query, Ingredient.class).setParameter("id", id).getResultList());
 	}
+	@Override
+	public Set<Ingredient> indexIngred() {
+
+		String query = "SELECT i FROM Ingredient i";
+		return new HashSet<>(em.createQuery(query, Ingredient.class).getResultList());
+	}
 }

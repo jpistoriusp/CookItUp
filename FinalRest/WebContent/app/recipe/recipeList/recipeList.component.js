@@ -5,6 +5,18 @@ angular.module('recipe').component('recipeList', {
 		var vm = this;
 
 		vm.ingredients = [];
+		
+		vm.ingred = [];
+		
+		var loadIngred = function(){
+			recipeService.indexIngred()
+			.then(function(res){
+				vm.ingred = res.data;
+				console.log(vm.ingred);
+			})
+		}
+		
+		loadIngred();
 
 		vm.showFilter = false;
 
