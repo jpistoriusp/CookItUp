@@ -1,4 +1,6 @@
 
+<div><img class="thumbnail" alt="" src="{{vm.recipe.imgUrl}}"></div>
+<div><h2>{{vm.recipe.title}}</h2></div>
 <div>
 	<img class="thumbnail" alt="" src="{{vm.recipe.imgUrl}}">
 </div>
@@ -13,10 +15,9 @@
 	</ul>
 </div>
 <div>
-	Instructions:
+Instructions:
 	<ol>
-		<li
-			ng-repeat="inst in vm.recipe.instructions | orderBy : 'stepNumber'">{{inst.text}}</li>
+		<li ng-repeat="inst in vm.recipe.instructions | orderBy : 'stepNumber'">{{inst.text}}</li>
 	</ol>
 </div>
 <div>
@@ -31,18 +32,11 @@
 	<button ng-show="vm.clicked" ng-click="displayNum=1; vm.clicked=false">See
 		fewer...</button>
 </div>
-
-<!-- <div>
-	<uib-accordion close-others="oneAtATime">
-	<div uib-accordion-group class="panel-default" heading="Test"
-		ng-repeat="group in groups">{{group.content}}</div>
-	</uib-accordion>
-</div> -->
-
 <div>
 	<button ng-click="vm.backButton()">Back To List</button>
 	<label>Favorite<input type="checkbox" ng-model="vm.recipe.isFav"
 		ng-change="vm.updateFavorites(vm.recipe)" /></label>
+
 </div>
 
 <div>
