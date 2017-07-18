@@ -10,7 +10,6 @@ angular.module('recipe').component('recipeList', {
 
 		vm.toggleDaily = function() {
 			vm.showDaily = false;
-
 			$rootScope.$broadcast('recipeDaily', {
 				value : vm.showDaily
 			})
