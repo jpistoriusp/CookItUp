@@ -88,11 +88,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Recipe createRecipe(int uid, String recipeJson) {
-		System.out.println(recipeJson);
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			RecipeDTO recipeDTO = mapper.readValue(recipeJson, RecipeDTO.class);
-			System.out.println("RecipeDTO: " + recipeDTO);
 			Recipe r = new Recipe();
 			r.setTitle(recipeDTO.getTitle());
 			r.setImgUrl(recipeDTO.getImgUrl());
