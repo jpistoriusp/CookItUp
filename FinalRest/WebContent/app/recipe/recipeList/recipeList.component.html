@@ -37,7 +37,7 @@
 					<div class="card-block">
 						<h4 class="card-title">{{recipe.title}}</h4>
 						<p class="card-text">Rating: {{recipe.avgRating | number:1}}</p>
-						<div ng-click="vm.toggle(recipe) ; vm.showFilter = false"
+						<div ng-click="vm.toggle(recipe) ; vm.showFilter = false ; vm.toggleDaily()" 
 							class="btn btn-success" style="margin-bottom: 4px;">Go to
 							Recipe</div>
 						<br>

@@ -5,12 +5,13 @@ angular.module('recipe').component(
 			controller : function(recipeService, $filter, $scope) {
 				var vm = this;
 
-				vm.recipe = {};
+				vm.recipe = {
+						
+						tags : [],
+						ingredients : [],
+						instructions : []
+				};
 
-				vm.recipe.ingredients = [];
-
-				vm.recipe.instructions = [];
-				
 				vm.ingredientArray = [];
 				vm.instructionArray = [];
 				
@@ -39,13 +40,40 @@ angular.module('recipe').component(
 					});
 				};
 
+				vm.tags = [];
+				
 				vm.createRecipe = function(recipe) {
+					
+					vm.tags.forEach(function(tag,index,array){
+						if(tag.selected === true){
+							console.log(tag);
+							console.log(vm.recipe.tags);
+							vm.recipe.tags.push(tag);
+						}
+					})
 					vm.addStepNumber();
 					recipeService.createRecipe(recipe).then(
 							function(response) {
 							 stepCounter = 0;
 							});
 				}
+				
+				vm.selectedTags = [];
+				
+				
+				vm.showTags = function() {
+					recipeService.showTags()
+						.then(function(response){
+							vm.tags = response.data;
+								vm.tags.forEach(function(tag, idx, arr){
+									tag.selected = false;
+									vm.selectedTags = tag;
+								})
+								console.log(vm.tags);
+						})
+				}
+				
+				vm.showTags();
 
 			},
 
