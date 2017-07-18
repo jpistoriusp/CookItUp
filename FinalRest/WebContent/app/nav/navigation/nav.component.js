@@ -10,6 +10,13 @@ angular.module('nav').component('navigation', {
 				})
 		}
 		
+		vm.register = function(user){
+			authService.register(user)	
+			.then(function(resp){
+				$location.path('/');
+			})
+		}
+		
 		vm.loginChecker = function() {
 			if (authService.getToken().id) {
 				

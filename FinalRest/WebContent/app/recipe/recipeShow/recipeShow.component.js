@@ -35,17 +35,16 @@ angular.module('recipe')
 			}
 			
 			vm.updateFavorites = function(recipe){
-				console.log(recipe)
 				if (recipe.isFav) {
 					recipeService.addToFavorites(recipe)
 						.then(function(response){
-							console.log(response.data);
+							console.log("favorite added")
 						})
 				}
 				if (!recipe.isFav){
 					recipeService.deleteFromFavorites(recipe)
 					.then(function(response){
-						console.log(response.data);
+						if(response.data) console.log("favorite deleted")
 					})
 				}
 			}

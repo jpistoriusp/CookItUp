@@ -1,24 +1,52 @@
 <div class="modal fade" id="loginModal" role="dialog">
-			<div class="modal-dialog">
+	<div class="modal-dialog">
 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Log in</h4>
-					</div>
-					<div class="modal-body">
-						<input type="email" ng-model="user.email" placeholder="E-mail"/>
-						<input type="password" ng-model="user.password" placeholder="password"/>
-						<input type="submit" value="Login" ng-click="vm.login(user)" data-dismiss="modal"/>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Log in</h4>
+			</div>
+			<div class="modal-body">
+				<input type="email" ng-model="user.email" placeholder="E-mail" /> <input
+					type="password" ng-model="user.password" placeholder="password" />
+				
+					
+			</div>
+			<div class="modal-footer">
+			<input type="submit" value="Login" ng-click="vm.login(user)" data-dismiss="modal" />
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
+
+
+	</div>
+</div>
+
+<div class="modal fade" id="register" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Register</h4>
+			</div>
+			<div class="modal-body">
+				<input type="email" ng-model="user.email" placeholder="E-mail" /> <input
+					type="password" ng-model="user.password" placeholder="Password" />
+				<input type="password" ng-model="user.password2"
+					placeholder="Confirm Password" />
+			</div>
+			<div class="modal-footer">
+			<input type="submit" value="create account" ng-click="vm.register(user)" data-dismiss="modal"/>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -33,26 +61,26 @@
 				<li><a href="#/about">About</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right" ng-hide='vm.loginChecker()'>
-				<li><login></login></li>  
-<!-- 				<li><a href="#/login">Login</a></li> -->
+				<li><login></login></li>
+				<!-- 				<li><a href="#/login">Login</a></li> -->
 				<!-- <li><a href='#' data-toggle="modal" data-target="#loginModal">Login</a></li> -->
-				<li><a href="#/register">Create User</a></li>
+				<li><register></register></li>
 			</ul>
-			
+
 			<ul class="nav navbar-nav navbar-right" ng-show="vm.loginChecker()">
-				<li>	<a href="#/profile" ng-click="vm.displayProfile()">Profile</a></li>
+				<li><a href="#/profile" ng-click="vm.displayProfile()">Profile</a></li>
 				<li><logout></logout></li>
 				<li><a href="#/favorite">Favorites</a></li>
-				<li ng-show="vm.moderator()"><a href="#/moderator">Show All Review</a></li>
+				<li ng-show="vm.moderator()"><a href="#/moderator">Show All
+						Reviews</a></li>
 			</ul>
-			
-		</div>
-		
-	</div>
-	
-	
-</nav>
 
+		</div>
+
+	</div>
+
+
+</nav>
 
 
 
