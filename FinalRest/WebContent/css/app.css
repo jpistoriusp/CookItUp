@@ -1,6 +1,9 @@
 .loginalert {
 	color: red;
 }
+input[type="button"] {
+	
+}
 .recipecard {
 	background: none repeat scroll 0 0 #ffc798;
 	border: solid;
@@ -20,6 +23,10 @@
     display: inline-block;
     font-size: 14px;
     border-radius: 10px;
+    outline: none;
+}
+.mybutton:hover{
+	background-color: rgba(163, 144, 110, 0.94);
 }
 .daybutton{
 	background-color: #999999;
@@ -31,10 +38,14 @@
     display: inline-block;
     font-size: 14px;
     border-radius: 10px;
+    outline: none;
+}
+.daybutton:hover {
+    background-color: #484848;
 }
 #rightShow {
 	border-style: solid;
-	background-color: #5ac96b;
+	background-color: #292929;
 	border-radius: 6px;
 }
 #reviewSubmit {
