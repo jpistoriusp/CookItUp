@@ -7,8 +7,6 @@ angular.module('recipe')
 			
 			var vm = this;
 			
-			vm.favorite = false;
-			
 			vm.recipe = {}
 			
 			$scope.$on('recipeSelected', function(e,object){	
@@ -16,11 +14,9 @@ angular.module('recipe')
 					recipeService.showUserFavorites()
 						.then(function(response){
 							var favorites = response.data;
-							console.log(favorites);
 							favorites.forEach(function(fav,idx,arr){
-								console.log(vm.recipe.id)
 								if (fav.recipe.id === vm.recipe.id) {
-									vm.favorite = true;
+									vm.recipe.isFav = true;
 								}
 							})
 					})
@@ -39,13 +35,14 @@ angular.module('recipe')
 			}
 			
 			vm.updateFavorites = function(recipe){
-				if (vm.favorite) {
+				console.log(recipe)
+				if (recipe.isFav) {
 					recipeService.addToFavorites(recipe)
 						.then(function(response){
 							console.log(response.data);
 						})
 				}
-				if (!vm.favorite){
+				if (!recipe.isFav){
 					recipeService.deleteFromFavorites(recipe)
 					.then(function(response){
 						console.log(response.data);
