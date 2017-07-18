@@ -43,20 +43,25 @@ public class RecipeDAOImpl implements RecipeDAO {
 		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {
 		});
 
-		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name = :name";
+		String ingredientQuery = "SELECT i FROM Ingredient i WHERE i.name LIKE :name";
 		String recipeQuery = "SELECT r FROM Recipe r JOIN FETCH r.tags WHERE";
 
 		List<Ingredient> managedIngs = new ArrayList<Ingredient>();
 		for (Ingredient ingd : ingredients) {
 			Ingredient managed;
 			try {
-				managed = em.createQuery(ingredientQuery, Ingredient.class).setParameter("name", ingd.getName())
+				managed = em.createQuery(ingredientQuery, Ingredient.class).setParameter("name", "%"+ingd.getName()+"%")
 						.getSingleResult();
+				if (managed != null) {
+					managedIngs.add(managed);
+					continue;
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				continue;
 			}
-			managedIngs.add(managed);
+			
 		}
 		for (int i = 0; i < managedIngs.size(); i++) {
 			if (i == managedIngs.size() - 1) {
@@ -65,13 +70,15 @@ public class RecipeDAOImpl implements RecipeDAO {
 			}
 			recipeQuery += " :ing" + i + " MEMBER OF r.recipeIngredients OR";
 		}
-		if (managedIngs.size() == 0)
-			return null;
+		if (managedIngs.size() == 0) {
+			return new HashSet<Recipe>();
+		}
 		TypedQuery<Recipe> recipes = em.createQuery(recipeQuery, Recipe.class);
 		for (int i = 0; i < managedIngs.size(); i++) {
 			recipes.setParameter("ing" + i, managedIngs.get(i));
 		}
-		return new HashSet<Recipe>(recipes.getResultList());
+		List<Recipe> r = recipes.getResultList();
+		return new HashSet<Recipe>(r);
 	}
 
 	@Override
@@ -91,6 +98,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 			r.setImgUrl(recipeDTO.getImgUrl());
 
 			List<Tag> recipeDtoTags = recipeDTO.getTags();
+//			if(recipeDtoTags == null) {
+//				Tag tag = new Tag();
+//				tag.setName("User-submitted");
+//			}
 			for (Tag tag : recipeDtoTags) {
 				List<Tag> managedTags = em.createQuery("SELECT t FROM Tag t WHERE t.name=:name", Tag.class)
 						.setParameter("name", tag.getName())
@@ -285,8 +296,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 		String query = "SELECT r FROM Recipe r JOIN FETCH r.tags";
 		List<Recipe> rec = em.createQuery(query, Recipe.class).getResultList();
 		Collections.shuffle(rec);
-		System.out.print("RANDOM RECIPE" + rec.get(0));
-
 		return rec.get(0);
 	}
 
