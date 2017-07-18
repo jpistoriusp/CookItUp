@@ -23,6 +23,10 @@ angular.module('recipe')
 		service.createRecipe = function(recipeDTO){
 			checkLogin();
 			var uid = authService.getToken().id;
+			recipeDTO.tags.forEach(function(tag, i, arr){
+				delete tag.selected;
+			})
+			console.log(recipeDTO);
 			return $http({
 				method : 'POST',
 				url : 'api/user/' + uid + '/recipe',

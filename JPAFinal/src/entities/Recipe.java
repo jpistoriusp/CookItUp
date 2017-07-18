@@ -2,6 +2,7 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,13 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -42,7 +38,7 @@ public class Recipe {
 	@JsonIgnore
 	private List<User> user;
 
-	@ManyToMany
+	@ManyToMany(cascade={CascadeType.PERSIST})
 	@JoinTable(name = "recipe_tag", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private List<Tag> tags;
 
