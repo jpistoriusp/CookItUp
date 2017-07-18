@@ -1,6 +1,19 @@
 body{
 	background-color: #BBBBBB;
 }
+
+#rightShow {
+	border-style: solid;
+	background-color: #5ac96b;
+	border-radius: 6%;
+}
+#reviewSubmit {
+	margin-bottom: 6px;
+}
+#reviewButt {
+	background-color: #9bff89;
+}
+
 .bodybackground{
 	background-color: #BBBBBB;
 }
