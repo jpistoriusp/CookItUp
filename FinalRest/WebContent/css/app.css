@@ -67,14 +67,15 @@ input[type="button"] {
 }
 #rightShow {
 	border-style: solid;
-	background-color: #292929;
+	background-color: rgba(223, 229, 236);
 	border-radius: 6px;
 }
 #reviewSubmit {
 	margin-bottom: 6px;
 }
 #reviewButt {
-	background-color: #9bff89;
+	background-color: rgba(208, 183, 141, 0.94);
+	color: black;
 }
 
 .bodybackground{
@@ -136,7 +137,7 @@ padding-top: 15px;
 }
 
 .thumbnail {
-	width: 10em;
+	width: 25em;
 }
 
 .card-container {
@@ -251,6 +252,8 @@ padding-top: 15px;
     color: #4c4c4c;
     text-align: center;
     margin-bottom: 20px;
+   	font-size: 18px;
+   	font-family: 'Libre Franklin', sans-serif;
 }
 .card .footer {
     border-top: 1px solid #EEEEEE;
@@ -311,6 +314,23 @@ padding-top: 15px;
 	right: 0;
 	color: #D34747;
 }
+
 .card-columns {
  column-count: 3;
+}
+
+p {
+	font-size: 14px;
+}
+
+#leftshow {
+	text-align: left;
+}
+
+rightshow {
+	text-align: left;
+}
+
+li {
+	text-align: left;
 }

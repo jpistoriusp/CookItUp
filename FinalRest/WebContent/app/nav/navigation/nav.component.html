@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#/"> <img alt="Brand"
+			<a class="navbar-brand" href="#/"> <img ng-click="vm.goHome()"alt="Brand"
 				src="images/logo-small.png" height="20" width="69">
 			</a>
 		</div>
@@ -16,10 +16,10 @@
 
 			<ul class="nav navbar-nav navbar-right" ng-show="vm.loginChecker()">
 				<li><a href="#/profile" ng-click="vm.displayProfile()">Profile</a></li>
-				<li><logout></logout></li>
 				<li><a href="#/favorite">Favorites</a></li>
 				<li ng-show="vm.moderator()"><a href="#/moderator">Show All
 						Reviews</a></li>
+				<li><logout></logout></li>
 			</ul>
 		</div>
 	</div>

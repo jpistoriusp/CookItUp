@@ -12,7 +12,6 @@ angular.module('recipe').component('recipeList', {
 			recipeService.indexIngred()
 			.then(function(res){
 				vm.ingred = res.data;
-				console.log(vm.ingred);
 			})
 		}
 		

@@ -31,7 +31,7 @@ CREATE TABLE `favorite` (
   KEY `recipe_id_idx` (`recipe_id`),
   CONSTRAINT `fk_user_has_favorite` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_recipe` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `favorite` (
 
 LOCK TABLES `favorite` WRITE;
 /*!40000 ALTER TABLE `favorite` DISABLE KEYS */;
-INSERT INTO `favorite` VALUES (1,1,1),(2,1,2);
+INSERT INTO `favorite` VALUES (1,1,1),(2,1,2),(3,3,12);
 /*!40000 ALTER TABLE `favorite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,14 +108,14 @@ CREATE TABLE `profile` (
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `profile_pic` varchar(45) DEFAULT NULL,
+  `profile_pic` varchar(255) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
   `weight` decimal(5,2) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_profile_user1_idx` (`user_id`),
   CONSTRAINT `fk_profile_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'Nancy','Tran',25,NULL,'Denver',200.00,1),(2,'Chowder','Tran',4,NULL,'Denver',50.00,2);
+INSERT INTO `profile` VALUES (1,'Nancy','Tran',25,NULL,'Denver',200.00,1),(2,'Chowder','Tran',4,NULL,'Denver',50.00,2),(3,'Paul','Pistorius',26,NULL,'Denver, Co',185.00,3);
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +265,7 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-INSERT INTO `tag` VALUES (1,'Asian',NULL),(2,'Vegetarian',NULL);
+INSERT INTO `tag` VALUES (1,'User-submitted',NULL),(2,'Asian',NULL),(3,'Vegetarian',NULL);
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,5 +331,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-13 13:57:14
-
+-- Dump completed on 2017-07-14 15:04:07
