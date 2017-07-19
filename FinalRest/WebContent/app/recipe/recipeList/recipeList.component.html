@@ -16,7 +16,7 @@
 			<option ng-repeat="i in vm.ingred" value="{{i.name}}">
 		</datalist>
 		<span class="input-group-btn btn-group-lg">
-			<button class="btn mybutton" type="button" 
+			<button type="submit" class="btn mybutton" type="button" 
 				value="Add" ng-click="vm.addIngredient(ingredient);vm.findRecipes(vm.ingredients); ingredient={}">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 			</button>	
