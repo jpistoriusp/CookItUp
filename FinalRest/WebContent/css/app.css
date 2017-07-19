@@ -33,7 +33,7 @@ input[type="button"] {
     color: #292929;
     text-align: center;
 	position: relative;
-	display: inline-block;
+	padding: 0.5em;
 }
 .mybutton {
 	background-color: rgba(208, 183, 141, 0.94);
@@ -315,8 +315,15 @@ padding-top: 15px;
 	color: #D34747;
 }
 
-.card-columns {
- column-count: 3;
+.bricklayer {
+  width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+  .bricklayer-column-sizer {
+    /* Each column will be 125px width and there will be 4 columns. */
+    width: 25%;
+  }
 }
 
 p {
