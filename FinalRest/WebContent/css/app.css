@@ -1,3 +1,8 @@
+* {
+	font-size: 16px;
+	font-family: 'Muli', sans-serif;
+}
+
 .loginalert {
 	color: red;
 }
@@ -237,11 +242,12 @@ padding-top: 15px;
     height: 215px;
 }
 .card .name {
-    font-size: 22px;
+    font-size: 30px;
     line-height: 28px;
     margin: 10px 0 0;
     text-align: center;
     text-transform: capitalize;
+    font-family: 'Lobster', cursive;
 }
 .card h5{
     margin: 5px 0;
@@ -254,6 +260,7 @@ padding-top: 15px;
     margin-bottom: 20px;
    	font-size: 18px;
    	font-family: 'Libre Franklin', sans-serif;
+   	font-weight: bold;
 }
 .card .footer {
     border-top: 1px solid #EEEEEE;
@@ -335,6 +342,15 @@ li {
 	text-align: left;
 }
 
+
 .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
     padding-bottom: 12px;
+}
+
+.instr {
+	font-family: 'Arima Madurai', cursive;
+}
+
+.recipeoftheday{
+	margin-bottom: 14px;
 }

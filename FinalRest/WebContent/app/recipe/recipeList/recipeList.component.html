@@ -1,5 +1,11 @@
 <div ng-show="vm.showList">
 	
+	<div>
+		<h3 class="instr">
+			Cook what's in your fridge. Search ingredients to get started.
+		</h3>
+		<br>
+	</div>
 
 	<form id="addIngredientForm" class="row">	
 	<div class="col-sm-6 col-sm-offset-3">
@@ -11,7 +17,9 @@
 		</datalist>
 		<span class="input-group-btn btn-group-lg">
 			<button class="btn mybutton" type="button" 
-				value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}">Add</button>	
+				value="Add" ng-click="vm.addIngredient(ingredient);vm.findRecipes(vm.ingredients); ingredient={}">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			</button>	
 		</span>
 		</div>
 	</div>
@@ -26,8 +34,8 @@
 					ng-click="vm.deleteIngredient(i)"></button>
 			</li>
 		</ul>
-		<button class="mybutton"
-			ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button>
+		<!-- <button class="mybutton"
+			ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button> -->
 	</form>
 </div>
 	<div ng-show="vm.showFilter">
