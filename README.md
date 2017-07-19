@@ -1,4 +1,4 @@
-##Skill Distillery Cohort 10's Capstone Project
+##Skill Distillery Cohort 10's Capstone Project##
 
 Paul Pistorius, Eric Lee, Ryan Grillo, Nancy Tran, Miles Grandin
 
