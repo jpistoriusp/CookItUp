@@ -8,17 +8,17 @@ Paul Pistorius, Eric Lee, Ryan Grillo, Nancy Tran, Miles Grandin
 
 Technologies and Frameworks Used:
 
-Java
-Spring
-JPA
-JDBC
-Hibernate
-JavaScript
-mySQL
-jQuery
-REST
-Gradle
-AngularJS
+Java,
+Spring,
+JPA,
+JDBC,
+Hibernate,
+JavaScript,
+mySQL,
+jQuery,
+REST,
+Gradle,
+AngularJS,
 HTML/CSS
 
 
