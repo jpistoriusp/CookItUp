@@ -67,8 +67,8 @@ input[type="button"] {
 }
 #rightShow {
 	border-style: solid;
-	background-color: rgba(223, 229, 236);
 	border-radius: 6px;
+	background-color: FAE7E6;
 }
 #reviewSubmit {
 	margin-bottom: 6px;
@@ -333,4 +333,8 @@ rightshow {
 
 li {
 	text-align: left;
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    padding-bottom: 12px;
 }
