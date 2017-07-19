@@ -54,7 +54,7 @@ CREATE TABLE `ingredient` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `ingredient` (
 
 LOCK TABLES `ingredient` WRITE;
 /*!40000 ALTER TABLE `ingredient` DISABLE KEYS */;
-INSERT INTO `ingredient` VALUES (1,'Onion'),(2,'Rice'),(3,'Egg'),(4,'Soy Sauce'),(5,'Chicken'),(6,'Carrot'),(7,'Lettuce'),(8,'Black Beans'),(31,'Corn'),(32,'Canola oil'),(33,'Tomatoes'),(34,'Salt'),(35,'Garlic'),(36,'Olive Oil'),(37,'Bell peppers'),(38,'Crescent Rolls'),(39,'Ham'),(40,'Salami'),(41,'Eggs'),(42,'Cheese'),(43,'Milk'),(44,'Butter'),(45,'Active Dry Yeast'),(46,'Flour'),(47,'Sugar'),(48,'Cinnamon'),(49,'Walnuts'),(50,'Rolled Oats'),(51,'Oat Bran'),(52,'Nutmeg'),(53,'Baking Powder'),(54,'Vanilla Extract'),(55,'Maple Syrup'),(56,'Butter Beans'),(57,'Red Hot Pepper'),(58,'Green Onion');
+INSERT INTO `ingredient` VALUES (1,'Onion'),(2,'Rice'),(3,'Egg'),(4,'Soy Sauce'),(5,'Chicken'),(6,'Carrot'),(7,'Lettuce'),(8,'Black Beans'),(31,'Corn'),(32,'Canola oil'),(33,'Tomatoes'),(34,'Salt'),(35,'Garlic'),(36,'Olive Oil'),(37,'Bell peppers'),(38,'Crescent Rolls'),(39,'Ham'),(40,'Salami'),(41,'Eggs'),(42,'Cheese'),(43,'Milk'),(44,'Butter'),(45,'Active Dry Yeast'),(46,'Flour'),(47,'Sugar'),(48,'Cinnamon'),(49,'Walnuts'),(50,'Rolled Oats'),(51,'Oat Bran'),(52,'Nutmeg'),(53,'Baking Powder'),(54,'Vanilla Extract'),(55,'Maple Syrup'),(56,'Butter Beans'),(57,'Red Hot Pepper'),(58,'Green Onion'),(59,'test'),(60,'fdasf'),(61,'fdasfa'),(62,'fdasfas');
 /*!40000 ALTER TABLE `ingredient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +82,7 @@ CREATE TABLE `instruction` (
   PRIMARY KEY (`id`),
   KEY `recipe_id_idx` (`recipe_id`),
   CONSTRAINT `recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +144,7 @@ CREATE TABLE `rating` (
   KEY `fk_user_has_recipe_user1_idx` (`user_id`),
   CONSTRAINT `fk_user_has_recipe_recipe1` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_recipe_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +153,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
-INSERT INTO `rating` VALUES (1,1,1,4,NULL),(2,5,1,2,'Yummo'),(3,5,2,4,'Yummilicious'),(4,5,2,0,'Boo'),(5,5,2,0,'Boo');
+INSERT INTO `rating` VALUES (1,1,1,4,NULL),(2,5,1,2,'Yummo'),(3,5,2,4,'Yummilicious'),(4,5,2,0,'Boo'),(5,5,2,0,'Boo'),(6,6,30,0,NULL);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +170,7 @@ CREATE TABLE `recipe` (
   `source_url` varchar(400) DEFAULT NULL,
   `title` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,7 +200,7 @@ CREATE TABLE `recipe_ingredient` (
   KEY `fk_recipe_has_ingredient_recipe1_idx` (`recipe_id`),
   CONSTRAINT `fk_recipe_has_ingredient_ingredient1` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_recipe_has_ingredient_recipe1` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +229,7 @@ CREATE TABLE `recipe_tag` (
   KEY `fk_recipe_has_tag_recipe_idx` (`recipe_id`),
   CONSTRAINT `fk_recipe_has_tag_recipe` FOREIGN KEY (`recipe_id`) REFERENCES `recipe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_recipe_has_tag_tag1` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +254,7 @@ CREATE TABLE `tag` (
   `name` varchar(45) DEFAULT NULL,
   `selected` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -263,7 +263,7 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-INSERT INTO `tag` VALUES (1,'Asian',NULL),(2,'Vegetarian',NULL),(4,'Dessert',NULL),(5,'Gluten Free',NULL),(8,'Breakfast',NULL);
+INSERT INTO `tag` VALUES (1,'Asian',NULL),(2,'Vegetarian',NULL),(4,'Dessert',NULL),(5,'Gluten Free',NULL),(8,'Breakfast',NULL),(9,'User-submitted',NULL);
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,4 +329,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-18 14:57:02
+-- Dump completed on 2017-07-18 16:34:18

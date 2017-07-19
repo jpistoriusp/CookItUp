@@ -10,6 +10,10 @@ angular.module('nav').component('navigation', {
 				})
 		}
 		
+		vm.goHome = function(){
+			$location.path('/');
+		}
+		
 		vm.register = function(user){
 			authService.register(user)	
 			.then(function(resp){
