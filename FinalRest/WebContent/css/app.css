@@ -33,6 +33,7 @@ input[type="button"] {
     color: #292929;
     text-align: center;
 	position: relative;
+	display: inline-block;
 }
 .mybutton {
 	background-color: rgba(208, 183, 141, 0.94);
@@ -309,4 +310,7 @@ padding-top: 15px;
 	position: absolute;
 	right: 0;
 	color: #D34747;
+}
+.card-columns {
+ column-count: 3;
 }

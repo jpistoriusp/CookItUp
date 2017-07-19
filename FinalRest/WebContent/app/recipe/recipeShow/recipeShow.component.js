@@ -3,7 +3,7 @@ angular.module('recipe')
 		
 		templateUrl : 'app/recipe/recipeShow/recipeShow.component.html',
 		
-		controller : function(recipeService,authService,$scope){
+		controller : function(recipeService,authService,$scope, $rootScope){
 			
 			var vm = this;
 			
@@ -31,6 +31,9 @@ angular.module('recipe')
 			}
 			
 			vm.backButton = function(){
+				$rootScope.$broadcast('recipeDaily', {
+					value : vm.showDaily
+				})
 				vm.goBack();
 			}
 			

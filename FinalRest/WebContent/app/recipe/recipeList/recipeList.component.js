@@ -61,6 +61,7 @@ angular.module('recipe').component('recipeList', {
 						total += rat.value
 					})
 					r.avgRating = total / r.rating.length;
+					vm.rate = r.avgRating;
 				})
 			})
 		}
@@ -71,6 +72,7 @@ angular.module('recipe').component('recipeList', {
 
 		vm.changeListVisibility = function() {
 			vm.showList = vm.showList ? false : true;
+			vm.showFilter = vm.showFilter ? false : true;
 		}
 
 		vm.loadDetails = function(recipe) {
@@ -96,6 +98,10 @@ angular.module('recipe').component('recipeList', {
 		}
 
 		vm.showTags();
+		
+		vm.isReadOnly = true;
+		
+		vm.max = 5;
 	},
 	controllerAs : 'vm'
 })
