@@ -74,6 +74,7 @@ input[type="button"] {
 }
 #reviewButt {
 	background-color: rgba(208, 183, 141, 0.94);
+	color: black;
 }
 
 .bodybackground{
@@ -318,5 +319,13 @@ p {
 }
 
 #leftshow {
+	text-align: left;
+}
+
+rightshow {
+	text-align: left;
+}
+
+li {
 	text-align: left;
 }
