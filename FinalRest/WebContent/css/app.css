@@ -1,6 +1,8 @@
 .loginalert {
 	color: red;
 }
+label.selected{ text-color:red; }
+
 input[type="button"] {
 	
 }

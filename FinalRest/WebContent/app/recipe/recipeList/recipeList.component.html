@@ -12,7 +12,7 @@
 	<form id="findRecipesForm">
 		<ul class="list-group list-recipes">
 			<li ng-repeat="i in vm.ingredients"
-				class="listrecipe">{{i.name}}
+			class="listrecipe">{{i.name}}
 				<button class="btn btn-link glyphicon glyphicon-remove"
 					ng-click="vm.deleteIngredient(i)"></button>
 			</li>
@@ -24,9 +24,13 @@
 
 <table ng-show="vm.showList">
 	<div ng-show="vm.showFilter">
-		<h1>Sort by Type</h1>
-		<div ng-repeat="tag in vm.tags">
-			<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
+		<h3>Sort by Type</h3>
+		<div ng-repeat="tag in vm.tags" class="form-check form-check-inline">
+			<label class="form-check-label">
+			<input class="form-check-input" id="inlineCheckbox" type="checkbox" ng-model="tag.selected">
+		    <span class="custom-control-indicator"></span>
+			<span class="custom-control-description">{{tag.name}}</span>
+			</label>
 		</div>
 	</div>
 	<tbody>
