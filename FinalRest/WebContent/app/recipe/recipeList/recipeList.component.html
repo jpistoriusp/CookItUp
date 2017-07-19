@@ -1,5 +1,4 @@
 <div ng-show="vm.showList">
-	
 	<div>
 		<h3 class="instr">
 			Cook what's in your fridge. Search ingredients to get started.
@@ -16,7 +15,7 @@
 			<option ng-repeat="i in vm.ingred" value="{{i.name}}">
 		</datalist>
 		<span class="input-group-btn btn-group-lg">
-			<button class="btn mybutton" type="button" 
+			<button type="submit" class="btn mybutton" type="button" 
 				value="Add" ng-click="vm.addIngredient(ingredient);vm.findRecipes(vm.ingredients); ingredient={}">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 			</button>	
@@ -24,47 +23,51 @@
 		</div>
 	</div>
 	</form>
-
 <br>
 	<form id="findRecipesForm">
 		<ul class="list-group list-recipes">
-			<li ng-repeat="i in vm.ingredients"
-				class="listrecipe">{{i.name}}
+			<li ng-repeat="i in vm.ingredients" class="listrecipe">{{i.name}}
 				<button class="btn btn-link glyphicon glyphicon-remove"
 					ng-click="vm.deleteIngredient(i)"></button>
 			</li>
 		</ul>
+
 		<!-- <button class="mybutton"
 			ng-click="vm.findRecipes(vm.ingredients) ; vm.showFilter = true">Find Recipes</button> -->
 	</form>
 </div>
-	<div ng-show="vm.showFilter">
-		<h1>Sort by Type</h1>
-		<div ng-repeat="tag in vm.tags">
-			<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
-		</div>
+<div ng-show="vm.showFilter">
+	<h1>Sort by Type</h1>
+	<div ng-repeat="tag in vm.tags">
+		<input type="checkbox" ng-model="tag.selected">{{tag.name}}</input>
 	</div>
+</div>
+<div class="bricklayer" ng-show="vm.showList">
+	<div ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags">
+		<div class="recipecard">
+			<div class="card-group">
+				<div
+					style="overflow: Hidden; width: 9.7em; height: 9.7em; display: inline-block;">
+					<img class="cardpicture" alt="" src="{{recipe.imgUrl}}"
+						style="height: 100%;" />
+				</div>
+				<div class="card-block">
+					<h4 class="card-title">{{recipe.title}}</h4>
+					<p class="card-text">
+						<span uib-rating ng-model="recipe.avgRating" max="vm.max"
+							read-only="vm.isReadOnly"></span>
+					</p>
+					<div
+						ng-click="vm.toggle(recipe) ; vm.showFilter = false ; vm.toggleDaily()"
+						class="mybutton">Go to Recipe</div>
+					<br>
+				</div>
 
-	<div class="card-columns" ng-show="vm.showList">
-		<div ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags">
-		<div class="recipecard" style="width: 20rem; background-color: white">
-			<div style="overflow: Hidden; width: 9.7em; height: 9.7em; display: inline-block;">
-				<img class="cardpicture" alt="" src="{{recipe.imgUrl}}"
-					style="height: 100%;" />
 			</div>
-			<div class="card-block">
-				<h4 class="card-title">{{recipe.title}}</h4>
-				<p class="card-text">
-					<span uib-rating ng-model="recipe.avgRating" max="vm.max" read-only="vm.isReadOnly"></span>
-				</p>
-				<div ng-click="vm.toggle(recipe) ; vm.showFilter = false ; vm.toggleDaily()" 
-					class="mybutton">Go to Recipe</div>
-				<br>
-			</div>
-		</div>
 		</div>
 	</div>
-	
+</div>
+
 
 <recipe-show ng-hide="vm.showList" recipe="vm.selected"
 	go-back="vm.changeListVisibility()" showList="vm.showList"></recipe-show>
