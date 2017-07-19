@@ -37,7 +37,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public Set<Recipe> index(String json) throws IOException {
-
 		ObjectMapper mapper = new ObjectMapper();
 
 		List<Ingredient> ingredients = mapper.readValue(json, new TypeReference<List<Ingredient>>() {
@@ -48,12 +47,15 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 		List<Ingredient> managedIngs = new ArrayList<Ingredient>();
 		for (Ingredient ingd : ingredients) {
-			Ingredient managed;
+			List<Ingredient> managedResults;
 			try {
-				managed = em.createQuery(ingredientQuery, Ingredient.class).setParameter("name", "%"+ingd.getName()+"%")
-						.getSingleResult();
-				if (managed != null) {
-					managedIngs.add(managed);
+				managedResults = em.createQuery(ingredientQuery, Ingredient.class).setParameter("name", "%"+ingd.getName()+"%")
+						.getResultList();
+				
+				if (managedResults.size() > 0) {
+					for (Ingredient i : managedResults) {
+						managedIngs.add(i);
+					}
 					continue;
 				}
 				
@@ -65,19 +67,23 @@ public class RecipeDAOImpl implements RecipeDAO {
 		}
 		for (int i = 0; i < managedIngs.size(); i++) {
 			if (i == managedIngs.size() - 1) {
-				recipeQuery += " :ing" + i + " MEMBER OF r.recipeIngredients";
+				recipeQuery += " :ing" + i + " MEMBER OF r.ingredients";
 				break;
 			}
-			recipeQuery += " :ing" + i + " MEMBER OF r.recipeIngredients OR";
+			recipeQuery += " :ing" + i + " MEMBER OF r.ingredients OR";
 		}
 		if (managedIngs.size() == 0) {
 			return new HashSet<Recipe>();
 		}
+		System.out.println(recipeQuery);
 		TypedQuery<Recipe> recipes = em.createQuery(recipeQuery, Recipe.class);
 		for (int i = 0; i < managedIngs.size(); i++) {
 			recipes.setParameter("ing" + i, managedIngs.get(i));
 		}
 		List<Recipe> r = recipes.getResultList();
+		for (Recipe recipe : r) {
+			System.out.println(recipe.getTitle());
+		}
 		return new HashSet<Recipe>(r);
 	}
 

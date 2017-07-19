@@ -56,6 +56,18 @@ public class Recipe {
 	@OneToMany(mappedBy = "recipe")
 	@JsonIgnore
 	private List<Favorite> favorites;
+	
+	@ManyToMany(mappedBy="recipe")
+	@JsonIgnore
+	private List<Ingredient> ingredients;
+
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
 
 	public String getImgUrl() {
 		return imgUrl;

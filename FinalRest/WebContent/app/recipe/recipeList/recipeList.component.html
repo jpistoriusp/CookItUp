@@ -8,12 +8,11 @@
 
 		</datalist>
 		<input class="mybutton" type="submit"
-					value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}" /></
-			form>
+					value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}" /></form>
 	<form id="findRecipesForm">
 		<ul class="list-group list-recipes">
 			<li ng-repeat="i in vm.ingredients"
-				class="list-group-item list-group-item-success">{{i.name}}
+				class="listrecipe">{{i.name}}
 				<button class="btn btn-link glyphicon glyphicon-remove"
 					ng-click="vm.deleteIngredient(i)"></button>
 			</li>
@@ -42,7 +41,7 @@
 						<h4 class="card-title">{{recipe.title}}</h4>
 						<p class="card-text">Rating: {{recipe.avgRating | number:1}}</p>
 						<div ng-click="vm.toggle(recipe) ; vm.showFilter = false ; vm.toggleDaily()" 
-							class="mybutton" style="margin-bottom: 4px;">Go to
+							class="mybutton">Go to
 							Recipe</div>
 						<br>
 					</div>

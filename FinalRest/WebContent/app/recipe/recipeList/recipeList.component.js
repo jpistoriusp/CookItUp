@@ -53,7 +53,6 @@ angular.module('recipe').component('recipeList', {
 		vm.findRecipes = function(ingredients) {
 			recipeService.index(ingredients).then(function(response) {
 				vm.recipes = response.data;
-				console.log("find recipes");
 				console.log(vm.recipes);
 				vm.recipes.forEach(function(r, idx, arr) {
 					var total = 0;
