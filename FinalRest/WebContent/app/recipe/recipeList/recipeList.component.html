@@ -1,14 +1,23 @@
 <div ng-show="vm.showList">
-	<form id="addIngredientForm">
-		<label for="addIngredientForm">Enter an Ingredient:</label>
-		<!-- <input type="text" ng-model="ingredient.name" />  -->
-		<input list="browsers" name="myBrowser" ng-model="ingredient.name"/>
+	
+
+	<form id="addIngredientForm">	
+	<div class="col-sm-6 col-sm-offset-3">
+		<div class="input-group">
+			<input list="browsers" class="form-control input-lg" placeholder=" Enter an Ingredient" name="myBrowser" ng-model="ingredient.name"/>
+		
 		<datalist id="browsers">
 			<option ng-repeat="i in vm.ingred" value="{{i.name}}">
-
 		</datalist>
-		<input class="mybutton" type="submit"
-					value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}" /></form>
+		<span class="input-group-btn btn-group-lg">
+			<button class="btn mybutton" type="button" 
+				value="Add" ng-click="vm.addIngredient(ingredient); ingredient={}">Add</button>	
+		</span>
+		</div>
+	</div>
+	</form>
+
+<br>
 	<form id="findRecipesForm">
 		<ul class="list-group list-recipes">
 			<li ng-repeat="i in vm.ingredients"
@@ -32,7 +41,7 @@
 	<tbody>
 		<tr>
 			<td ng-repeat="recipe in vm.recipes | recipeFilter: vm.tags">
-				<div class="recipecard" style="width: 20rem; background-color: white">
+				<div class="recipecard" style="width: 20rem;">
 					<div style="overflow: Hidden; width: 9.7em; height: 9.7em; display: inline-block;">
 						<img class="cardpicture" alt="" src="{{recipe.imgUrl}}"
 							style="height: 100%;" />

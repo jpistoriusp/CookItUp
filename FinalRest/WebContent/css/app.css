@@ -12,7 +12,6 @@ input[type="button"] {
 	background-color : #eecec7;
 	width: 35%;
 	margin: auto;
-	column-count: 4;
     column-gap: 20px;
     position: relative;
     display: block;
@@ -25,7 +24,7 @@ input[type="button"] {
 }
 .recipecard {
 	background: none repeat scroll 0 0;
-	background-color : white; 
+	background-color: #FAEBD7;
 	border: solid;
 	border-color : #b3947b;
     border-radius: 4px;
@@ -45,6 +44,7 @@ input[type="button"] {
     font-size: 14px;
     border-radius: 10px;
     outline: none;
+    margin-bottom: 9px;
 }
 .mybutton:hover{
 	background-color: rgba(163, 144, 110, 0.94);
