@@ -46,6 +46,7 @@ angular.module('recipe').component('recipeList', {
 					arr.splice(idx, 1);
 				}
 			})
+			vm.findRecipes(vm.ingredients);
 		}
 
 		vm.recipes = [];
