@@ -3,7 +3,7 @@
 <div class="col-md-6">
 <form id="createRecipeForm">
 	<div class="form-group">
-		<label for="createRecipeForm">Create a recipe:</label> <input
+		<h3>Create a recipe:</h3> <input
 			type="text" class="form-control" placeholder="Recipe Name"
 			ng-model="vm.recipe.title" />
 	</div>
@@ -20,6 +20,7 @@
 		<input type="text" class="form-control" placeholder="Ingredient"
 			ng-model="vm.recipe.ingredients[0].name" /><br>
 	</div>
+	
 	<div ng-repeat="item in vm.ingredientArray">
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Quantity"
@@ -27,29 +28,42 @@
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Ingredient"
-				ng-model="vm.recipe.ingredients[item.num].name" /><br>
+				ng-model="vm.recipe.ingredients[item.num].name"/>
+				<span class="input-group-btn btn-group-lg">
+				<button ng-click="vm.removeIng()">
+				
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				
+				</button>
+				</span>
+				<br>
 		</div>
 	</div>
+	
 
 	<button class="mybutton" ng-click="vm.ingredientInput()">Add Ingredient</button>
-	<br>
-	<br>
 
 	<div class="form-group">
 		<input type="text" class="form-control" placeholder="Instructions"
 			ng-model="vm.recipe.instructions[0].text"  />
 	</div>
+	
 	<div ng-repeat="item in vm.instructionArray">
-<!-- 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Step"
-				ng-model="vm.recipe.instructions[item.num].stepNumber" />
-		</div> -->
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Instruction"
-				ng-model="vm.recipe.instructions[item.num].text" /><br>
+				ng-model="vm.recipe.instructions[item.num].text" />
+				<span class="input-group-btn btn-group-lg">
+				<button ng-click="vm.removeInst()">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				
+				</button>
+				</span>
+				<br>
 		</div>
+		
 	</div>
-			<button class="mybutton" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
+	
+	<button class="mybutton" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
 
 	
 	<div ng-repeat="tag in vm.tags">
