@@ -7,7 +7,11 @@ angular.module('nav').component('navigation', {
 			authService.login(user)
 				.then(function(resp){
 					$location.path('/');
+				})			
+				.catch(function(error){
+					console.log("asdfasdf");
 				})
+				
 		}
 		
 		vm.goHome = function(){
@@ -19,6 +23,7 @@ angular.module('nav').component('navigation', {
 			.then(function(resp){
 				$location.path('/');
 			})
+
 		}
 		
 		vm.loginChecker = function() {
@@ -31,7 +36,7 @@ angular.module('nav').component('navigation', {
 		}
 		
 		vm.moderator = function() {
-			if (authService.getToken().id == 6) {
+			if (authService.getToken().id == 8) {
 				return true;
 			}
 			
