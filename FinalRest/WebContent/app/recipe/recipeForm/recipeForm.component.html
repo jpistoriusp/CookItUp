@@ -12,7 +12,7 @@
 			placeholder="Post an image url" ng-model="vm.recipe.imgUrl" /><br>
 	</div>
 
-	<div class="form-group">
+	<div class="input-group">
 		<input type="text" class="form-control" placeholder="Quantity"
 			ng-model="vm.recipe.ingredients[0].quantity" />
 	</div>
@@ -22,20 +22,18 @@
 	</div>
 	
 	<div ng-repeat="item in vm.ingredientArray">
-		<div class="form-group">
+		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Quantity"
 				ng-model="vm.recipe.ingredients[item.num].quantity" />
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Ingredient"
 				ng-model="vm.recipe.ingredients[item.num].name"/>
-				<span class="input-group-btn btn-group-lg">
-				<button ng-click="vm.removeIng()">
-				
-				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-				
-				</button>
-				</span>
+				<span class="input-group-addon">
+					<button ng-click="vm.removeIng()">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					</span>
 				<br>
 		</div>
 	</div>
@@ -49,18 +47,16 @@
 	</div>
 	
 	<div ng-repeat="item in vm.instructionArray">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Instruction"
-				ng-model="vm.recipe.instructions[item.num].text" />
-				<span class="input-group-btn btn-group-lg">
-				<button ng-click="vm.removeInst()">
-				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-				
-				</button>
-				</span>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Instruction"
+					ng-model="vm.recipe.instructions[item.num].text" />
+					<span class="input-group-addon">
+					<button ng-click="vm.removeInst()">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					</span>
+				</div>
 				<br>
-		</div>
-		
 	</div>
 	
 	<button class="mybutton" ng-click="vm.instructionInput(); vm.addStepNumber();">Add Step</button>
