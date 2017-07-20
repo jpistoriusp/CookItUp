@@ -51,7 +51,7 @@ angular.module('recipe')
 					})
 				}
 			}
-			$scope.displayNum = 1;
+			$scope.displayNum = 0;
 			$scope.increaseBy = function(num) {
 				$scope.displayNum +=num;
 			}
@@ -77,11 +77,24 @@ angular.module('recipe')
 										recipeService.showInstructions(vm.recipe)
 											.then(function(resp){
 												vm.recipe.instructions = resp.data;
+												recipeService.showUserFavorites()
+												.then(function(response){
+													var favorites = response.data;
+													favorites.forEach(function(fav,idx,arr){
+														if (fav.recipe.id === vm.recipe.id) {
+															vm.recipe.isFav = true;
+														}
+													})
+											})
 											})
 									})
 							})
 					})
 			}
+			
+			vm.isReadOnly = true;
+			
+			vm.max = 5;
 		},
 		
 		controllerAs : 'vm',
