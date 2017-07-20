@@ -77,6 +77,15 @@ angular.module('recipe')
 										recipeService.showInstructions(vm.recipe)
 											.then(function(resp){
 												vm.recipe.instructions = resp.data;
+												recipeService.showUserFavorites()
+												.then(function(response){
+													var favorites = response.data;
+													favorites.forEach(function(fav,idx,arr){
+														if (fav.recipe.id === vm.recipe.id) {
+															vm.recipe.isFav = true;
+														}
+													})
+											})
 											})
 									})
 							})
