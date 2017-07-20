@@ -359,3 +359,27 @@ li {
 .recipeoftheday{
 	margin-bottom: 14px;
 }
+
+.checkbox-heart input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  z-index: -1;
+}
+
+/* Styling for the "Checkbox" */
+.checkbox-heart input + label:before {
+  display: block;
+  content: "\e005";
+  float: left;
+  margin-right: 0.25em;
+  font-family: 'Glyphicons Halflings';
+  opacity: 0.5;
+}
+
+/* Styling for the "Checkbox" when it's been checked */
+.checkbox-heart input:checked + label:before {
+  opacity: 1;
+  color: red;
+}
