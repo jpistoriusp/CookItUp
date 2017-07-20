@@ -55,8 +55,13 @@
 			<div>
 				<button class = "mybutton" id="reviewButt"
 					ng-click="vm.backButton()">Back To List</button>
-				<br> <label>Favorite <input type="checkbox"
-					ng-model="vm.recipe.isFav" ng-change="vm.updateFavorites(vm.recipe)" /></label>
+				<br> 
+				<div class="checkbox-heart">
+  					<input type="checkbox" id="myCheckbox" ng-model="vm.recipe.isFav" ng-change="vm.updateFavorites(vm.recipe)">
+  					<label for="myCheckbox">Favorite</label>
+				</div>
+				<!-- <label>Favorite <input type="checkbox"
+					ng-model="vm.recipe.isFav" ng-change="vm.updateFavorites(vm.recipe)" /></label> -->
 			</div>
 
 			<div>
