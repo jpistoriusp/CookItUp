@@ -21,6 +21,11 @@ angular.module('recipe').component("recipeForm", {
 			});
 
 		};
+		
+		vm.removeIng = function() {
+			--ingCounter;
+			vm.ingredientArray.splice(-1);
+		}
 
 		var stepCounter = 0;
 		vm.addStepNumber = function() {
@@ -35,6 +40,11 @@ angular.module('recipe').component("recipeForm", {
 				num : insCounter
 			});
 		};
+		
+		vm.removeInst = function(){
+			--insCounter;
+			vm.instructionArray.splice(-1);
+		}
 
 		vm.tags = [];
 		vm.tagName = "";
