@@ -51,7 +51,7 @@ angular.module('recipe')
 					})
 				}
 			}
-			$scope.displayNum = 1;
+			$scope.displayNum = 0;
 			$scope.increaseBy = function(num) {
 				$scope.displayNum +=num;
 			}
@@ -82,6 +82,10 @@ angular.module('recipe')
 							})
 					})
 			}
+			
+			vm.isReadOnly = true;
+			
+			vm.max = 5;
 		},
 		
 		controllerAs : 'vm',
