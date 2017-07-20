@@ -34,27 +34,34 @@
 
 		<div class="col-sm-4 text-center" id="rightShow">
 			<div>
-				<h3>Average Rating: {{vm.recipe.avgRating | number:1}}</h3>
+				<h4>Rating: <span uib-rating ng-model="vm.recipe.avgRating" max="vm.max"
+							read-only="vm.isReadOnly"></span>{{vm.recipe.avgRating | number:1}} stars</h4>
 			</div>
 			<div>
 				<h5 ng-repeat="rating in vm.recipe.rating | limitTo: displayNum">
-					Review: {{rating.review}} | Rating: {{rating.value | number:1}}</h5>
+					{{rating.review}} | <span uib-rating ng-model="rating.value" max="vm.max"
+							read-only="vm.isReadOnly"></span>{{rating.value | number:1}} stars</h5>
 			</div>
 			<div>
 				<button ng-hide="vm.clicked" class="mybutton" id="reviewButt"
-					ng-click="increaseBy(); vm.clicked=true">See more...</button>
+					ng-click="increaseBy(); vm.clicked=true">See reviews...</button>
 			</div>
 			
 			<div>
 				<button ng-show="vm.clicked" class="mybutton" id="reviewButt"
-					ng-click="displayNum=1; vm.clicked=false">See fewer...</button>
+					ng-click="displayNum=0; vm.clicked=false">Hide reviews...</button>
 			</div>
 			
 			<div>
 				<button class = "mybutton" id="reviewButt"
 					ng-click="vm.backButton()">Back To List</button>
-				<br> <label>Favorite<input type="checkbox"
-					ng-model="vm.recipe.isFav" ng-change="vm.updateFavorites(vm.recipe)" /></label>
+				<br> 
+				<div class="checkbox-heart">
+  					<input type="checkbox" id="myCheckbox" ng-model="vm.recipe.isFav" ng-change="vm.updateFavorites(vm.recipe)">
+  					<label for="myCheckbox">Favorite</label>
+				</div>
+				<!-- <label>Favorite <input type="checkbox"
+					ng-model="vm.recipe.isFav" ng-change="vm.updateFavorites(vm.recipe)" /></label> -->
 			</div>
 
 			<div>

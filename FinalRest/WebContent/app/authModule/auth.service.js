@@ -30,9 +30,12 @@ angular.module('authModule')
 			data : user
 
 		}).then(function(u) {
-			console.log(u)
 			saveToken(u.data);
 			return u;
+		})			
+		.catch(function(error){
+			console.log("dfdf");
+		throw error;
 		})
 	}
 
