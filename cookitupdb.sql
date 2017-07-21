@@ -107,7 +107,7 @@ CREATE TABLE `profile` (
   `first_name` varchar(45) DEFAULT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `profile_pic` varchar(45) DEFAULT NULL,
+  `profile_pic` varchar(255) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
   `weight` decimal(5,2) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
